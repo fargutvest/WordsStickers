@@ -75,18 +75,25 @@
         localStorage.setItem('SPREADSHEET_ID', SPREADSHEET_ID);
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: SPREADSHEET_ID,
-          range: 'A1:I30',
+          range: 'A:Z',
         }).then(function(response) {
-          var range = response.result;
-          if (range.values.length > 0) {
-            for (i = 0; i < range.values.length; i++) {
-              var row = range.values[i];
-              // Print columns A and E, which correspond to indices 0 and 4.
-              appendPre(row[0] + ', ' + row[1] + ', ' + row[2] + ', ' + row[3] + ', ' + row[4] + ', ' + row[5] + ', ' + row[6] + ', ' + row[7] + ', ' + row[8]);
+          var values = response.result.values;
+          var words = [];
+          if (values.length > 0) {
+            for (i = 0; i < values.length; i++) {
+              var row = values[i];
+              for(j = 0; j < row.length; j++){
+                words.push(row[j]);
+              }
             }
           } else {
             appendPre('No data found.');
           }
+          var counter = 0;
+          words.forEach(element => {
+            counter++;
+            appendPre(counter + ") " + element);
+          });
         }, function(response) {
           appendPre('Error: ' + response.result.error.message);
         });
