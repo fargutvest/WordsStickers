@@ -8,7 +8,7 @@ class App extends Component {
 	<Row/>
 	<Row/>
 	<Row/>
-        <Row/>
+  <Row/>
   </div>
     );
   }
@@ -29,8 +29,8 @@ class Sticker extends Component {
     return (
       <div className="Sticker">
           <p>English word</p>
-	  <p>Spelling</p>
-	  <p>Russian word</p>
+	        <p>Spelling</p>
+	        <p>Russian word</p>
       </div>
     );
   }
