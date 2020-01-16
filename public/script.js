@@ -15,6 +15,7 @@
       localStorage.setItem('CLIENT_ID', CLIENT_ID);
       localStorage.setItem('API_KEY', API_KEY);
       localStorage.setItem('SPREADSHEET_ID', document.getElementById('SPREADSHEET_ID').value);
+      localStorage.setItem('RANGE', document.getElementById('RANGE').value);
 
         gapi.client.init({
           apiKey: API_KEY,
@@ -36,6 +37,7 @@
         document.getElementById('CLIENT_ID').value = localStorage.getItem('CLIENT_ID');
         document.getElementById('API_KEY').value = localStorage.getItem('API_KEY');
         document.getElementById('SPREADSHEET_ID').value = localStorage.getItem('SPREADSHEET_ID');
+        document.getElementById('RANGE').value = localStorage.getItem('RANGE');
         initClientButton.onclick = handleInitClientClick;
       }
 
@@ -72,10 +74,11 @@
 
       function listMajors() {
         var SPREADSHEET_ID = document.getElementById('SPREADSHEET_ID').value;
+        var RANGE = document.getElementById('RANGE').value;
         localStorage.setItem('SPREADSHEET_ID', SPREADSHEET_ID);
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: SPREADSHEET_ID,
-          range: 'A:Z',
+          range: RANGE,
         }).then(function(response) {
           var values = response.result.values;
           var words = [];
