@@ -11,7 +11,11 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "react-scripts start",
+    "@comment": {
+      "Ubuntu": "HTTPS=true PORT=8000 react-scripts start",
+      "Windows": "set HTTPS=true && set PORT=8000 && react-scripts start"
+    },
+    "start": "HTTPS=true PORT=8000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "predeploy": "npm run build",
