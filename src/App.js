@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Urls from './Urls.js';
+import Stickers from './Stickers.js';
 import './App.css';
 
 class App extends Component {
@@ -150,46 +152,14 @@ class App extends Component {
     initPage();
     return (
   <div>
-	<TableBody characterData={characters}/>
-  </div>
-    );
-  }
-}
-
-
-const TableBody = props => {
-const rows = props.characterData.map((row, index) => {
-    return (
-  <tr key={index}>
-    <td><Sticker data={row[0]}/></td><td><Sticker data={row[1]}/></td><td><Sticker data={row[2]}/></td><td><Sticker data={row[3]}/></td>
-  </tr>
-    )
-  })
-  return (
-    <div>
-  <tbody>{rows}</tbody>
+	<Stickers characterData={characters}/>
   <Urls/>
   </div>
-  ); 
-}
-
-class Sticker extends Component {
-  render() {
-    return (
-      <div className="Sticker">
-          <p>{this.props.data.English}</p>
-	        <p>{this.props.data.Spelling}</p>
-	        <p>{this.props.data.Russian}</p>
-      </div>
     );
   }
 }
 
-class Urls extends Component {
-  render() {
-    return (
-      <a href="https://developers.google.com/sheets/api/quickstart/js">https://developers.google.com/sheets/api/quickstart/js</a>
-    )
-  }
-}
+
+
+
 export default App;
