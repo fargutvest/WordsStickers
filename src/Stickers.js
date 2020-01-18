@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const Stickers = props => {
-    const rows = props.characterData.map((row, index) => {
+    const rows = props.shared_var.map((row, index) => {
         return (
       <tr key={index}>
         <td><Sticker data={row[0]}/></td><td><Sticker data={row[1]}/></td><td><Sticker data={row[2]}/></td><td><Sticker data={row[3]}/></td>
