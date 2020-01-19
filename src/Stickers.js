@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Stickers.css';
 
 const Stickers = props => {
     const rows = props.shared_var.map((row, index) => {
@@ -15,12 +16,12 @@ const Stickers = props => {
       render() {
         return (
           <div className="Sticker">
-              <p>{this.props.data.English}</p>
-                <p>{this.props.data.Spelling}</p>
-                <p>{this.props.data.Russian}</p>
+                <div className="English Part">{this.props.data.English}</div>
+                <div className="Spelling Part">{this.props.data.Spelling}</div>
+                <div className="Russian Part">{this.props.data.Russian}</div>
           </div>
         );
       }
     }
-    
+
 export default Stickers;

@@ -1,0 +1,30 @@
+
+.Sticker {
+    text-align: center;
+    border: 1px double black;
+    width: 250px;
+    height: 150px;	 
+  }
+
+  .Part {
+    border: 1px double lightgray;
+    height: 50px;
+    /*display: table-cell;
+    vertical-align: middle;
+    */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .English {
+    font-style: normal;
+  }
+
+  .Spelling {
+      color: gray;  
+  }
+
+.Russian {
+    font-style: normal;
+ }

@@ -127,17 +127,18 @@ class Credentials extends Component {
       return (
   <div>
         <p>
-        <label class="w3-text-blue"><b>CLIENT_ID:</b></label>
-        <input class="w3-input w3-border" id="CLIENT_ID" type="text" size="100" value={localStorage.getItem('CLIENT_ID')}/></p>
+
+        <label className="w3-text-blue"><b>CLIENT_ID:</b></label>
+        <input className="w3-input w3-border" id="CLIENT_ID" type="text" size="100" value={localStorage.getItem('CLIENT_ID')}/></p>
         <p> 
-        <label class="w3-text-blue"><b>API_KEY:</b></label>
-        <input class="w3-input w3-border" id="API_KEY" type="text" size="100" value ={localStorage.getItem('API_KEY')}/></p>
+        <label className="w3-text-blue"><b>API_KEY:</b></label>
+        <input className="w3-input w3-border" id="API_KEY" type="text" size="100" value ={localStorage.getItem('API_KEY')}/></p>
         <p>
-       <label class="w3-text-blue"><b>SPREADSHEET_ID:</b></label>
-       <input class="w3-input w3-border" id="SPREADSHEET_ID" type="text" size="100" value = {localStorage.getItem('SPREADSHEET_ID')}/></p>
+       <label className="w3-text-blue"><b>SPREADSHEET_ID:</b></label>
+       <input className="w3-input w3-border" id="SPREADSHEET_ID" type="text" size="100" value = {localStorage.getItem('SPREADSHEET_ID')}/></p>
        <p>
-        <label class="w3-text-blue"><b>RANGE:</b></label>
-        <input class="w3-input w3-border" id="RANGE" type="text" size="100" value = {localStorage.getItem('RANGE')}/></p>
+        <label className="w3-text-blue"><b>RANGE:</b></label>
+        <input className="w3-input w3-border" id="RANGE" type="text" size="100" value = {localStorage.getItem('RANGE')}/></p>
         
          <small><i>(copy values of CLIENT_ID, API_KEY, SPREADSHEET_ID from file 'EnglishWordsStickersJS_API_KEY.txt' placed on fargutvest GoogleDrive)</i> </small>
   <p>
