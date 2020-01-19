@@ -11,24 +11,29 @@ class Tabs extends Component {
         }
         tablinks = document.getElementsByClassName("tablink");
         for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].style.backgroundColor = "";
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
         var elm = document.getElementById(event.currentTarget.name);
         elm.style.display = "block";
-        elm.style.backgroundColor = "";
+        event.currentTarget.className += " active";
       }
     render() {
       return (
 <div>
 
-<button className="tablink" name="Stickers" onClick={this.openPage}>Stickers</button>
+<div className="tab">
+<button className="tablink active" name="Stickers" onClick={this.openPage}>Stickers</button>
 <button className="tablink" name="List" onClick={this.openPage}>List</button>
-<div id="Stickers" className="tabcontent">
+</div>
+
+<div id="Stickers" className="tabcontent" style= {{display: 'block'}}>
 <Stickers  shared_var={this.props.shared_var}/>
 </div>
+
 <div id="List" className="tabcontent" style= {{display: 'none'}} >
 <List shared_var={this.props.shared_var}/>
 </div>
+
 </div>);
     }
   }
