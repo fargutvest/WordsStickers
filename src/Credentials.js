@@ -125,30 +125,25 @@ class Credentials extends Component {
   
     render() {
       return (
-        <div>
-       <div> <a>CLIENT_ID:</a></div>
-        <input id="CLIENT_ID" type="text" size="100" value={localStorage.getItem('CLIENT_ID')}/>
-       
-      <div>
-        <div> <a>API_KEY:</a> </div>
-        <input id="API_KEY" type="text" size="100" value ={localStorage.getItem('API_KEY')}/>
-      </div>
-       <div>
-        <div> <a>SPREADSHEET_ID:</a> </div>
-        <input id="SPREADSHEET_ID" type="text" size="100" value = {localStorage.getItem('SPREADSHEET_ID')}/>
-      </div>
-      <div>
-        <div> <a>RANGE:</a> </div>
-        <input id="RANGE" type="text" size="100" value = {localStorage.getItem('RANGE')}/>
-      </div>
-      <div>
+  <div>
+        <p>
+        <label class="w3-text-blue"><b>CLIENT_ID:</b></label>
+        <input class="w3-input w3-border" id="CLIENT_ID" type="text" size="100" value={localStorage.getItem('CLIENT_ID')}/></p>
+        <p> 
+        <label class="w3-text-blue"><b>API_KEY:</b></label>
+        <input class="w3-input w3-border" id="API_KEY" type="text" size="100" value ={localStorage.getItem('API_KEY')}/></p>
+        <p>
+       <label class="w3-text-blue"><b>SPREADSHEET_ID:</b></label>
+       <input class="w3-input w3-border" id="SPREADSHEET_ID" type="text" size="100" value = {localStorage.getItem('SPREADSHEET_ID')}/></p>
+       <p>
+        <label class="w3-text-blue"><b>RANGE:</b></label>
+        <input class="w3-input w3-border" id="RANGE" type="text" size="100" value = {localStorage.getItem('RANGE')}/></p>
+        
          <small><i>(copy values of CLIENT_ID, API_KEY, SPREADSHEET_ID from file 'EnglishWordsStickersJS_API_KEY.txt' placed on fargutvest GoogleDrive)</i> </small>
-      </div>
-  
   <p>
-      <button id="init_client_button" onClick = {this.handleInitClientClick}>Init Client</button>
-      <button id="authorize_button"  onClick = {this.handleAuthClick} >Authorize</button>
-      <button id="signout_button"  onClick = {this.handleSignoutClick}>Sign Out</button>
+      <button id="init_client_button" className="button" onClick = {this.handleInitClientClick}>Init Client</button>
+      <button id="authorize_button" className="button"  onClick = {this.handleAuthClick} >Authorize</button>
+      <button id="signout_button" className="button" onClick = {this.handleSignoutClick}>Sign Out</button>
   </p>
   </div>
       );
