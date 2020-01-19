@@ -8,11 +8,7 @@ const Stickers = props => {
       </tr>
         )
       })
-      return (
-        <div>
-      <tbody>{rows}</tbody>
-      </div>
-      ); 
+      return <tbody>{rows}</tbody> 
     }
     
     class Sticker extends Component {
@@ -26,6 +22,5 @@ const Stickers = props => {
         );
       }
     }
-
-
+    
 export default Stickers;

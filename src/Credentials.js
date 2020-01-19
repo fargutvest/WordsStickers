@@ -67,11 +67,7 @@ class Credentials extends Component {
             } else {
               this.appendPre('No data found.');
             }
-            var counter = 0;
-            words.forEach(element => {
-              counter++;
-              this.appendPre(counter + ") " + element);
-            });
+       
             var stickersToShare = [];
             var rowCounter = 0;
             var rowModel = [];

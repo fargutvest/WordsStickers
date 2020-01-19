@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Urls from './Urls.js';
 import Stickers from './Stickers.js';
 import Credentials from './Credentials.js';
+import List from './List.js';
 import './App.css';
 
 class App extends Component {
@@ -38,12 +39,10 @@ updateShared(shared_value) {
   this.setState({shared_var: shared_value});
 }
   render() {
- 
-  
-    
     return (
   <div>
   <Credentials shared_var={this.state.shared_var} updateShared={this.updateShared}/>
+  <List shared_var={this.state.shared_var}/>
 	<Stickers shared_var={this.state.shared_var}/>
   <Urls/>
   </div>
