@@ -17,8 +17,7 @@ class Credentials extends Component {
     }
   
     getClientIdAndApiKeyFromUser(){
-      var CLIENT_ID = document.getElementById('CLIENT_ID').value;
-      var API_KEY = document.getElementById('API_KEY').value;
+     
       return {
         CLIENT_ID: "",
         API_KEY: ""
@@ -28,6 +27,8 @@ class Credentials extends Component {
     initClient() {
         var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
         var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
+        var CLIENT_ID = document.getElementById('CLIENT_ID').value;
+        var API_KEY = document.getElementById('API_KEY').value;
         
         localStorage.setItem('CLIENT_ID', CLIENT_ID);
         localStorage.setItem('API_KEY', API_KEY);
@@ -129,6 +130,22 @@ class Credentials extends Component {
         var textContent = document.createTextNode(message + '\n');
         pre.appendChild(textContent);
       }
+
+
+      componentDidMount() {
+        var elem = document.getElementById('RANGE');
+        elem.value = localStorage.getItem('RANGE');
+
+        elem = document.getElementById('CLIENT_ID');
+        elem.value = localStorage.getItem('CLIENT_ID');
+
+        elem = document.getElementById('API_KEY');
+        elem.value = localStorage.getItem('API_KEY');
+
+        elem = document.getElementById('SPREADSHEET_ID');
+        elem.value = localStorage.getItem('SPREADSHEET_ID');
+        
+      }
   
     render() {
       return (
@@ -136,16 +153,16 @@ class Credentials extends Component {
         <p>
 
         <label className="w3-text-blue"><b>CLIENT_ID:</b></label>
-        <input className="w3-input w3-border" id="CLIENT_ID" type="text" size="100" value={localStorage.getItem('CLIENT_ID')}/></p>
+        <input className="w3-input w3-border" id="CLIENT_ID" type="text" size="100" /></p>
         <p> 
         <label className="w3-text-blue"><b>API_KEY:</b></label>
-        <input className="w3-input w3-border" id="API_KEY" type="text" size="100" value ={localStorage.getItem('API_KEY')}/></p>
+        <input className="w3-input w3-border" id="API_KEY" type="text" size="100" /></p>
         <p>
        <label className="w3-text-blue"><b>SPREADSHEET_ID:</b></label>
-       <input className="w3-input w3-border" id="SPREADSHEET_ID" type="text" size="100" value = {localStorage.getItem('SPREADSHEET_ID')}/></p>
+       <input className="w3-input w3-border" id="SPREADSHEET_ID" type="text" size="100" /></p>
        <p>
         <label className="w3-text-blue"><b>RANGE:</b></label>
-        <input className="w3-input w3-border" id="RANGE" type="text" size="100" value = {localStorage.getItem('RANGE')}/></p>
+        <input className="w3-input w3-border" id="RANGE" type="text" size="100"/></p>
         
          <small><i>(copy values of CLIENT_ID, API_KEY, SPREADSHEET_ID from file 'EnglishWordsStickersJS_API_KEY.txt' placed on fargutvest GoogleDrive)</i> </small>
   <p>
