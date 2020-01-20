@@ -153,18 +153,16 @@ class Credentials extends Component {
         <p>
 
         <label className="w3-text-blue"><b>CLIENT_ID:</b></label>
-        <input className="w3-input w3-border" id="CLIENT_ID" type="text" size="100" /></p>
+        <input className="w3-input w3-border" id="CLIENT_ID" type="text" size="100" placeholder="copy this value from file 'EnglishWordsStickersJS_API_KEY.txt' placed on fargutvest GoogleDrive"/></p>
         <p> 
         <label className="w3-text-blue"><b>API_KEY:</b></label>
-        <input className="w3-input w3-border" id="API_KEY" type="text" size="100" /></p>
+        <input className="w3-input w3-border" id="API_KEY" type="text" size="100" placeholder="copy this value from file 'EnglishWordsStickersJS_API_KEY.txt' placed on fargutvest GoogleDrive" /></p>
         <p>
        <label className="w3-text-blue"><b>SPREADSHEET_ID:</b></label>
-       <input className="w3-input w3-border" id="SPREADSHEET_ID" type="text" size="100" /></p>
+       <input className="w3-input w3-border" id="SPREADSHEET_ID" type="text" size="100" placeholder="copy this value from file 'EnglishWordsStickersJS_API_KEY.txt' placed on fargutvest GoogleDrive"/></p>
        <p>
         <label className="w3-text-blue"><b>RANGE:</b></label>
-        <input className="w3-input w3-border" id="RANGE" type="text" size="100"/></p>
-        
-         <small><i>(copy values of CLIENT_ID, API_KEY, SPREADSHEET_ID from file 'EnglishWordsStickersJS_API_KEY.txt' placed on fargutvest GoogleDrive)</i> </small>
+        <input className="w3-input w3-border" id="RANGE" type="text" size="100" placeholder="copy this value from file 'EnglishWordsStickersJS_API_KEY.txt' placed on fargutvest GoogleDrive"/></p>
   <p>
       <button id="init_client_button" className="button" onClick = {this.handleInitClientClick}>Init Client</button>
       <button id="authorize_button" className="button"  onClick = {this.handleAuthClick} >Authorize</button>
