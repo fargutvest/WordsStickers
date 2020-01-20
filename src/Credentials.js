@@ -16,12 +16,19 @@ class Credentials extends Component {
         this.props.updateShared(dataToShare);
     }
   
+    getClientIdAndApiKeyFromUser(){
+      var CLIENT_ID = document.getElementById('CLIENT_ID').value;
+      var API_KEY = document.getElementById('API_KEY').value;
+      return {
+        CLIENT_ID: "",
+        API_KEY: ""
+      }
+    }
  
     initClient() {
         var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
         var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
-        var CLIENT_ID = document.getElementById('CLIENT_ID').value;
-        var API_KEY = document.getElementById('API_KEY').value;
+        
         localStorage.setItem('CLIENT_ID', CLIENT_ID);
         localStorage.setItem('API_KEY', API_KEY);
         localStorage.setItem('SPREADSHEET_ID', document.getElementById('SPREADSHEET_ID').value);

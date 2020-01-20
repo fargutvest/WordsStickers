@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Urls from './Urls.js';
 import Credentials from './Credentials';
+import characters from './Characters.js';
 
 import Tabs from './Tabs.js';
 import './App.css';
@@ -8,30 +9,7 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    const characters = [
-      [
-        {
-          English: "Hello1",
-          Spelling: "spelling =)",
-          Russian: "Privet"
-        },
-        {
-          English: "Hello2",
-          Spelling: "spelling =)",
-          Russian: "Privet"
-        },
-        {
-          English: "Hello3",
-          Spelling: "spelling =)",
-          Russian: "Privet"
-        },
-        {
-          English: "Hello4",
-          Spelling: "spelling =)",
-          Russian: "Privet"
-        }
-      ],
-    ] 
+   
     this.state = {shared_var: characters};
     this.updateShared = this.updateShared.bind(this);
 }
