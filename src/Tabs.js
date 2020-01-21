@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Stickers from './Stickers.js';
 import List from './List.js';
+import GSheet from './GSheet.js';
 
 class Tabs extends Component {
     openPage(event) {
@@ -24,6 +25,7 @@ class Tabs extends Component {
 <div className="tab">
 <button className="tablink active" name="Stickers" onClick={this.openPage}>Stickers</button>
 <button className="tablink" name="List" onClick={this.openPage}>List</button>
+<button className="tablink" name="GSheet" onClick={this.openPage}>GSheet</button>
 </div>
 
 <div id="Stickers" className="tabcontent" style= {{display: 'block'}}>
@@ -32,6 +34,10 @@ class Tabs extends Component {
 
 <div id="List" className="tabcontent" style= {{display: 'none'}} >
 <List shared_var={this.props.shared_var}/>
+</div>
+
+<div id="GSheet" className="tabcontent" style= {{display: 'none'}} >
+<GSheet/>
 </div>
 
 </div>);
