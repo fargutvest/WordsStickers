@@ -27,13 +27,15 @@ class Credentials extends Component {
     initClient() {
         var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
         var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
-        var CLIENT_ID = document.getElementById('CLIENT_ID').value;
-        var API_KEY = document.getElementById('API_KEY').value;
-        
+        var CLIENT_ID = this.props.cred.CLIENT_ID ? this.props.cred.CLIENT_ID : document.getElementById('CLIENT_ID').value;
+        var API_KEY = this.props.cred.API_KEY ? this.props.cred.API_KEY : document.getElementById('API_KEY').value;
+        var SPREADSHEET_ID = this.props.cred.SPREADSHEET_ID ? this.props.cred.SPREADSHEET_ID : document.getElementById('SPREADSHEET_ID').value;
+        var RANGE = this.props.cred.RANGE ? this.props.cred.RANGE : document.getElementById('RANGE').value;
+
         localStorage.setItem('CLIENT_ID', CLIENT_ID);
         localStorage.setItem('API_KEY', API_KEY);
-        localStorage.setItem('SPREADSHEET_ID', document.getElementById('SPREADSHEET_ID').value);
-        localStorage.setItem('RANGE', document.getElementById('RANGE').value);
+        localStorage.setItem('SPREADSHEET_ID', SPREADSHEET_ID);
+        localStorage.setItem('RANGE', RANGE);
     
         window.gapi.client.init({
             apiKey: API_KEY,
@@ -53,8 +55,9 @@ class Credentials extends Component {
         }
 
         listMajors() {
-            var SPREADSHEET_ID = document.getElementById('SPREADSHEET_ID').value;
-            var RANGE = document.getElementById('RANGE').value;
+          var SPREADSHEET_ID = this.props.cred.SPREADSHEET_ID ? this.props.cred.SPREADSHEET_ID : document.getElementById('SPREADSHEET_ID').value;
+          var RANGE = this.props.cred.RANGE ? this.props.cred.RANGE : document.getElementById('RANGE').value;
+
             localStorage.setItem('SPREADSHEET_ID', SPREADSHEET_ID);
             window.gapi.client.sheets.spreadsheets.values.get({
               spreadsheetId: SPREADSHEET_ID,
@@ -134,16 +137,17 @@ class Credentials extends Component {
 
       componentDidMount() {
         var elem = document.getElementById('RANGE');
-        elem.value = localStorage.getItem('RANGE');
+        elem.value = this.props.cred.RANGE ? this.props.cred.RANGE : localStorage.getItem('RANGE');
 
         elem = document.getElementById('CLIENT_ID');
-        elem.value = localStorage.getItem('CLIENT_ID');
+        elem.value = this.props.cred.CLIENT_ID ? this.props.cred.CLIENT_ID : localStorage.getItem('CLIENT_ID');
 
         elem = document.getElementById('API_KEY');
-        elem.value = localStorage.getItem('API_KEY');
+        elem.value = this.props.cred.API_KEY ? this.props.cred.API_KEY : localStorage.getItem('API_KEY');
 
         elem = document.getElementById('SPREADSHEET_ID');
-        elem.value = localStorage.getItem('SPREADSHEET_ID');
+        elem.value = this.props.cred.SPREADSHEET_ID ? this.props.cred.SPREADSHEET_ID : localStorage.getItem('SPREADSHEET_ID');
+
         
       }
   

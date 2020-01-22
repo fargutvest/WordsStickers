@@ -19,7 +19,7 @@ updateShared(shared_value) {
   render() {
     return (
   <div>
-  <Credentials shared_var={this.state.shared_var} updateShared={this.updateShared}/>
+  <Credentials cred ={this.props.match.params} shared_var={this.state.shared_var} updateShared={this.updateShared}/>
   <Tabs shared_var={this.state.shared_var}/>
   <Urls/>
   </div>
