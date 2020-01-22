@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
+import ReactDOM from "react-dom";
+import Pdf from "react-to-pdf";
 import './Stickers.css';
+
+const ref = React.createRef();
+const options = {
+  orientation: 'landscape'
+};
 
 const Stickers = props => {
     const rows = props.shared_var.map((row, index) => {
@@ -9,7 +16,16 @@ const Stickers = props => {
       </tr>
         )
       })
-      return <tbody>{rows}</tbody> 
+      return (
+        <div>
+          <Pdf targetRef={ref} filename="stickers.pdf" options ={options} x ={2} y ={2}>
+              {({ toPdf }) => <button className="button" onClick={toPdf}>Generate Pdf</button>}
+          </Pdf>
+          <div ref = {ref}>
+          <tbody>{rows}</tbody> 
+          </div>
+        </div>
+      )
     }
     
     class Sticker extends Component {
