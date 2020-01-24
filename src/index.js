@@ -11,7 +11,8 @@ import './index.css';
 
 ReactDOM.render((
   <Router>
-    <Route path="/credentials/:CLIENT_ID/:API_KEY/:SPREADSHEET_ID/:RANGE" component={App} />
+    <Route path={["/credentials/:CLIENT_ID/:API_KEY/:SPREADSHEET_ID/:RANGE", "/"]} component={App} />
   </Router>),
   document.getElementById('root')
 );
+
