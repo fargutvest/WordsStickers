@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Stickers from './Stickers.js';
+import Stickers from './Stickers/Stickers.js';
 import List from './List.js';
-import GSheet from './GSheet.js';
+import GSheet from './GSheet/GSheet.js';
 
 class Tabs extends Component {
     openPage(event) {

@@ -7,26 +7,36 @@ const ref = React.createRef();
 const options = {
   orientation: 'landscape'
 };
+const rows = [];
 
-const Stickers = props => {
-    const rows = props.shared_var.map((row, index) => {
+class Stickers extends Component {
+  constructor(props){
+    super(props);
+  }
+   getRows(){
+    return this.props.shared_var.map((row, index) => {
         return (
       <tr key={index}>
         <td><Sticker data={row[0]}/></td><td><Sticker data={row[1]}/></td><td><Sticker data={row[2]}/></td><td><Sticker data={row[3]}/></td>
       </tr>
         )
-      })
+      });
+    }
+      
+      render(){
       return (
         <div>
           <Pdf targetRef={ref} filename="stickers.pdf" options ={options} x ={2} y ={2}>
               {({ toPdf }) => <button className="button" onClick={toPdf}>Generate Pdf</button>}
           </Pdf>
           <div ref = {ref}>
-          <tbody>{rows}</tbody> 
+          <tbody>{this.getRows()}</tbody> 
           </div>
         </div>
       )
     }
+  }
+    
     
     class Sticker extends Component {
       render() {
