@@ -59,6 +59,9 @@ class SignIn extends Component {
         if (isSignedIn) {    
           authorize_button.style.display = 'none';
           signout_button.style.display = 'block';    
+          var googleUser =  window.gapi.auth2.getAuthInstance().currentUser.get();
+          var profile = googleUser.getBasicProfile();
+          console.log(profile);
           
         } else {
           authorize_button.style.display = 'block';
