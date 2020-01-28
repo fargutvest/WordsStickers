@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SignInWithGoogle from './SignInWithGoogle/SignInWithGoogle.js'
 import './SignIn.css';
 
 const hint = "copy this value from file 'EnglishWordsStickersJS_API_KEY.txt' placed on fargutvest GoogleDrive";
@@ -94,7 +95,9 @@ class SignIn extends Component {
   
     render() {
       return (
+        
   <div align = "center">
+  
         <p>
         <label className="w3-text-blue"><b>CLIENT_ID:</b></label>
         <input className="w3-input w3-border" id="CLIENT_ID" type="text" size="100" placeholder={hint} /></p>
@@ -102,6 +105,7 @@ class SignIn extends Component {
         <label className="w3-text-blue"><b>API_KEY:</b></label>
         <input className="w3-input w3-border" id="API_KEY" type="text" size="100" placeholder={hint} /></p>
         <p>
+        <SignInWithGoogle></SignInWithGoogle>
         <button id="init_client_button" className="button" onClick = {this.handleInitClientClick}>Init Client</button>
         <button id="authorize_button" className="button"  onClick = {this.handleAuthClick} >Authorize</button>
         <button id="signout_button" className="button" onClick = {this.handleSignoutClick}>Sign Out</button></p>
