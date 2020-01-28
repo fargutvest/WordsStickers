@@ -65,6 +65,26 @@ body {font-family: Arial;}
   margin: 4px 2px;
   cursor: pointer;
 }
+ .full-height{
+  height: 100%;
+ }
+ html, body {
+height: 100%;
+margin: 0;
+}
 
+#root{
+  height: 100%;
+}
 
+.full-height{
+  height: 100%;
+}
 
+.side-panel{
+  background-color: gray;
+}
+
+img {
+  border-radius: 50%;
+}

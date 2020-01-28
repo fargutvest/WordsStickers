@@ -22,17 +22,15 @@ class Stickers extends Component {
         )
       });
     }
+    componentDidMount(){
+      this.props.elmRef(ref);
+    }
       
       render(){
       return (
-        <div>
-          <Pdf targetRef={ref} filename="stickers.pdf" options ={options} x ={2} y ={2}>
-              {({ toPdf }) => <button className="button" onClick={toPdf}>Generate Pdf</button>}
-          </Pdf>
           <div ref = {ref}>
           <tbody>{this.getRows()}</tbody> 
           </div>
-        </div>
       )
     }
   }

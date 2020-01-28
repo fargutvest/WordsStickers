@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
+import ReactDOM from "react-dom";
+import Pdf from "react-to-pdf";
 
+const options = {
+  orientation: 'landscape'
+};
 
 class DataAccess extends Component {
     constructor(props){
@@ -79,7 +84,10 @@ class DataAccess extends Component {
         elem.value = params.RANGE ? params.RANGE : localStorage.getItem('RANGE');
 
         elem = document.getElementById('SPREADSHEET_ID');
-        elem.value = params.SPREADSHEET_ID ? params.SPREADSHEET_ID : localStorage.getItem('SPREADSHEET_ID');        
+        elem.value = params.SPREADSHEET_ID ? params.SPREADSHEET_ID : localStorage.getItem('SPREADSHEET_ID');  
+        
+       var rr = ReactDOM.findDOMNode(this);
+        var p = document.getElementById("id_pdf");
       }
 
       appendPre(message) {
@@ -102,7 +110,12 @@ class DataAccess extends Component {
           <input className="w3-input w3-border" id="RANGE" type="text" size="100"/>
           </td>
           <td width="10%">
-          <button id="list_majors" className="button" onClick = {this.handleListMajorsClick}>List Majors</button>
+          <button id="list_majors" className="button" onClick = {this.handleListMajorsClick}>Read Spredsheet</button>
+          </td>
+          <td width="10%">
+          <Pdf id ="id_pdf" targetRef={this.props.ref} filename="stickers.pdf" options ={options} x ={2} y ={2}>
+              {({ toPdf }) => <button id="pdf" className="button" onClick={toPdf}>Dowdload Pdf</button>}
+          </Pdf>
           </td>
         </tr>
       </table>
