@@ -29,7 +29,7 @@ class Tabs extends Component {
 </div>
 
 <div id="Stickers" className="tabcontent" style= {{display: 'block'}}>
-<Stickers elmRef = {this.props.elmRef} shared_var={this.props.shared_var}/>
+<Stickers passRef = {this.props.passRef} shared_var={this.props.shared_var}/>
 </div>
 
 <div id="List" className="tabcontent" style= {{display: 'none'}} >

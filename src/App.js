@@ -7,22 +7,21 @@ import characters from './Characters.js';
 import Tabs from './Tabs/Tabs.js';
 import './App.css';
 
-const app_ref = React.createRef();
 class App extends Component {
   constructor(props) {
     super(props);
    
-    this.state = {stRef: 1, shared_var: characters };
+    this.state = {state_ref: '', shared_var: characters };
     this.updateShared = this.updateShared.bind(this);
     this.isSignedIn = this.isSignedIn.bind(this);
-    this.elmRef = this.elmRef.bind(this);
+    this.passRef = this.passRef.bind(this);
 }
 updateShared(shared_value) {
   this.setState({shared_var: shared_value});
 }
 
-elmRef(newRef){
-  this.app_ref = newRef;
+passRef(newRef){
+  this.setState({state_ref: newRef});
 }
 
 isSignedIn(value, userProfile) {
@@ -38,9 +37,7 @@ isSignedIn(value, userProfile) {
     avatarImg.style.display = 'none';
     titleLabel.style.display = 'none';
   }
-  
 }
-
 
   render() {
     return (
@@ -57,8 +54,8 @@ isSignedIn(value, userProfile) {
       </p>
       </td>
       <td width="*" valign="top">
-        <DataAccess ref = {this.app_ref} params ={this.props.match.params} updateShared={this.updateShared}/>
-        <Tabs elmRef = {this.elmRef} shared_var={this.state.shared_var}/>
+        <DataAccess da_ref = {this.state.state_ref} params ={this.props.match.params} updateShared={this.updateShared}/>
+        <Tabs passRef = {this.passRef} shared_var={this.state.shared_var}/>
         <Urls/>
       </td>
     </tr>

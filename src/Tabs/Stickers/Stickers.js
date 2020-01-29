@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import ReactDOM from "react-dom";
-import Pdf from "react-to-pdf";
 import './Stickers.css';
 
 const ref = React.createRef();
-const options = {
-  orientation: 'landscape'
-};
-const rows = [];
 
 class Stickers extends Component {
   constructor(props){
@@ -23,7 +17,7 @@ class Stickers extends Component {
       });
     }
     componentDidMount(){
-      this.props.elmRef(ref);
+      this.props.passRef(ref);
     }
       
       render(){

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from "react-dom";
 import Pdf from "react-to-pdf";
 
 const options = {
@@ -14,7 +13,6 @@ class DataAccess extends Component {
         this.listMajors = this.listMajors.bind(this);
         this.handleListMajorsClick = this.handleListMajorsClick.bind(this);
         this.appendPre = this.appendPre.bind(this);
-
     }
 
     handleListMajorsClick(event) {
@@ -84,10 +82,7 @@ class DataAccess extends Component {
         elem.value = params.RANGE ? params.RANGE : localStorage.getItem('RANGE');
 
         elem = document.getElementById('SPREADSHEET_ID');
-        elem.value = params.SPREADSHEET_ID ? params.SPREADSHEET_ID : localStorage.getItem('SPREADSHEET_ID');  
-        
-       var rr = ReactDOM.findDOMNode(this);
-        var p = document.getElementById("id_pdf");
+        elem.value = params.SPREADSHEET_ID ? params.SPREADSHEET_ID : localStorage.getItem('SPREADSHEET_ID');
       }
 
       appendPre(message) {
@@ -113,7 +108,7 @@ class DataAccess extends Component {
           <button id="list_majors" className="button" onClick = {this.handleListMajorsClick}>Read Spredsheet</button>
           </td>
           <td width="10%">
-          <Pdf id ="id_pdf" targetRef={this.props.ref} filename="stickers.pdf" options ={options} x ={2} y ={2}>
+          <Pdf id ="id_pdf" targetRef={this.props.da_ref} filename="stickers.pdf" options ={options} x ={2} y ={2}>
               {({ toPdf }) => <button id="pdf" className="button" onClick={toPdf}>Dowdload Pdf</button>}
           </Pdf>
           </td>
