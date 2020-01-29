@@ -22,7 +22,7 @@ class Stickers extends Component {
       
       render(){
       return (
-          <div ref = {ref}>
+          <div className="main" ref = {ref}>
           <tbody>{this.getRows()}</tbody> 
           </div>
       )
