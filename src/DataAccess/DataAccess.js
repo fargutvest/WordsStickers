@@ -46,18 +46,31 @@ class DataAccess extends Component {
        
             var stickersToShare = [];
             var rowCounter = 0;
+            var wordsCounter = 0;
             var rowModel = [];
             words.forEach(element => {
               rowCounter++;
+              wordsCounter++;
               rowModel.push({
                 English: element,
-                Spelling: "sp",
-                Russian: "rus"
+                Spelling: "---",
+                Russian: "---"
               })
-              if(rowCounter == 4){
+              if(rowCounter == 4 || words.length - wordsCounter ==0 ){
+                var need = 4 - rowModel.length; 
+                if (need > 0){
+                  for (var i = 0; i < need; i++ ){
+                    rowModel.push({
+                      English: "---",
+                      Spelling: "---",
+                      Russian: "---"
+                    })
+                  }
+                }
                 stickersToShare.push(rowModel);
                 rowModel = [];
                 rowCounter = 0;
+                
               }
             });
             this.props.updateShared(stickersToShare);
