@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Stickers from './Stickers/Stickers.js';
 import List from './List/List.js';
 import GSheet from './GSheet/GSheet.js';
+import GDriveAPI from './GDriveAPI/GDriveAPI.js';
 
 class Tabs extends Component {
     openPage(event) {
@@ -26,6 +27,7 @@ class Tabs extends Component {
 <button className="tablink active" name="Stickers" onClick={this.openPage}>Stickers</button>
 <button className="tablink" name="List" onClick={this.openPage}>List</button>
 <button className="tablink" name="GSheet" onClick={this.openPage}>GSheet</button>
+<button className="tablink" name="GDriveAPI" onClick={this.openPage}>GDriveAPI</button>
 </div>
 
 <div id="Stickers" className="tabcontent" style= {{display: 'block'}}>
@@ -38,6 +40,10 @@ class Tabs extends Component {
 
 <div id="GSheet" className="tabcontent" style= {{display: 'none'}} >
 <GSheet/>
+</div>
+
+<div id="GDriveAPI" className="tabcontent" style= {{display: 'none'}} >
+<GDriveAPI/>
 </div>
 
 </div>);
