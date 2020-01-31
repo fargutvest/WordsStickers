@@ -77,8 +77,10 @@ class DataAccess extends Component {
     }
 
     getSnapshotBeforeUpdate(){
-      var elem = document.getElementById('SPREADSHEET_ID');
-      elem.value = this.props.spreedSheetId;
+      if (this.props.spreedSheetId){
+        var elem = document.getElementById('SPREADSHEET_ID');
+        elem.value = this.props.spreedSheetId;
+      }
     }
 
     componentDidMount() {
