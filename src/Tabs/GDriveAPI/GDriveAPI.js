@@ -16,6 +16,8 @@ class GDriveAPI extends Component {
     listFiles() {
       window.gapi.client.drive.files.list({
           'pageSize': 100,
+           q: "mimeType='application/vnd.google-apps.spreadsheet'",
+           q: "name='Saved translations' or name='Сохраненные переводы'",
           'fields': "nextPageToken, files(id, name)"
         }).then(this.listFilesSuccess);
       }
