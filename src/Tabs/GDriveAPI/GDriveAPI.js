@@ -18,7 +18,7 @@ class GDriveAPI extends Component {
           'pageSize': 100,
            q: "mimeType='application/vnd.google-apps.spreadsheet'",
            q: "name='Saved translations' or name='Сохраненные переводы'",
-          'fields': "nextPageToken, files(id, name)"
+          'fields': "nextPageToken, files(id, name, createdTime, modifiedTime)"
         }).then(this.listFilesSuccess);
       }
 
@@ -28,7 +28,7 @@ class GDriveAPI extends Component {
         if (files && files.length > 0) {
           for (var i = 0; i < files.length; i++) {
             var file = files[i];
-            this.appendPre(file.name + ' (' + file.id + ')');
+            this.appendPre(file.name + ' (' + file.id + ')' + ' Created:' + file.createdTime + ' Modified:' + file.modifiedTime);
           }
         } else {
           this.appendPre('No files found.');
