@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './GDriveAPI.css'
 
 class GDriveAPI extends Component {
     constructor(props){
@@ -14,7 +15,7 @@ class GDriveAPI extends Component {
     
     listFiles() {
       window.gapi.client.drive.files.list({
-          'pageSize': 10,
+          'pageSize': 100,
           'fields': "nextPageToken, files(id, name)"
         }).then(this.listFilesSuccess);
       }
@@ -39,7 +40,7 @@ class GDriveAPI extends Component {
       }
 
     render(){
-        return <div>
+        return <div className="main">
              <button className= "button" onClick={this.onClick}>List Files</button>
              <pre id = "listFiles"/>
             </div>;
