@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/EnglishWordsStickersJS/static/css/main.96eb5e56.chunk.css",
-    "main.js": "/EnglishWordsStickersJS/static/js/main.04df805d.chunk.js",
-    "main.js.map": "/EnglishWordsStickersJS/static/js/main.04df805d.chunk.js.map",
+    "main.css": "/EnglishWordsStickersJS/static/css/main.15559b8a.chunk.css",
+    "main.js": "/EnglishWordsStickersJS/static/js/main.65d85bbe.chunk.js",
+    "main.js.map": "/EnglishWordsStickersJS/static/js/main.65d85bbe.chunk.js.map",
     "runtime-main.js": "/EnglishWordsStickersJS/static/js/runtime-main.b0faf887.js",
     "runtime-main.js.map": "/EnglishWordsStickersJS/static/js/runtime-main.b0faf887.js.map",
-    "static/js/2.f6335898.chunk.js": "/EnglishWordsStickersJS/static/js/2.f6335898.chunk.js",
-    "static/js/2.f6335898.chunk.js.map": "/EnglishWordsStickersJS/static/js/2.f6335898.chunk.js.map",
+    "static/js/2.2addc54a.chunk.js": "/EnglishWordsStickersJS/static/js/2.2addc54a.chunk.js",
+    "static/js/2.2addc54a.chunk.js.map": "/EnglishWordsStickersJS/static/js/2.2addc54a.chunk.js.map",
     "index.html": "/EnglishWordsStickersJS/index.html",
-    "precache-manifest.6b5d01a12cd30e90bee179c5a8c0d270.js": "/EnglishWordsStickersJS/precache-manifest.6b5d01a12cd30e90bee179c5a8c0d270.js",
+    "precache-manifest.45661558841eeeef3fe4517816702609.js": "/EnglishWordsStickersJS/precache-manifest.45661558841eeeef3fe4517816702609.js",
     "service-worker.js": "/EnglishWordsStickersJS/service-worker.js",
-    "static/css/main.96eb5e56.chunk.css.map": "/EnglishWordsStickersJS/static/css/main.96eb5e56.chunk.css.map",
-    "static/js/2.f6335898.chunk.js.LICENSE": "/EnglishWordsStickersJS/static/js/2.f6335898.chunk.js.LICENSE"
+    "static/css/main.15559b8a.chunk.css.map": "/EnglishWordsStickersJS/static/css/main.15559b8a.chunk.css.map",
+    "static/js/2.2addc54a.chunk.js.LICENSE": "/EnglishWordsStickersJS/static/js/2.2addc54a.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.b0faf887.js",
-    "static/js/2.f6335898.chunk.js",
-    "static/css/main.96eb5e56.chunk.css",
-    "static/js/main.04df805d.chunk.js"
+    "static/js/2.2addc54a.chunk.js",
+    "static/css/main.15559b8a.chunk.css",
+    "static/js/main.65d85bbe.chunk.js"
   ]
 }
