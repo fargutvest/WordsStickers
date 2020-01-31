@@ -11,10 +11,11 @@ class App extends Component {
   constructor(props) {
     super(props);
    
-    this.state = {state_ref: '', shared_var: characters };
+    this.state = {state_ref: '', shared_var: characters, state_spreedSheetId: ''};
     this.updateShared = this.updateShared.bind(this);
     this.isSignedIn = this.isSignedIn.bind(this);
     this.passRef = this.passRef.bind(this);
+    this.ShareSpreedSheetId = this.ShareSpreedSheetId.bind(this);
 }
 updateShared(shared_value) {
   this.setState({shared_var: shared_value});
@@ -39,6 +40,11 @@ isSignedIn(value, userProfile) {
   }
 }
 
+ShareSpreedSheetId(spreedSheetId){
+this.state.state_spreedSheetId = spreedSheetId;
+this.setState({state_spreedSheetId: spreedSheetId});
+}
+
   render() {
     return (
   <div className="full-height">
@@ -54,8 +60,8 @@ isSignedIn(value, userProfile) {
       </p>
       </td>
       <td width="*" valign="top">
-        <DataAccess da_ref = {this.state.state_ref} params ={this.props.match.params} updateShared={this.updateShared}/>
-        <Tabs passRef = {this.passRef} shared_var={this.state.shared_var}/>
+        <DataAccess da_ref = {this.state.state_ref} params ={this.props.match.params} updateShared={this.updateShared} spreedSheetId = {this.state.state_spreedSheetId}/>
+        <Tabs passRef = {this.passRef} shared_var={this.state.shared_var} ShareSpreedSheetId = {this.ShareSpreedSheetId}/>
         <Urls/>
       </td>
     </tr>

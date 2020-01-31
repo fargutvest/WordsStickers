@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './GDriveAPI.css'
 
+
 class GDriveAPI extends Component {
     constructor(props){
         super(props);
         this.onClick = this.onClick.bind(this);
         this.listFiles = this.listFiles.bind(this);
         this.listFilesSuccess = this.listFilesSuccess.bind(this);
+        this.bubbleSort = this.bubbleSort.bind(this);
     }
 
     onClick(){
@@ -23,8 +25,15 @@ class GDriveAPI extends Component {
       }
 
       listFilesSuccess(response){
-        this.appendPre('Files:');
+        
         var files = response.result.files;
+        var maxSorted = this.bubbleSort(files);
+        this.props.ShareSpreedSheetId(maxSorted.id);
+        this.cleanPre();
+        this.appendPre('File with max createdTime:');
+        this.appendPre(maxSorted.name + ' (' + maxSorted.id + ')' + ' Created:' + maxSorted.createdTime + ' Modified:' + maxSorted.modifiedTime);
+        this.appendPre('');
+        this.appendPre('All gsheet files:');
         if (files && files.length > 0) {
           for (var i = 0; i < files.length; i++) {
             var file = files[i];
@@ -33,6 +42,23 @@ class GDriveAPI extends Component {
         } else {
           this.appendPre('No files found.');
         }
+        
+      }
+
+      bubbleSort(toSort){ 
+        var max;
+        max = toSort[0];
+        toSort.forEach(item => {
+          if(Date.parse(item.createdTime) > Date.parse(max.createdTime)){
+            max = item;
+          }
+        });
+        return max;
+      }
+
+      cleanPre(){
+        var pre = document.getElementById('listFiles');
+        pre.innerHTML = '';
       }
 
     appendPre(message) {

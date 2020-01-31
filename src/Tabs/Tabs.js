@@ -5,6 +5,9 @@ import GSheet from './GSheet/GSheet.js';
 import GDriveAPI from './GDriveAPI/GDriveAPI.js';
 
 class Tabs extends Component {
+  constructor(props){
+    super(props);
+  }
     openPage(event) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
@@ -43,7 +46,7 @@ class Tabs extends Component {
 </div>
 
 <div id="GDriveAPI" className="tabcontent" style= {{display: 'none'}} >
-<GDriveAPI/>
+<GDriveAPI ShareSpreedSheetId = {this.props.ShareSpreedSheetId}/>
 </div>
 
 </div>);

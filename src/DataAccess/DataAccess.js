@@ -76,6 +76,11 @@ class DataAccess extends Component {
         localStorage.setItem('RANGE', RANGE);
     }
 
+    getSnapshotBeforeUpdate(){
+      var elem = document.getElementById('SPREADSHEET_ID');
+      elem.value = this.props.spreedSheetId;
+    }
+
     componentDidMount() {
         var params = this.props.params;
         var elem = document.getElementById('RANGE');
