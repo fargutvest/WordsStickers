@@ -41,13 +41,28 @@ class DataAccess extends Component {
   // }
 
   visitWoordhunt(eng) {
-    var url = `http://wooordhunt.ru/word/${eng}`;
+    var url = `https://wooordhunt.ru/word/${eng}`;
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = this.getInfo;
-    xmlHttp.open( "GET", url, true ); // false for synchronous request
+    xmlHttp.open( "GET", url, false );
     xmlHttp.send();
     var responseText = xmlHttp.responseText;
     return responseText;
+  }
+
+  getData() {
+    // create a new XMLHttpRequest
+    var xhr = new XMLHttpRequest()
+
+    // get a callback when the server responds
+    xhr.addEventListener('load', () => {
+      // update the state of the component with the result here
+      console.log(xhr.responseText)
+    })
+    // open the request with the verb and the url
+    xhr.open('GET', 'https://wooordhunt.ru')
+    // send the request
+    xhr.send()
   }
 
   getInfo(resp) {
@@ -88,7 +103,7 @@ class DataAccess extends Component {
       wordsCounter++;
       rowModel.push({
         English: element[0],
-        Spelling: this.visitWoordhunt(element[0]),
+        Spelling: "---",
         Russian: element[1]
       })
       if (rowCounter == 4 || words.length - wordsCounter == 0) {

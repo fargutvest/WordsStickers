@@ -4,9 +4,8 @@
     background-color: #f1f1f1;
   }
   
-  /* Style the buttons inside the tab */
   
-  .tab button {
+  .tab a {
     background-color: inherit;
     float: left;
     border: none;
@@ -15,24 +14,45 @@
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 17px;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
   }
   
-  /* Change background color of buttons on hover */
-  
-  .tab button:hover {
+
+  .tab a:hover {
     background-color: #ddd;
   }
   
-  /* Create an active/current tablink class */
-  
-  .tab button.active {
+
+  .tab a.active {
     background-color: #ccc;
   }
+
+  .tab1{
+    grid-area: t1;
+  }
+
+  .tab2{
+    grid-area: t2;
+  }
+
+  .tab3{
+    grid-area: t3;
+  }
+
+  .tab4{
+    grid-area: t4;
+  }
   
-  /* Style the tab content */
-  
+
+  .tabpanel{
+    display: grid;
+    grid-template-areas: "t1 t2 t3 t4";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
   .tabcontent {
-    display: none;
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
