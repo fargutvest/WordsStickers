@@ -1,5 +1,5 @@
 import React from 'react';
-import './List.css'
+import s from './List.module.css'
 
 const List = props =>  {
     var counter = 0;
@@ -10,7 +10,7 @@ const List = props =>  {
         return <div key={index}> {rowItems} </div>
       })
       
-      return <div className="main"> {rows} </div>
+      return <div className={s.main}> {rows} </div>
     }
 
 

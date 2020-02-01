@@ -4,7 +4,8 @@
   "private": true,
   "homepage": "https://fargutvest.github.io/EnglishWordsStickersJS/",
   "dependencies": {
-    "node-sass": "^4.0.0",
+    "fibers": "^4.0.2",
+    "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router": "^5.1.2",

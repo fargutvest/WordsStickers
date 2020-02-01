@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './GDriveAPI.css'
+import s from './GDriveAPI.module.css'
+import cs from './../../Common.module.css';
 
 const rus = "Сохраненные переводы";
 const eng = "Saved translations";
@@ -70,8 +71,8 @@ class GDriveAPI extends Component {
       }
 
     render(){
-        return <div className="main">
-             <button className= "button" onClick={this.onClick}>List Files</button>
+        return <div className={s.main}>
+             <button className= {cs.button} onClick={this.onClick}>List Files</button>
              <pre id = "listFiles"/>
             </div>;
     }

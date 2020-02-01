@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Pdf from "react-to-pdf";
+import s from './DataAccess.module.css'
+import cs from './../Common.module.css'
 
 const options = {
   orientation: 'landscape'
@@ -142,23 +144,23 @@ class DataAccess extends Component {
   render() {
     return (
       <div>
-        <table>
+        <table width="100%"> 
           <tr>
-            <td width="80%">
+            <td width="76%">
               <label className="w3-text-blue"><b>SPREADSHEET_ID:</b></label>
               <input className="w3-input w3-border" id="SPREADSHEET_ID" type="text" size="100" />
             </td>
-            <td width="10%">
-              <button id="list_majors" className="button" onClick={this.handleListMajorsClick}>Read Spredsheet</button>
+            <td width="12%">
+              <button id="list_majors" className={cs.button} onClick={this.handleListMajorsClick}>Read Spredsheet</button>
             </td>
-            <td width="10%">
+            <td width="12%">
               <Pdf id="id_pdf" targetRef={this.props.da_ref} filename="stickers.pdf" options={options} x={2} y={2}>
-                {({ toPdf }) => <button id="pdf" className="button" onClick={toPdf}>Dowdload Pdf</button>}
+                {({ toPdf }) => <button id="pdf" className={cs.button} onClick={toPdf}>Dowdload Pdf</button>}
               </Pdf>
             </td>
           </tr>
         </table>
-        <pre id="content" className="error"></pre>
+        <pre id="content" className={s.error}></pre>
       </div>
     );
   }

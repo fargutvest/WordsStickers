@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SignIn from '../SignIn/SignIn';
+import s from './Navbar.module.css';
 
 
 class Navbar extends Component {
@@ -9,7 +10,7 @@ class Navbar extends Component {
 
     render() {
         return (
-            <div className="navbar"  >
+            <div className={s.navbar}>
                 <p align="center">
                     <label className="w3-text-white" id="title"></label>
                     <p align="center">

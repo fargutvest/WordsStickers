@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Tabs from '../Tabs/Tabs/Tabs';
+import s from './Content.module.css'
 
 
 class Content extends Component {
@@ -9,7 +10,7 @@ class Content extends Component {
 
     render() {
         return (
-            <div className="content">
+            <div className={s.content}>
                 <Tabs passRef={this.props.passRef} shared_var={this.props.shared_var} ShareSpreedSheetId={this.props.ShareSpreedSheetId} />
             </div>
         );

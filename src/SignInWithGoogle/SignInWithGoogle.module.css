@@ -1,5 +1,5 @@
 
-.google-button{
+.google_button{
     background-color: #4CAF50;
   border: none;
   color: white;
@@ -12,7 +12,7 @@
   cursor: pointer;
 }
 
-.google-button__icon {
+.google_button_icon {
   display: inline-block;
   vertical-align: middle;
   margin: 8px 0 8px 8px;
@@ -21,11 +21,11 @@
   box-sizing: border-box;
 }
 
-.google-button__icon--plus {
+.google_button_icon_plus {
   width: 27px;
 }
 
-.google-button__text {
+.google_button_text {
   display: inline-block;
   vertical-align: middle;
   padding: 0 24px;

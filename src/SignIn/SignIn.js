@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import SignInWithGoogle from './SignInWithGoogle/SignInWithGoogle.js'
-import './SignIn.css';
+import SignInWithGoogle from './../SignInWithGoogle/SignInWithGoogle.js'
+import s from './SignIn.module.css';
+import cs from './../Common.module.css';
 
 const CLIENT_ID = "722524747087-sgjsjequa1sv10c8m3g9fl6gtqoa39eg.apps.googleusercontent.com";
 const API_KEY = "AIzaSyANRAmPJFTjvI2lxfJpq82rd4SHtpBdKY0";
@@ -84,8 +85,8 @@ class SignIn extends Component {
         <p>
           <div id="signin_button">
             <SignInWithGoogle onClick={this.handleAuthClick} /></div>
-          <button id="signout_button" className="button" onClick={this.handleSignoutClick}>Sign Out</button></p>
-        <pre id="content" className="error"></pre>
+          <button id="signout_button" className={cs.button} onClick={this.handleSignoutClick}>Sign Out</button></p>
+        <pre id="content" className={s.error}></pre>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Stickers.css';
+import s from './Stickers.module.css';
 
 const ref = React.createRef();
 
@@ -22,7 +22,7 @@ class Stickers extends Component {
       
       render(){
       return (
-          <div className="main" ref = {ref}>
+          <div className={s.main} ref = {ref}>
           <tbody>{this.getRows()}</tbody> 
           </div>
       )
@@ -33,10 +33,10 @@ class Stickers extends Component {
     class Sticker extends Component {
       render() {
         return (
-          <div className="Sticker">
-                <div className="English Part">{this.props.data.English}</div>
-                <div className="Spelling Part">{this.props.data.Spelling}</div>
-                <div className="Russian Part">{this.props.data.Russian}</div>
+          <div className={s.Sticker}>
+                <div className={`${s.English} ${s.Part}`}>{this.props.data.English}</div>
+                <div className={`${s.Spelling} ${s.Part}`}>{this.props.data.Spelling}</div>
+                <div className={`${s.Russian} ${s.Part}`}>{this.props.data.Russian}</div>
           </div>
         );
       }
