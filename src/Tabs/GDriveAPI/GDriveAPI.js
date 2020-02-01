@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './GDriveAPI.css'
 
+const rus = "Сохраненные переводы";
+const eng = "Saved translations";
 
 class GDriveAPI extends Component {
     constructor(props){
@@ -19,7 +21,7 @@ class GDriveAPI extends Component {
       window.gapi.client.drive.files.list({
           'pageSize': 100,
            q: "mimeType='application/vnd.google-apps.spreadsheet'",
-           q: "name='Saved translations' or name='Сохраненные переводы'",
+           q: `name='${eng}' or name='${rus}'`,
           'fields': "nextPageToken, files(id, name, createdTime, modifiedTime)"
         }).then(this.listFilesSuccess);
       }
