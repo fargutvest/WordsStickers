@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Stickers from './Stickers/Stickers.js';
-import List from './List/List.js';
-import GSheet from './GSheet/GSheet.js';
-import GDriveAPI from './GDriveAPI/GDriveAPI.js';
+import Stickers from './../Stickers/Stickers.js';
+import List from './../List/List.js';
+import GSheet from './../GSheet/GSheet.js';
+import GDriveAPI from './../GDriveAPI/GDriveAPI.js';
+import './Tabs.css';
 
 class Tabs extends Component {
   constructor(props){

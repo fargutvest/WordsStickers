@@ -34,7 +34,7 @@
   font-family: 'Roboto',arial,sans-serif;
 }
 
-// Boilerplate stuff
+
 
 html, body {
   height: 100%;
@@ -49,4 +49,8 @@ body {
 
 button ~ button {
   margin-left: 20px;
+}
+
+img {
+  border-radius: 50%;
 }

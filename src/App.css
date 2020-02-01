@@ -1,56 +1,15 @@
-.App {
-  text-align: center;
+body {
+  font-family: Arial;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
 
-body {font-family: Arial;}
-
-/* Style the tab */
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-}
-
-/* Style the buttons inside the tab */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
+#root {
+  height: 100%;
 }
 
 .button {
@@ -65,26 +24,37 @@ body {font-family: Arial;}
   margin: 4px 2px;
   cursor: pointer;
 }
- .full-height{
-  height: 100%;
- }
- html, body {
-height: 100%;
-margin: 0;
+
+.app-wrapper {
+  margin: 0 auto;
+  display: grid;
+  width: 100%;
+  grid-template-areas: "h h" "n c" "n f";
+  grid-template-rows: 90px 1fr 20px;
+  grid-template-columns: 2fr 10fr;
+  /* grid-gap: 10px; */
+  height: 98%;
 }
 
-#root{
-  height: 100%;
+.header {
+  grid-area: h;
 }
 
-.full-height{
-  height: 100%;
+.header img {
+  width: 20px;
 }
 
-.side-panel{
+.navbar {
+  grid-area: n;
   background-color: gray;
 }
 
-img {
-  border-radius: 50%;
+.content {
+  grid-area: c;
+}
+
+
+.footer {
+  grid-area: f;
+  background-color: lightgray;
 }
