@@ -21,12 +21,11 @@ class DataAccess extends Component {
 
     listMajors() {
         var SPREADSHEET_ID = document.getElementById('SPREADSHEET_ID').value;
-        var RANGE = document.getElementById('RANGE').value;
 
           this.updateLocalStorage();
           window.gapi.client.sheets.spreadsheets.values.get({
             spreadsheetId: SPREADSHEET_ID,
-            range: RANGE,
+            range: "C:D",
           }).then(this.getSuccess, this.getFail);
         }
 
@@ -36,9 +35,7 @@ class DataAccess extends Component {
             if (values.length > 0) {
               for (var i = 0; i < values.length; i++) {
                 var row = values[i];
-                for(var j = 0; j < row.length; j++){
-                  words.push(row[j]);
-                }
+                words.push(row);
               }
             } else {
               this.appendPre('No data found.');
@@ -52,9 +49,9 @@ class DataAccess extends Component {
               rowCounter++;
               wordsCounter++;
               rowModel.push({
-                English: element,
+                English: element[0],
                 Spelling: "---",
-                Russian: "---"
+                Russian: element[1]
               })
               if(rowCounter == 4 || words.length - wordsCounter ==0 ){
                 var need = 4 - rowModel.length; 
@@ -83,10 +80,7 @@ class DataAccess extends Component {
 
     updateLocalStorage(){
         var SPREADSHEET_ID = document.getElementById('SPREADSHEET_ID').value;
-        var RANGE = document.getElementById('RANGE').value;
-
         localStorage.setItem('SPREADSHEET_ID', SPREADSHEET_ID);
-        localStorage.setItem('RANGE', RANGE);
     }
 
     getSnapshotBeforeUpdate(){
@@ -98,10 +92,8 @@ class DataAccess extends Component {
 
     componentDidMount() {
         var params = this.props.params;
-        var elem = document.getElementById('RANGE');
-        elem.value = params.RANGE ? params.RANGE : localStorage.getItem('RANGE');
 
-        elem = document.getElementById('SPREADSHEET_ID');
+        var elem = document.getElementById('SPREADSHEET_ID');
         elem.value = params.SPREADSHEET_ID ? params.SPREADSHEET_ID : localStorage.getItem('SPREADSHEET_ID');
       }
 
@@ -116,13 +108,9 @@ class DataAccess extends Component {
     <div>
       <table>
         <tr>
-          <td width="60%">
+          <td width="80%">
           <label className="w3-text-blue"><b>SPREADSHEET_ID:</b></label>
           <input className="w3-input w3-border" id="SPREADSHEET_ID" type="text" size="100"/>
-          </td>
-          <td width="30%">
-          <label className="w3-text-blue"><b>RANGE:</b></label>
-          <input className="w3-input w3-border" id="RANGE" type="text" size="100"/>
           </td>
           <td width="10%">
           <button id="list_majors" className="button" onClick = {this.handleListMajorsClick}>Read Spredsheet</button>
