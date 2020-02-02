@@ -1,33 +1,4 @@
-.Sticker {
-  text-align: center;
-  border: 1px double black;
-  width: 277px;
-  height: 150px;
-}
 
-.Part {
-  border: 1px double lightgray;
-  height: 50px;
-  /*display: table-cell;
-    vertical-align: middle;
-    */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.English {
-  font-style: normal;
-  font-weight: 600;
-}
-
-.Spelling {
-  color: gray;
-}
-
-.Russian {
-  font-style: normal;
-}
 
 .main {
   overflow: auto;

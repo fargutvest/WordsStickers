@@ -7,19 +7,16 @@ const options = {
   orientation: 'landscape'
 };
 
+const RANGE = "C:D";
+
 class ReadSpreadsheet extends Component {
   constructor(props) {
     super(props);
     this.getSuccess = this.getSuccess.bind(this);
     this.getFail = this.getFail.bind(this);
-    this.listMajors = this.listMajors.bind(this);
-    this.handleListMajorsClick = this.handleListMajorsClick.bind(this);
+    this.handleReadSpreadsheetClick = this.handleReadSpreadsheetClick.bind(this);
     this.appendPre = this.appendPre.bind(this);
     this.visitWoordhunt = this.visitWoordhunt.bind(this);
-  }
-
-  handleListMajorsClick(event) {
-    this.listMajors();
   }
 
   // private static void VisitWooordhunt(string en, out string spell, out string rus)
@@ -40,45 +37,45 @@ class ReadSpreadsheet extends Component {
   //     }
   // }
 
-  visitWoordhunt(eng) {
-    var url = `https://wooordhunt.ru/word/${eng}`;
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = this.getInfo;
-    xmlHttp.open( "GET", url, false );
-    xmlHttp.send();
-    var responseText = xmlHttp.responseText;
-    return responseText;
-  }
+  // visitWoordhunt(eng) {
+  //   var url = `https://wooordhunt.ru/word/${eng}`;
+  //   var xmlHttp = new XMLHttpRequest();
+  //   xmlHttp.onreadystatechange = this.getInfo;
+  //   xmlHttp.open( "GET", url, false );
+  //   xmlHttp.send();
+  //   var responseText = xmlHttp.responseText;
+  //   return responseText;
+  // }
 
-  getData() {
-    // create a new XMLHttpRequest
-    var xhr = new XMLHttpRequest()
+  // getData() {
+  //   // create a new XMLHttpRequest
+  //   var xhr = new XMLHttpRequest()
 
-    // get a callback when the server responds
-    xhr.addEventListener('load', () => {
-      // update the state of the component with the result here
-      console.log(xhr.responseText)
-    })
-    // open the request with the verb and the url
-    xhr.open('GET', 'https://wooordhunt.ru')
-    // send the request
-    xhr.send()
-  }
+  //   // get a callback when the server responds
+  //   xhr.addEventListener('load', () => {
+  //     // update the state of the component with the result here
+  //     console.log(xhr.responseText)
+  //   })
+  //   // open the request with the verb and the url
+  //   xhr.open('GET', 'https://wooordhunt.ru')
+  //   // send the request
+  //   xhr.send()
+  // }
 
-  getInfo(resp) {
-		// if (request.readyState == 4) {
-		// 	var val = request.responseText;
-		// 	document.getElementById('chiru').innerHTML = val;
-		// }
-  }
+  // getInfo(resp) {
+	// 	// if (request.readyState == 4) {
+	// 	// 	var val = request.responseText;
+	// 	// 	document.getElementById('chiru').innerHTML = val;
+	// 	// }
+  // }
   
-  listMajors() {
+  handleReadSpreadsheetClick() {
     var SPREADSHEET_ID = document.getElementById('SPREADSHEET_ID').value;
 
     this.updateLocalStorage();
     window.gapi.client.sheets.spreadsheets.values.get({
       spreadsheetId: SPREADSHEET_ID,
-      range: "C:D",
+      range: RANGE,
     }).then(this.getSuccess, this.getFail);
   }
 
@@ -164,7 +161,7 @@ class ReadSpreadsheet extends Component {
               <input className="w3-input w3-border" id="SPREADSHEET_ID" type="text" size="100" />
             </td>
             <td width="12%">
-              <button id="list_majors" className={cs.button} onClick={this.handleListMajorsClick}>Read Spredsheet</button>
+              <button id="read_spreadsheet" className={cs.button} onClick={this.handleReadSpreadsheetClick}>Read Spredsheet</button>
             </td>
             <td width="12%">
               <Pdf id="id_pdf" targetRef={this.props.da_ref} filename="stickers.pdf" options={options} x={2} y={2}>
