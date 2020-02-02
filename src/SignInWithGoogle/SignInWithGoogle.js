@@ -14,11 +14,21 @@ class SignInWithGoogle extends Component {
     this.updateSigninStatus = this.updateSigninStatus.bind(this);
     this.initClientSuccess = this.initClientSuccess.bind(this);
     this.initClientFail = this.initClientFail.bind(this);
-    this.callback = this.callback.bind(this);
   }
 
-  callback(isSignedIn, userProfile) {
-    this.props.callback(isSignedIn, userProfile);
+  isSignedIn(userProfile) {
+    var avatarImg = document.getElementById("avatar");
+    var titleLabel = document.getElementById("title");
+    if (userProfile) {
+      avatarImg.style.display = '';
+      titleLabel.style.display = '';
+      avatarImg.src = userProfile.getImageUrl();
+      titleLabel.innerHTML = userProfile.getName();
+    }
+    else {
+      avatarImg.style.display = 'none';
+      titleLabel.style.display = 'none';
+    }
   }
 
   updateLocalStorage() {
@@ -40,10 +50,11 @@ class SignInWithGoogle extends Component {
   initClientSuccess() {
     window.gapi.auth2.getAuthInstance().isSignedIn.listen(this.updateSigninStatus);
     this.updateSigninStatus(window.gapi.auth2.getAuthInstance().isSignedIn.get());
+    this.props.updateError("");
   }
 
   initClientFail(error) {
-    this.appendPre(JSON.stringify(error, null, 2));
+    this.props.updateError(JSON.stringify(error, null, 2));
   }
 
 
@@ -62,7 +73,7 @@ class SignInWithGoogle extends Component {
       signout_button.style.display = 'none';
       signin_button.style.display = 'block';
     }
-    this.callback(isSignedIn, profile);
+    this.isSignedIn(profile);
   }
 
   handleSigninClick() {
@@ -79,8 +90,11 @@ class SignInWithGoogle extends Component {
 
   render() {
     return (
-
       <div align="center">
+        <label className="w3-text-white" id="title" />
+        <p align="center">
+          <img id="avatar" width="50px" height="50px" alt="Avatar" />
+        </p>
         <p>
           <div id="signin_button">
             <button type="button" className={s.google_button} onClick={this.handleSigninClick}>
@@ -91,7 +105,6 @@ class SignInWithGoogle extends Component {
             </button>
           </div>
           <button id="signout_button" className={cs.button} onClick={this.handleSignoutClick}>Sign Out</button></p>
-        <pre id="content" className={s.error}></pre>
       </div>
     );
   }

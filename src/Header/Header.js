@@ -10,7 +10,10 @@ class Header extends Component {
     render() {
         return (
             <div className={s.header}>
-                <ReadSpreadsheet spreedSheetId ={this.props.spreedSheetId} updateShared ={this.props.updateShared} da_ref = {this.props.da_ref}></ReadSpreadsheet>
+                <ReadSpreadsheet spreadseetId={this.props.spreadseetId}
+                    updateError={this.props.updateError}
+                    updateStickers={this.props.updateStickers}
+                    pdf={this.props.pdf}></ReadSpreadsheet>
             </div>
         );
     }

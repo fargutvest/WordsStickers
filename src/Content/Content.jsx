@@ -11,7 +11,11 @@ class Content extends Component {
     render() {
         return (
             <div className={s.content}>
-                <Tabs passRef={this.props.passRef} shared_var={this.props.shared_var} ShareSpreedSheetId={this.props.ShareSpreedSheetId} />
+                <Tabs updatePdf={this.props.updatePdf}
+                    filesList={this.props.filesList}
+                    updateFilesList={this.props.updateFilesList}
+                    stickers={this.props.stickers}
+                    updateSpreadsheetId={this.props.updateSpreadsheetId} />
             </div>
         );
     }

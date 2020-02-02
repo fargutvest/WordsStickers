@@ -15,7 +15,6 @@ class ReadSpreadsheet extends Component {
     this.getSuccess = this.getSuccess.bind(this);
     this.getFail = this.getFail.bind(this);
     this.handleReadSpreadsheetClick = this.handleReadSpreadsheetClick.bind(this);
-    this.appendPre = this.appendPre.bind(this);
   }
 
   // private static void VisitWooordhunt(string en, out string spell, out string rus)
@@ -62,12 +61,12 @@ class ReadSpreadsheet extends Component {
   // }
 
   // getInfo(resp) {
-	// 	// if (request.readyState == 4) {
-	// 	// 	var val = request.responseText;
-	// 	// 	document.getElementById('chiru').innerHTML = val;
-	// 	// }
+  // 	// if (request.readyState == 4) {
+  // 	// 	var val = request.responseText;
+  // 	// 	document.getElementById('chiru').innerHTML = val;
+  // 	// }
   // }
-  
+
   handleReadSpreadsheetClick() {
     var SPREADSHEET_ID = document.getElementById('SPREADSHEET_ID').value;
 
@@ -86,11 +85,12 @@ class ReadSpreadsheet extends Component {
         var row = values[i];
         words.push(row);
       }
+      this.props.updateError("");
     } else {
-      this.appendPre('No data found.');
+      this.props.updateError('No data found.');
     }
 
-    var stickersToShare = [];
+    var newStickers = [];
     var rowCounter = 0;
     var wordsCounter = 0;
     var rowModel = [];
@@ -113,17 +113,17 @@ class ReadSpreadsheet extends Component {
             })
           }
         }
-        stickersToShare.push(rowModel);
+        newStickers.push(rowModel);
         rowModel = [];
         rowCounter = 0;
 
       }
     });
-    this.props.updateShared(stickersToShare);
+    this.props.updateStickers(newStickers);
   }
 
   getFail(response) {
-    this.appendPre('Error: ' + response.result.error.message);
+    this.props.updateError('Error: ' + response.result.error.message);
   }
 
 
@@ -133,9 +133,9 @@ class ReadSpreadsheet extends Component {
   }
 
   getSnapshotBeforeUpdate() {
-    if (this.props.spreedSheetId) {
+    if (this.props.spreadseetId) {
       var elem = document.getElementById('SPREADSHEET_ID');
-      elem.value = this.props.spreedSheetId;
+      elem.value = this.props.spreadseetId;
     }
   }
 
@@ -144,16 +144,10 @@ class ReadSpreadsheet extends Component {
     elem.value = localStorage.getItem('SPREADSHEET_ID');
   }
 
-  appendPre(message) {
-    var pre = document.getElementById('content');
-    var textContent = document.createTextNode(message + '\n');
-    pre.appendChild(textContent);
-  }
-
   render() {
     return (
       <div>
-        <table width="100%"> 
+        <table width="100%">
           <tr>
             <td width="70%">
               <label className="w3-text-blue"><b>SPREADSHEET_ID:</b></label>
@@ -163,13 +157,12 @@ class ReadSpreadsheet extends Component {
               <button id="read_spreadsheet" className={cs.button} onClick={this.handleReadSpreadsheetClick}>Read Spredsheet</button>
             </td>
             <td width="12%">
-              <Pdf id="id_pdf" targetRef={this.props.da_ref} filename="stickers.pdf" options={options} x={2} y={2}>
+              <Pdf id="id_pdf" targetRef={this.props.pdf} filename="stickers.pdf" options={options} x={2} y={2}>
                 {({ toPdf }) => <button id="pdf" className={cs.button} onClick={toPdf}>Dowdload Pdf</button>}
               </Pdf>
             </td>
           </tr>
         </table>
-        <pre id="content" className={s.error}></pre>
       </div>
     );
   }

@@ -19,7 +19,7 @@ class Tabs extends Component {
       <BrowserRouter>
         <div>
           <div className={s.tabpanel}>
-            <div className={s.tab}>
+            <div className= {s.tab}>
               <NavLink to="/stickers" activeClassName={s.active}>Stickers</NavLink>
             </div>
             <div className={s.tab}>
@@ -34,10 +34,12 @@ class Tabs extends Component {
           </div>
 
           <div className={s.tabcontent}>
-            <Route path='/stickers' render={() => <Stickers passRef={this.props.passRef} shared_var={this.props.shared_var} />} />
-            <Route path="/list" render={() => <List shared_var={this.props.shared_var} />} />
+            <Route path='/stickers' render={() => <Stickers updatePdf={this.props.updatePdf} stickers={this.props.stickers} />} />
+            <Route path="/list" render={() => <List stickers={this.props.stickers} />} />
             <Route path="/gsheet" component={GSheet} />
-            <Route path="/gdriveapi" render={() => <GDriveAPI ShareSpreedSheetId={this.props.ShareSpreedSheetId} />} />
+            <Route path="/gdriveapi" render={() => <GDriveAPI updateSpreadsheetId={this.props.updateSpreadsheetId}
+              filesList={this.props.filesList}
+              updateFilesList={this.props.updateFilesList} />} />
           </div>
         </div>
       </BrowserRouter>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SignInWithGoogle from '../SignInWithGoogle/SignInWithGoogle';
+import ErrorBar from '../ErrorBar/ErrorBar';
 import s from './Navbar.module.css';
 
 
@@ -12,11 +13,10 @@ class Navbar extends Component {
         return (
             <div className={s.navbar}>
                 <p align="center">
-                    <label className="w3-text-white" id="title"></label>
-                    <p align="center">
-                        <img id="avatar" width="50px" height="50px" alt="Avatar" />
+                    <SignInWithGoogle callback={this.props.callback} />
+                    <p>
+                        <ErrorBar error={this.props.error} />
                     </p>
-                    <SignInWithGoogle shared_var={this.props.shared_var} callback={this.props.callback} />
                 </p>
             </div>
         );
