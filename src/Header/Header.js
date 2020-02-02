@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DataAccess from '../DataAccess/DataAccess';
+import ReadSpreadsheet from '../ReadSpreadsheet/ReadSpreadsheet';
 import s from './Header.module.css'
 
 class Header extends Component {
@@ -10,7 +10,7 @@ class Header extends Component {
     render() {
         return (
             <div className={s.header}>
-                <DataAccess spreedSheetId ={this.props.spreedSheetId} updateShared ={this.props.updateShared} da_ref = {this.props.da_ref}></DataAccess>
+                <ReadSpreadsheet spreedSheetId ={this.props.spreedSheetId} updateShared ={this.props.updateShared} da_ref = {this.props.da_ref}></ReadSpreadsheet>
             </div>
         );
     }

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Pdf from "react-to-pdf";
-import s from './DataAccess.module.css'
+import s from './ReadSpreadsheet.module.css'
 import cs from './../Common.module.css'
 
 const options = {
   orientation: 'landscape'
 };
 
-class DataAccess extends Component {
+class ReadSpreadsheet extends Component {
   constructor(props) {
     super(props);
     this.getSuccess = this.getSuccess.bind(this);
@@ -181,4 +181,4 @@ class DataAccess extends Component {
 
 }
 
-export default DataAccess;
+export default ReadSpreadsheet;
