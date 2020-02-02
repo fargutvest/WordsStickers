@@ -16,7 +16,6 @@ class ReadSpreadsheet extends Component {
     this.getFail = this.getFail.bind(this);
     this.handleReadSpreadsheetClick = this.handleReadSpreadsheetClick.bind(this);
     this.appendPre = this.appendPre.bind(this);
-    this.visitWoordhunt = this.visitWoordhunt.bind(this);
   }
 
   // private static void VisitWooordhunt(string en, out string spell, out string rus)
