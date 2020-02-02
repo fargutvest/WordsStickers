@@ -1,8 +1,0 @@
-.error {
-    white-space: pre-wrap; 
-    color: red; 
-}
-
-::placeholder {
-    color: lightgray;
-  }

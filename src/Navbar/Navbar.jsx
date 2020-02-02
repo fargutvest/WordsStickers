@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SignIn from '../SignIn/SignIn';
+import SignInWithGoogle from '../SignInWithGoogle/SignInWithGoogle';
 import s from './Navbar.module.css';
 
 
@@ -16,7 +16,7 @@ class Navbar extends Component {
                     <p align="center">
                         <img id="avatar" width="50px" height="50px" alt="Avatar" />
                     </p>
-                    <SignIn shared_var={this.props.shared_var} callback={this.props.callback} />
+                    <SignInWithGoogle shared_var={this.props.shared_var} callback={this.props.callback} />
                 </p>
             </div>
         );
