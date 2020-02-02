@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import s from './GDriveAPI.module.css'
-import cs from './../../Common.module.css';
+import cs from './../Common.module.css';
 
 const rus = "Сохраненные переводы";
 const eng = "Saved translations";

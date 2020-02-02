@@ -144,10 +144,8 @@ class DataAccess extends Component {
   }
 
   componentDidMount() {
-    var params = this.props.params;
-
     var elem = document.getElementById('SPREADSHEET_ID');
-    elem.value = params.SPREADSHEET_ID ? params.SPREADSHEET_ID : localStorage.getItem('SPREADSHEET_ID');
+    elem.value = localStorage.getItem('SPREADSHEET_ID');
   }
 
   appendPre(message) {

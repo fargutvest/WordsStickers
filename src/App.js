@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import characters from './Characters.js';
 import s from './App.module.css';
 import Header from './Header/Header.js';
 import Navbar from './Navbar/Navbar.jsx';
@@ -11,7 +10,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { state_ref: '', shared_var: characters, state_spreedSheetId: '' };
+    this.state = { state_ref: '', shared_var: this.props.characters, state_spreedSheetId: '' };
     this.updateShared = this.updateShared.bind(this);
     this.isSignedIn = this.isSignedIn.bind(this);
     this.passRef = this.passRef.bind(this);
@@ -48,8 +47,8 @@ class App extends Component {
   render() {
     return (
       <div className={s.app_wrapper}>
-        <Header params={this.props.match.params} spreedSheetId ={this.state.state_spreedSheetId} updateShared ={this.updateShared} da_ref = {this.state.state_ref}></Header>
-        <Navbar params={this.props.match.params} shared_var={this.state.shared_var} callback={this.isSignedIn}></Navbar>
+        <Header spreedSheetId ={this.state.state_spreedSheetId} updateShared ={this.updateShared} da_ref = {this.state.state_ref}></Header>
+        <Navbar shared_var={this.state.shared_var} callback={this.isSignedIn}></Navbar>
         <Content passRef={this.passRef} shared_var={this.state.shared_var} ShareSpreedSheetId={this.ShareSpreedSheetId} ></Content>
         <Footer/>
       </div>

@@ -10,7 +10,7 @@ class Header extends Component {
     render() {
         return (
             <div className={s.header}>
-                <DataAccess params = {this.props.params} spreedSheetId ={this.props.spreedSheetId} updateShared ={this.props.updateShared} da_ref = {this.props.da_ref}></DataAccess>
+                <DataAccess spreedSheetId ={this.props.spreedSheetId} updateShared ={this.props.updateShared} da_ref = {this.props.da_ref}></DataAccess>
             </div>
         );
     }

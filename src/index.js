@@ -1,16 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  BrowserRouter as Router,
-  Route,
-} from "react-router-dom";
 import App from './App';
 import './index.css';
+import characters from './Characters.js';
 
-ReactDOM.render((
-  <Router>
-    <Route path={["/credentials/:SPREADSHEET_ID", "/"]} component={App} />
-  </Router>),
+ReactDOM.render((<App characters={characters} />),
   document.getElementById('root')
 );
 

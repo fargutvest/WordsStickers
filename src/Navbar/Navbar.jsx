@@ -16,7 +16,7 @@ class Navbar extends Component {
                     <p align="center">
                         <img id="avatar" width="50px" height="50px" alt="Avatar" />
                     </p>
-                    <SignIn cred={this.props.params} shared_var={this.props.shared_var} callback={this.props.callback} />
+                    <SignIn shared_var={this.props.shared_var} callback={this.props.callback} />
                 </p>
             </div>
         );

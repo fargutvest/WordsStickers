@@ -34,10 +34,10 @@ class Tabs extends Component {
           </div>
 
           <div className={s.tabcontent}>
-            <Route path='/stickers' render={(props) => <Stickers {...props} passRef={this.props.passRef} shared_var={this.props.shared_var} />} />
-            <Route path="/list" render={(props) => <List {...props} shared_var={this.props.shared_var} />} />
+            <Route path='/stickers' render={() => <Stickers passRef={this.props.passRef} shared_var={this.props.shared_var} />} />
+            <Route path="/list" render={() => <List shared_var={this.props.shared_var} />} />
             <Route path="/gsheet" component={GSheet} />
-            <Route path="/gdriveapi" render={(props) => <GDriveAPI {...props} ShareSpreedSheetId={this.props.ShareSpreedSheetId} />} />
+            <Route path="/gdriveapi" render={() => <GDriveAPI ShareSpreedSheetId={this.props.ShareSpreedSheetId} />} />
           </div>
         </div>
       </BrowserRouter>
