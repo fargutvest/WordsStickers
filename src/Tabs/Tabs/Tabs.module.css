@@ -29,26 +29,8 @@
     background-color: #ccc;
   }
 
-  .tab1{
-    grid-area: t1;
-  }
-
-  .tab2{
-    grid-area: t2;
-  }
-
-  .tab3{
-    grid-area: t3;
-  }
-
-  .tab4{
-    grid-area: t4;
-  }
-  
-
   .tabpanel{
     display: grid;
-    grid-template-areas: "t1 t2 t3 t4";
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 

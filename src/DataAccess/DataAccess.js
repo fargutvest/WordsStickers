@@ -161,7 +161,7 @@ class DataAccess extends Component {
       <div>
         <table width="100%"> 
           <tr>
-            <td width="76%">
+            <td width="70%">
               <label className="w3-text-blue"><b>SPREADSHEET_ID:</b></label>
               <input className="w3-input w3-border" id="SPREADSHEET_ID" type="text" size="100" />
             </td>

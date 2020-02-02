@@ -19,16 +19,16 @@ class Tabs extends Component {
       <BrowserRouter>
         <div>
           <div className={s.tabpanel}>
-            <div className={`${s.tab} ${s.tab1}`}>
+            <div className={s.tab}>
               <NavLink to="/stickers" activeClassName={s.active}>Stickers</NavLink>
             </div>
-            <div className={`${s.tab} ${s.tab2}`}>
+            <div className={s.tab}>
               <NavLink to="/list" activeClassName={s.active}>List</NavLink>
             </div>
-            <div className={`${s.tab} ${s.tab3}`}>
+            <div className={s.tab}>
               <NavLink to="/gsheet" activeClassName={s.active}>GSheet</NavLink>
             </div>
-            <div className={`${s.tab} ${s.tab4}`}>
+            <div className={s.tab}>
               <NavLink to="/gdriveapi" activeClassName={s.active}>GDriveAPI</NavLink>
             </div>
           </div>
