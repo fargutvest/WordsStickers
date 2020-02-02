@@ -19,7 +19,7 @@ class Tabs extends Component {
       <BrowserRouter>
         <div>
           <div className={s.tabpanel}>
-            <div className= {s.tab}>
+            <div className={s.tab}>
               <NavLink to="/stickers" activeClassName={s.active}>Stickers</NavLink>
             </div>
             <div className={s.tab}>

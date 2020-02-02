@@ -36,7 +36,7 @@ class GDriveAPI extends Component {
     var filesList = [];
     filesList.push('File with max createdTime:');
     filesList.push(maxSorted.name + ' (' + maxSorted.id + ')' + ' Created:' + maxSorted.createdTime + ' Modified:' + maxSorted.modifiedTime);
-    filesList.push('');
+    filesList.push(".");
     filesList.push('All gsheet files:');
     if (files && files.length > 0) {
       for (var i = 0; i < files.length; i++) {
@@ -61,12 +61,15 @@ class GDriveAPI extends Component {
     return max;
   }
 
+
   render() {
     return <div className={s.main}>
       <button className={cs.button} onClick={this.onClick}>List Files</button>
-      <div>
-        {this.props.filesList}
-      </div>
+      <p>
+        <div>
+          {this.props.filesList.map((item, index) => <div key={index}> {item} </div>)}
+        </div>
+      </p>
     </div>;
   }
 }
