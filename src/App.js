@@ -4,7 +4,6 @@ import Header from './Header/Header.js';
 import Navbar from './Navbar/Navbar.jsx';
 import Content from './Content/Content.jsx';
 import Footer from './Footer/Footer.jsx';
-import './Common.css'
 
 class App extends Component {
   constructor(props) {
