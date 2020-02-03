@@ -13,14 +13,14 @@ class App extends Component {
   render() {
     return (
       <div className={s.app_wrapper}>
-        <Header spreadseetId={this.props.spreadseetId}
+        <Header spreadseetId={this.props.state.spreadseetId}
           updateStickers={this.props.updateStickers}
-          pdf={this.props.pdf}
+          pdf={this.props.state.pdf}
           updateError={this.props.updateError}></Header>
-        <Navbar error={this.props.error} />
+        <Navbar error={this.props.state.error} />
         <Content updatePdf={this.props.updatePdf}
-          stickers={this.props.stickers}
-          filesList={this.props.filesList}
+          stickers={this.props.state.stickers}
+          filesList={this.props.state.filesList}
           updateFilesList={this.props.updateFilesList}
           updateSpreadsheetId={this.props.updateSpreadsheetId} />
         <Footer />
