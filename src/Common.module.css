@@ -10,3 +10,7 @@
     margin: 4px 2px;
     cursor: pointer;
 }
+
+.button.remove{
+    background-color: darkred;
+}
