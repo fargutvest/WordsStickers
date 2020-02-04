@@ -13,7 +13,7 @@ class Navbar extends Component {
         return (
             <div className={s.navbar}>
                 <p align="center">
-                    <SignInWithGoogle isSignedIn ={this.props.isSignedIn} dispath={this.props.dispath} />
+                    <SignInWithGoogle isSignedIn ={this.props.isSignedIn} profile = {this.props.profile} dispath={this.props.dispath} />
                     <p>
                         <ErrorBar error={this.props.error} />
                     </p>

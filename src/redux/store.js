@@ -6,6 +6,7 @@ const UPDATE_SPREADSHEET_ID = 'UPDATE_SPREADSHEET_ID';
 const UPDATE_PDF = 'UPDATE_PDF';
 const UPDATE_STICKERS = 'UPDATE_STICKERS';
 const UPDATE_IS_SIGNED_IN = 'UPDATE_IS_SIGNED_IN';
+const UPDATE_PROFILE = 'UPDATE_PROFILE';
 
 
 let store = {
@@ -39,7 +40,8 @@ let store = {
     spreadseetId: "",
     error: "",
     filesList: [],
-    isSignedIn: false
+    isSignedIn: false,
+    profile: ""
   },
   getState() {
     return this._state;
@@ -76,6 +78,10 @@ let store = {
         this._state.isSignedIn = action.isSignedIn;
         this.rerender(this._state);
         break;
+        case UPDATE_PROFILE:
+        this._state.profile = action.profile;
+        this.rerender(this._state);
+        break;
     }
   }
 }
@@ -86,6 +92,6 @@ export const updateSpreadsheetIdActionCreator = (newSpreadseetId) => ({ type: UP
 export const updatePdfActionCreator = (newPdf) => ({ type: UPDATE_PDF, newPdf: newPdf });
 export const updateStickersActionCreator = (newStickers) => ({ type: UPDATE_STICKERS, newStickers: newStickers });
 export const updateIsSignedInActionCreator = (isSignedIn) => ({ type: UPDATE_IS_SIGNED_IN, isSignedIn: isSignedIn });
-
+export const updateProfileActionCreator = (profile) => ({type: UPDATE_PROFILE, profile: profile});
 
 export default store;

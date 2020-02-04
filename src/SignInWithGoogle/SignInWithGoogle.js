@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import s from './SignInWithGoogle.module.css';
 import cs from './../Common.module.css';
-import { updateIsSignedInActionCreator } from './../redux/store'
+import { updateIsSignedInActionCreator, updateProfileActionCreator } from './../redux/store'
 
 const CLIENT_ID = "722524747087-sgjsjequa1sv10c8m3g9fl6gtqoa39eg.apps.googleusercontent.com";
 const API_KEY = "AIzaSyANRAmPJFTjvI2lxfJpq82rd4SHtpBdKY0";
@@ -10,9 +10,6 @@ const SCOPES = "https://www.googleapis.com/auth/drive.metadata";
 
 //todo: need to remove token.pickle
 
-const avatarRef = React.createRef();
-const titleRef = React.createRef();
-
 class SignInWithGoogle extends Component {
   constructor(props) {
     super(props);
@@ -20,19 +17,6 @@ class SignInWithGoogle extends Component {
     this.updateSigninStatus = this.updateSigninStatus.bind(this);
     this.initClientSuccess = this.initClientSuccess.bind(this);
     this.initClientFail = this.initClientFail.bind(this);
-  }
-
-  isSignedIn(userProfile) {
-    if (userProfile) {
-      avatarRef.current.style.display = '';
-      titleRef.current.style.display = '';
-      avatarRef.current.src = userProfile.getImageUrl();
-      titleRef.current.innerHTML = userProfile.getName();
-    }
-    else {
-      avatarRef.current.style.display = 'none';
-      titleRef.current.style.display = 'none';
-    }
   }
 
   updateLocalStorage() {
@@ -70,7 +54,7 @@ class SignInWithGoogle extends Component {
       console.log(profile);
     }
 
-    this.isSignedIn(profile);
+    this.props.dispath(updateProfileActionCreator(profile));
 
     this.props.dispath(updateIsSignedInActionCreator(isSignedIn));
   }
@@ -102,13 +86,24 @@ class SignInWithGoogle extends Component {
     return this.props.isSignedIn ? signOut : signIn;
   }
 
+  getUserInfo() {
+    if (this.props.profile) {
+      return (
+        <div>
+          <label className="w3-text-white">{this.props.profile.getName()}</label>
+          <p align="center">
+            <img width="50px" height="50px" alt="Avatar" src={this.props.profile.getImageUrl()} />
+          </p>
+        </div>
+      );
+    }
+    return '';
+  }
+
   render() {
     return (
       <div align="center">
-        <label className="w3-text-white" ref={titleRef} />
-        <p align="center">
-          <img ref={avatarRef} width="50px" height="50px" alt="Avatar" />
-        </p>
+        {this.getUserInfo()}
         <p>
           {this.getButton()}
         </p>
