@@ -5,6 +5,7 @@ const UPDATE_ERROR = 'UPDATE_ERROR';
 const UPDATE_SPREADSHEET_ID = 'UPDATE_SPREADSHEET_ID';
 const UPDATE_PDF = 'UPDATE_PDF';
 const UPDATE_STICKERS = 'UPDATE_STICKERS';
+const UPDATE_IS_SIGNED_IN = 'UPDATE_IS_SIGNED_IN';
 
 
 let store = {
@@ -37,7 +38,8 @@ let store = {
     pdf: React.createRef(),
     spreadseetId: "",
     error: "",
-    filesList: []
+    filesList: [],
+    isSignedIn: false
   },
   getState() {
     return this._state;
@@ -50,24 +52,28 @@ let store = {
   },
   dispatch(action) {
     switch (action.type) {
-      case "UPDATE_FILES_LIST":
+      case UPDATE_FILES_LIST:
         this._state.filesList = action.newFilesList;
         this.rerender(this._state);
         break;
-      case "UPDATE_ERROR":
+      case UPDATE_ERROR:
         this._state.error = action.newError;
         this.rerender(this._state);
         break;
-      case "UPDATE_SPREADSHEET_ID":
+      case UPDATE_SPREADSHEET_ID:
         this._state.spreadseetId = action.newSpreadseetId;
         this.rerender(this._state);
         break;
-      case "UPDATE_PDF":
+      case UPDATE_PDF:
         this._state.pdf = action.newPdf;
         this.rerender(this._state);
         break;
-      case "UPDATE_STICKERS":
+      case UPDATE_STICKERS:
         this._state.stickers = action.newStickers;
+        this.rerender(this._state);
+        break;
+      case UPDATE_IS_SIGNED_IN:
+        this._state.isSignedIn = action.isSignedIn;
         this.rerender(this._state);
         break;
     }
@@ -79,6 +85,7 @@ export const updateErrorActionCreator = (newError) => ({ type: UPDATE_ERROR, new
 export const updateSpreadsheetIdActionCreator = (newSpreadseetId) => ({ type: UPDATE_SPREADSHEET_ID, newSpreadseetId: newSpreadseetId });
 export const updatePdfActionCreator = (newPdf) => ({ type: UPDATE_PDF, newPdf: newPdf });
 export const updateStickersActionCreator = (newStickers) => ({ type: UPDATE_STICKERS, newStickers: newStickers });
+export const updateIsSignedInActionCreator = (isSignedIn) => ({ type: UPDATE_IS_SIGNED_IN, isSignedIn: isSignedIn });
 
 
 export default store;
