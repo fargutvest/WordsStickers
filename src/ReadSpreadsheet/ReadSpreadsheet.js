@@ -4,6 +4,8 @@ import s from './ReadSpreadsheet.module.css'
 import cs from './../Common.module.css'
 import {updateErrorActionCreator, updateStickersActionCreator} from './../redux/store';
 
+const spreadsheetIdref = React.createRef();
+
 const options = {
   orientation: 'landscape'
 };
@@ -69,11 +71,9 @@ class ReadSpreadsheet extends Component {
   // }
 
   handleReadSpreadsheetClick() {
-    var SPREADSHEET_ID = document.getElementById('SPREADSHEET_ID').value;
-
     this.updateLocalStorage();
     window.gapi.client.sheets.spreadsheets.values.get({
-      spreadsheetId: SPREADSHEET_ID,
+      spreadsheetId: spreadsheetIdref.current.value,
       range: RANGE,
     }).then(this.getSuccess, this.getFail);
   }
@@ -129,20 +129,17 @@ class ReadSpreadsheet extends Component {
 
 
   updateLocalStorage() {
-    var SPREADSHEET_ID = document.getElementById('SPREADSHEET_ID').value;
-    localStorage.setItem('SPREADSHEET_ID', SPREADSHEET_ID);
+    localStorage.setItem('SPREADSHEET_ID', spreadsheetIdref.current.value);
   }
 
   getSnapshotBeforeUpdate() {
     if (this.props.spreadseetId) {
-      var elem = document.getElementById('SPREADSHEET_ID');
-      elem.value = this.props.spreadseetId;
+      spreadsheetIdref.current.value = this.props.spreadseetId;
     }
   }
 
   componentDidMount() {
-    var elem = document.getElementById('SPREADSHEET_ID');
-    elem.value = localStorage.getItem('SPREADSHEET_ID');
+    spreadsheetIdref.current.value = localStorage.getItem('SPREADSHEET_ID');
   }
 
   render() {
@@ -152,7 +149,7 @@ class ReadSpreadsheet extends Component {
           <tr>
             <td width="70%">
               <label className="w3-text-blue"><b>SPREADSHEET_ID:</b></label>
-              <input className="w3-input w3-border" id="SPREADSHEET_ID" type="text" size="100" />
+              <input className="w3-input w3-border" ref = {spreadsheetIdref} type="text" size="100" />
             </td>
             <td width="12%">
               <button id="read_spreadsheet" className={cs.button} onClick={this.handleReadSpreadsheetClick}>Read Spredsheet</button>
