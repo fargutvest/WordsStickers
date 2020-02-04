@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import s from './GDriveAPI.module.css'
 import cs from './../Common.module.css';
-import {updateSpreadsheetIdActionCreator, updateFilesListActionCreator } from './../redux/store'
+import {updateSpreadsheetIdActionCreator } from './../redux/spreadsheet-reducer'
+import {updateFilesListActionCreator } from './../redux/gdrive-reducer'
 
 const rus = "Сохраненные переводы";
 const eng = "Saved translations";

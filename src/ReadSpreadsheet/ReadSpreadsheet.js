@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Pdf from "react-to-pdf";
 import s from './ReadSpreadsheet.module.css'
 import cs from './../Common.module.css'
-import {updateErrorActionCreator, updateStickersActionCreator} from './../redux/store';
+import {updateErrorActionCreator} from './../redux/error-reducer';
+import {updateStickersActionCreator} from './../redux/stickers-reducer';
 
 const spreadsheetIdref = React.createRef();
 

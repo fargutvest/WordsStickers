@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import s from './SignInWithGoogle.module.css';
 import cs from './../Common.module.css';
-import { updateIsSignedInActionCreator, updateProfileActionCreator } from './../redux/store'
+import { updateIsSignedInActionCreator, updateProfileActionCreator } from './../redux/signin-reducer'
 
 const CLIENT_ID = "722524747087-sgjsjequa1sv10c8m3g9fl6gtqoa39eg.apps.googleusercontent.com";
 const API_KEY = "AIzaSyANRAmPJFTjvI2lxfJpq82rd4SHtpBdKY0";

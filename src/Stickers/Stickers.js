@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import s from './Stickers.module.css';
 import Sticker from './Sticker/Sticker';
-import {updatePdfActionCreator} from './../redux/store';
+import {updatePdfActionCreator} from './../redux/stickers-reducer';
 
 const pdfRef = React.createRef();
 

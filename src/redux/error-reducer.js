@@ -1,0 +1,14 @@
+const UPDATE_ERROR = 'UPDATE_ERROR';
+
+const errorReducer = (state, action) => {
+
+    switch (action) {
+        case UPDATE_ERROR:
+            state.error = action.newError;
+            return state;
+    }
+}
+
+export const updateErrorActionCreator = (newError) => ({ type: UPDATE_ERROR, newError: newError });
+
+export default errorReducer;
