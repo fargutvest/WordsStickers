@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import s from './Stickers.module.css';
 import Sticker from './Sticker/Sticker';
+import {updatePdfActionCreator} from './../redux/store';
 
 const pdfRef = React.createRef();
 
@@ -19,7 +20,7 @@ class Stickers extends Component {
   }
 
   componentDidMount() {
-    this.props.updatePdf(pdfRef);
+    this.props.dispatch(updatePdfActionCreator(pdfRef));
   }
 
   render() {

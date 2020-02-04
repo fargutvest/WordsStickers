@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Pdf from "react-to-pdf";
 import s from './ReadSpreadsheet.module.css'
 import cs from './../Common.module.css'
+import {updateErrorActionCreator, updateStickersActionCreator} from './../redux/store';
 
 const options = {
   orientation: 'landscape'
@@ -85,9 +86,9 @@ class ReadSpreadsheet extends Component {
         var row = values[i];
         words.push(row);
       }
-      this.props.updateError("");
+      this.props.dispatch(updateErrorActionCreator(""));
     } else {
-      this.props.updateError('No data found.');
+      this.props.dispatch(updateErrorActionCreator('No data found.'));
     }
 
     var newStickers = [];
@@ -119,11 +120,11 @@ class ReadSpreadsheet extends Component {
 
       }
     });
-    this.props.updateStickers(newStickers);
+    this.props.dispatch(updateStickersActionCreator(newStickers));
   }
 
   getFail(response) {
-    this.props.updateError('Error: ' + response.result.error.message);
+    this.props.dispatch(updateErrorActionCreator('Error: ' + response.result.error.message));
   }
 
 

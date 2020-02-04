@@ -11,11 +11,7 @@ class Content extends Component {
     render() {
         return (
             <div className={s.content}>
-                <Tabs updatePdf={this.props.updatePdf}
-                    filesList={this.props.filesList}
-                    updateFilesList={this.props.updateFilesList}
-                    stickers={this.props.stickers}
-                    updateSpreadsheetId={this.props.updateSpreadsheetId} />
+                <Tabs filesList={this.props.filesList} stickers={this.props.stickers} dispatch={this.props.dispatch} />
             </div>
         );
     }

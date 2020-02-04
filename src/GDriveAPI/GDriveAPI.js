@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import s from './GDriveAPI.module.css'
 import cs from './../Common.module.css';
+import {updateSpreadsheetIdActionCreator, updateFilesListActionCreator } from './../redux/store'
 
 const rus = "Сохраненные переводы";
 const eng = "Saved translations";
@@ -28,8 +29,8 @@ class GDriveAPI extends Component {
     var files = response.result.files;
     var sorted = this.bubbleSort(files);
     var maxSorted = sorted[sorted.length - 1];
-    this.props.updateSpreadsheetId(maxSorted.id);
-    this.props.updateFilesList(files);
+    this.props.dispatch(updateSpreadsheetIdActionCreator(maxSorted.id));
+    this.props.dispatch(updateFilesListActionCreator(files));
   }
 
   bubbleSort(arr) {
