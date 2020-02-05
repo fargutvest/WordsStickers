@@ -20,7 +20,7 @@ class Tabs extends Component {
         <div>
           <div className={s.tabpanel}>
             <div className={s.tab}>
-              <NavLink to="/stickers" activeClassName={s.active}>Stickers</NavLink>
+              <NavLink exact to="/" activeClassName={s.active}>Stickers</NavLink>
             </div>
             <div className={s.tab}>
               <NavLink to="/list" activeClassName={s.active}>List</NavLink>
@@ -32,9 +32,9 @@ class Tabs extends Component {
               <NavLink to="/gdriveapi" activeClassName={s.active}>GDriveAPI</NavLink>
             </div>
           </div>
-
+   
           <div className={s.tabcontent}>
-            <Route path='/stickers' render={() => <Stickers stickers={this.props.stickers} dispatch={this.props.dispatch} />} />
+            <Route exact path='/' render={() => <Stickers stickers={this.props.stickers} dispatch={this.props.dispatch} />} />
             <Route path="/list" render={() => <List stickers={this.props.stickers} />} />
             <Route path="/gsheet" component={GSheet} />
             <Route path="/gdriveapi" render={() => <GDriveAPI filesList={this.props.filesList} dispatch={this.props.dispatch} />} />

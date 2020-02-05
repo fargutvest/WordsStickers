@@ -87,8 +87,8 @@ class GDriveAPI extends Component {
 
   render() {
     return <div className={s.main}>
-      <button className={cs.button} onClick={this.listFiles}>Get gsheet {rus}/{eng} </button>
-      <button className={`${cs.button} ${cs.remove}`} onClick={this.cleanFiles}>Clean gsheets {rus}/{eng}</button>
+      <button className={cs.button} onClick={this.listFiles}>Get phrasebook files</button>
+      <button className={`${cs.button} ${cs.remove}`} onClick={this.cleanFiles}>Clean old phrasebook files</button>
       <p>
         <div>
           {this.renderFiles()}
