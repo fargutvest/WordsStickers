@@ -2,7 +2,7 @@ const UPDATE_ERROR = 'UPDATE_ERROR';
 
 const errorReducer = (state, action) => {
 
-    switch (action) {
+    switch (action.type) {
         case UPDATE_ERROR:
             state.error = action.newError;
             return state;

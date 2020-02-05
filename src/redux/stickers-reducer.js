@@ -2,7 +2,7 @@ const UPDATE_PDF = 'UPDATE_PDF';
 const UPDATE_STICKERS = 'UPDATE_STICKERS';
 
 const stickersReducer = (state, action) => {
-    switch (action) {
+    switch (action.type) {
         case UPDATE_PDF:
             state.pdf = action.newPdf;
             return state;

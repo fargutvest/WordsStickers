@@ -1,7 +1,7 @@
 const UPDATE_SPREADSHEET_ID = 'UPDATE_SPREADSHEET_ID';
 
 const spreadsheetReducer = (state, action) => {
-    switch (action) {
+    switch (action.type) {
         case UPDATE_SPREADSHEET_ID:
             state.spreadseetId = action.newSpreadseetId;
             return state;
