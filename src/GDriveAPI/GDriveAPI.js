@@ -1,69 +1,20 @@
 import React, { Component } from 'react';
 import s from './GDriveAPI.module.css'
 import cs from './../Common.module.css';
-import {updateSpreadsheetIdActionCreator } from './../redux/spreadsheet-reducer'
-import {updateFilesListActionCreator } from './../redux/gdrive-reducer'
+import { listFiles, bubbleSort } from './api'
 
-const rus = "Сохраненные переводы";
-const eng = "Saved translations";
 
 class GDriveAPI extends Component {
   constructor(props) {
     super(props);
-    this.listFiles = this.listFiles.bind(this);
-    this.listFilesSuccess = this.listFilesSuccess.bind(this);
-    this.bubbleSort = this.bubbleSort.bind(this);
-    this.cleanFiles = this.cleanFiles.bind(this);
+    
+    this.onClickGetPhrasebook = this.onClickGetPhrasebook.bind(this);
   }
 
-
-  listFiles() {
-    window.gapi.client.drive.files.list({
-      'pageSize': 100,
-      q: "mimeType='application/vnd.google-apps.spreadsheet'",
-      q: `name='${eng}' or name='${rus}'`,
-      'fields': "nextPageToken, files(id, name, createdTime, modifiedTime)"
-    }).then(this.listFilesSuccess);
-  }
-
-  listFilesSuccess(response) {
-    var files = response.result.files;
-    var sorted = this.bubbleSort(files);
-    var maxSorted = sorted[sorted.length - 1];
-    this.props.dispatch(updateSpreadsheetIdActionCreator(maxSorted.id));
-    this.props.dispatch(updateFilesListActionCreator(files));
-  }
-
-  bubbleSort(arr) {
-    let n = arr.length;
-    for (var i = 0; i < n - 1; i++) {
-      for (var j = 0; j < n - i - 1; j++) {
-        if ((Date.parse(arr[j].createdTime) > Date.parse(arr[j + 1].createdTime))) {
-          let temp = arr[j];
-          arr[j] = arr[j + 1];
-          arr[j + 1] = temp;
-        }
-      }
-    }
-    return arr;
-  }
-
-  cleanFiles() {
-    var sorted = this.bubbleSort(this.props.filesList);
-
-    for (var i = 0; i < sorted.length - 1; i++) {
-      var request = window.gapi.client.drive.files.delete({
-        'fileId': sorted[i].id
-      });
-      request.execute(function (resp) {
-        console.log(resp);
-      });
-    }
-  }
 
   renderFiles() {
     if (this.props.filesList && this.props.filesList.length > 0) {
-      var sorted = this.bubbleSort(this.props.filesList);
+      var sorted = bubbleSort(this.props.filesList);
       var maxSorted = sorted[sorted.length - 1];
 
       var filesList = [];
@@ -84,10 +35,13 @@ class GDriveAPI extends Component {
     }
   }
 
+  onClickGetPhrasebook() {
+    listFiles(this.props.dispatch);
+  }
 
   render() {
     return <div className={s.main}>
-      <button className={cs.button} onClick={this.listFiles}>Get phrasebook files</button>
+      <button className={cs.button} onClick={this.onClickGetPhrasebook}>Get phrasebook files</button>
       <button className={`${cs.button} ${cs.remove}`} onClick={this.cleanFiles}>Clean old phrasebook files</button>
       <p>
         <div>

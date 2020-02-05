@@ -4,6 +4,7 @@ import s from './ReadSpreadsheet.module.css'
 import cs from './../Common.module.css'
 import {updateErrorActionCreator} from './../redux/error-reducer';
 import {updateStickersActionCreator} from './../redux/stickers-reducer';
+import { listFiles, bubbleSort } from './../GDriveAPI/api'
 
 const spreadsheetIdref = React.createRef();
 
@@ -19,6 +20,7 @@ class ReadSpreadsheet extends Component {
     this.getSuccess = this.getSuccess.bind(this);
     this.getFail = this.getFail.bind(this);
     this.handleReadSpreadsheetClick = this.handleReadSpreadsheetClick.bind(this);
+    this.handleReadNewestSpreadsheetClick = this.handleReadNewestSpreadsheetClick.bind(this);
   }
 
   // private static void VisitWooordhunt(string en, out string spell, out string rus)
@@ -77,6 +79,10 @@ class ReadSpreadsheet extends Component {
       spreadsheetId: spreadsheetIdref.current.value,
       range: RANGE,
     }).then(this.getSuccess, this.getFail);
+  }
+
+  handleReadNewestSpreadsheetClick() {
+    listFiles(this.props.dispatch);
   }
 
   getSuccess(response) {
@@ -148,16 +154,19 @@ class ReadSpreadsheet extends Component {
       <div>
         <table width="100%">
           <tr>
-            <td width="70%">
-              <label className="w3-text-blue"><b>Spreadsheet ID:</b></label>
+            <td width="58%">
+              <label className="w3-text-blue"><b>Phrasebook ID:</b></label>
               <input className="w3-input w3-border" ref = {spreadsheetIdref} type="text" size="100" />
             </td>
             <td width="12%">
-              <button id="read_spreadsheet" className={cs.button} onClick={this.handleReadSpreadsheetClick}>Read phrasebook</button>
+              <button id="read_spreadsheet" className={cs.button} onClick={this.handleReadSpreadsheetClick}>Read specified phrasebook</button>
+            </td>
+            <td width="12%">
+              <button id="read_spreadsheet" className={cs.button} onClick={this.handleReadNewestSpreadsheetClick}>Get newest phrasebook ID</button>
             </td>
             <td width="12%">
               <Pdf id="id_pdf" targetRef={this.props.pdf} filename="stickers.pdf" options={options} x={2} y={2}>
-                {({ toPdf }) => <button id="pdf" className={cs.button} onClick={toPdf}>Dowdload</button>}
+                {({ toPdf }) => <button id="pdf" className={cs.button} onClick={toPdf}>Dowdload stickers in pdf</button>}
               </Pdf>
             </td>
           </tr>
