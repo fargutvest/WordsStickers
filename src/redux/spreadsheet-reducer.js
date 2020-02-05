@@ -5,6 +5,8 @@ const spreadsheetReducer = (state, action) => {
         case UPDATE_SPREADSHEET_ID:
             state.spreadseetId = action.newSpreadseetId;
             return state;
+        default:
+            return state;
     }
 }
 

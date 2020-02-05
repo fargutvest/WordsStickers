@@ -6,6 +6,8 @@ const errorReducer = (state, action) => {
         case UPDATE_ERROR:
             state.error = action.newError;
             return state;
+            default:
+            return state;
     }
 }
 

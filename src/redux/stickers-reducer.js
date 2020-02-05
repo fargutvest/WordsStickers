@@ -9,6 +9,8 @@ const stickersReducer = (state, action) => {
         case UPDATE_STICKERS:
             state.stickers = action.newStickers;
             return state;
+        default:
+            return state;
     }
 }
 

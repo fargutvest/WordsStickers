@@ -9,6 +9,8 @@ const signinReducer = (state, action) => {
         case UPDATE_PROFILE:
             state.profile = action.profile;
             return state;
+        default:
+            return state;
     }
 }
 
