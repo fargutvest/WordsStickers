@@ -1,4 +1,5 @@
 .Sticker {
+    display: inline-block;
     text-align: center;
     border: 1px double black;
     width: 277px;

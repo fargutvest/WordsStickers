@@ -40,33 +40,14 @@ class ReadSpreadsheet extends Component {
   readSuccess(spreadsheetLines) {
     this.showError(spreadsheetLines.length > 0 ? "" : "No data found.");
 
-    var stickersPage = [];
-    var linesCounter = 0;
-    var stickersRow = [];
-    spreadsheetLines.forEach(lineCells => {
-
-      linesCounter++;
-      stickersRow.push({
+    var stickers = spreadsheetLines.map(lineCells => {
+      return {
         English: lineCells[0],
         Spelling: "---",
         Russian: lineCells[1]
-      })
-      if (stickersRow.length == countStickersInRow || spreadsheetLines.length - linesCounter == 0) {
-        var need = countStickersInRow - stickersRow.length;
-        if (need > 0) {
-          for (var i = 0; i < need; i++) {
-            stickersRow.push({
-              English: "---",
-              Spelling: "---",
-              Russian: "---"
-            })
-          }
-        }
-        stickersPage.push(stickersRow);
-        stickersRow = [];
       }
     });
-    this.props.dispatch(updateStickersActionCreator(stickersPage));
+    this.props.dispatch(updateStickersActionCreator(stickers));
   }
 
 

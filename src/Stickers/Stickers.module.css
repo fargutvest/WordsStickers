@@ -5,3 +5,7 @@
   max-height: 80vh;
   max-width: 100%;
 }
+
+.StickersRow {
+  height: 150px;
+}
