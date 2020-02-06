@@ -9,6 +9,8 @@ import {
   Route, NavLink
 } from "react-router-dom";
 
+const url = '/EnglishWordsStickersJS';
+
 class Tabs extends Component {
   constructor(props) {
     super(props);
@@ -20,24 +22,24 @@ class Tabs extends Component {
         <div>
           <div className={s.tabpanel}>
             <div className={s.tab}>
-              <NavLink exact to="/" activeClassName={s.active}>Stickers</NavLink>
+              <NavLink exact to= {`${url}/`} activeClassName={s.active}>Stickers</NavLink>
             </div>
             <div className={s.tab}>
-              <NavLink to="/list" activeClassName={s.active}>List</NavLink>
+              <NavLink to={`${url}/list`} activeClassName={s.active}>List</NavLink>
             </div>
             <div className={s.tab}>
-              <NavLink to="/gsheet" activeClassName={s.active}>GSheet</NavLink>
+              <NavLink to={`${url}/gsheet`} activeClassName={s.active}>GSheet</NavLink>
             </div>
             <div className={s.tab}>
-              <NavLink to="/gdriveapi" activeClassName={s.active}>GDriveAPI</NavLink>
+              <NavLink to={`${url}/gdriveapi`} activeClassName={s.active}>GDriveAPI</NavLink>
             </div>
           </div>
    
           <div className={s.tabcontent}>
-            <Route exact path='/' render={() => <Stickers stickers={this.props.stickers} dispatch={this.props.dispatch} />} />
-            <Route path="/list" render={() => <List stickers={this.props.stickers} />} />
-            <Route path="/gsheet" component={GSheet} />
-            <Route path="/gdriveapi" render={() => <GDrive filesList={this.props.filesList} dispatch={this.props.dispatch} />} />
+            <Route exact path={`${url}/`} render={() => <Stickers stickers={this.props.stickers} dispatch={this.props.dispatch} />} />
+            <Route path={`${url}/list`} render={() => <List stickers={this.props.stickers} />} />
+            <Route path={`${url}/gsheet`} component={GSheet} />
+            <Route path={`${url}/gdriveapi`} render={() => <GDrive filesList={this.props.filesList} dispatch={this.props.dispatch} />} />
           </div>
         </div>
       </BrowserRouter>
