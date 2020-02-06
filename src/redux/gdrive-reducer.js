@@ -1,6 +1,10 @@
 const UPDATE_FILES_LIST = 'UPDATE_FILES_LIST';
 
-const gdriveReducer = (state, action) => {
+var initialState = {
+    filesList: []
+}
+
+const gdriveReducer = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_FILES_LIST:
             state.filesList = action.newFilesList;

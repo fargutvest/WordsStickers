@@ -1,7 +1,40 @@
+import React from 'react';
+
 const UPDATE_PDF = 'UPDATE_PDF';
 const UPDATE_STICKERS = 'UPDATE_STICKERS';
 
-const stickersReducer = (state, action) => {
+var stickers = [
+    [
+      {
+        English: "Hello1",
+        Spelling: "spelling =)",
+        Russian: "Privet"
+      },
+      {
+        English: "Hello2",
+        Spelling: "spelling =)",
+        Russian: "Privet"
+      },
+      {
+        English: "Hello3",
+        Spelling: "spelling =)",
+        Russian: "Privet"
+      },
+      {
+        English: "Hello4",
+        Spelling: "spelling =)",
+        Russian: "Privet"
+      }
+    ]
+];
+
+var initialState = {
+    pdf: React.createRef(),
+    stickers: stickers
+}
+
+
+const stickersReducer = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_PDF:
             state.pdf = action.newPdf;

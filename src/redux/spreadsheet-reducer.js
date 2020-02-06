@@ -1,6 +1,10 @@
 export const UPDATE_SPREADSHEET_ID = 'UPDATE_SPREADSHEET_ID';
 
-const spreadsheetReducer = (state, action) => {
+var initialState = {
+    spreadseetId: localStorage.getItem(UPDATE_SPREADSHEET_ID)
+}
+
+const spreadsheetReducer = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_SPREADSHEET_ID:
             state.spreadseetId = action.newSpreadseetId;

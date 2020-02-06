@@ -1,7 +1,12 @@
 const UPDATE_IS_SIGNED_IN = 'UPDATE_IS_SIGNED_IN';
 const UPDATE_PROFILE = 'UPDATE_PROFILE';
 
-const signinReducer = (state, action) => {
+var initialState = {
+    isSignedIn: false,
+    profile: ''
+}
+
+const signinReducer = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_IS_SIGNED_IN:
             state.isSignedIn = action.isSignedIn;
