@@ -2,142 +2,73 @@ import React, { Component } from 'react';
 import Pdf from "react-to-pdf";
 import s from './ReadSpreadsheet.module.css'
 import cs from './../Common.module.css'
-import {updateErrorActionCreator} from './../redux/error-reducer';
-import {updateStickersActionCreator} from './../redux/stickers-reducer';
-import { listFiles, bubbleSort } from './../GDriveAPI/api'
+import { updateErrorActionCreator } from './../redux/error-reducer';
+import { updateStickersActionCreator } from './../redux/stickers-reducer';
+import { updateSpreadsheetIdActionCreator } from '../redux/spreadsheet-reducer'
+import { listFiles, getLastCreatedFile } from '../API/GDriveAPI'
+import { getValues } from '../API/GSheetsAPI'
 
 const spreadsheetIdref = React.createRef();
+const countStickersInRow = 4;
+
 
 const options = {
   orientation: 'landscape'
 };
 
-const RANGE = "C:D";
 
 class ReadSpreadsheet extends Component {
   constructor(props) {
     super(props);
-    this.getSuccess = this.getSuccess.bind(this);
-    this.getFail = this.getFail.bind(this);
+    this.readSuccess = this.readSuccess.bind(this);
+    this.showError = this.showError.bind(this);
     this.handleReadSpreadsheetClick = this.handleReadSpreadsheetClick.bind(this);
-    this.handleReadNewestSpreadsheetClick = this.handleReadNewestSpreadsheetClick.bind(this);
+    this.handleGetNewestSpreadsheetIdClick = this.handleGetNewestSpreadsheetIdClick.bind(this);
   }
 
-  // private static void VisitWooordhunt(string en, out string spell, out string rus)
-  // {
-  //     spell = "";
-  //     rus = "";
-  //     try
-  //     {
-  //         var url = $"http://wooordhunt.ru/word/{en}";
-  //         var web = new XmlDocument();
-  //         web.Load(url);
-  //         spell = web.DocumentElement.SelectSingleNode("//*[@id=\"uk_tr_sound\"]/span[1]")?.InnerText ?? "";
-  //         rus = web.DocumentElement.SelectSingleNode("//*[@id=\"wd_content\"]/span/text()")?.InnerText ?? "";
-  //     }
-  //     catch (Exception)
-  //     {
-  //         // ignored
-  //     }
-  // }
-
-  // visitWoordhunt(eng) {
-  //   var url = `https://wooordhunt.ru/word/${eng}`;
-  //   var xmlHttp = new XMLHttpRequest();
-  //   xmlHttp.onreadystatechange = this.getInfo;
-  //   xmlHttp.open( "GET", url, false );
-  //   xmlHttp.send();
-  //   var responseText = xmlHttp.responseText;
-  //   return responseText;
-  // }
-
-  // getData() {
-  //   // create a new XMLHttpRequest
-  //   var xhr = new XMLHttpRequest()
-
-  //   // get a callback when the server responds
-  //   xhr.addEventListener('load', () => {
-  //     // update the state of the component with the result here
-  //     console.log(xhr.responseText)
-  //   })
-  //   // open the request with the verb and the url
-  //   xhr.open('GET', 'https://wooordhunt.ru')
-  //   // send the request
-  //   xhr.send()
-  // }
-
-  // getInfo(resp) {
-  // 	// if (request.readyState == 4) {
-  // 	// 	var val = request.responseText;
-  // 	// 	document.getElementById('chiru').innerHTML = val;
-  // 	// }
-  // }
+  handleGetNewestSpreadsheetIdClick() {
+    listFiles((files) => {
+      var lastCreatedFile = getLastCreatedFile(files);
+      this.props.dispatch(updateSpreadsheetIdActionCreator(lastCreatedFile.id));
+    });
+  }
 
   handleReadSpreadsheetClick() {
-    this.updateLocalStorage();
-    window.gapi.client.sheets.spreadsheets.values.get({
-      spreadsheetId: spreadsheetIdref.current.value,
-      range: RANGE,
-    }).then(this.getSuccess, this.getFail);
+    getValues(spreadsheetIdref.current.value, this.readSuccess, (message) => { this.showError("Error" + message) });
   }
 
-  handleReadNewestSpreadsheetClick() {
-    listFiles(this.props.dispatch);
-  }
+  readSuccess(spreadsheetLines) {
+    this.showError(spreadsheetLines.length > 0 ? "" : "No data found.");
 
-  getSuccess(response) {
-    var values = response.result.values;
-    var words = [];
-    if (values.length > 0) {
-      for (var i = 0; i < values.length; i++) {
-        var row = values[i];
-        words.push(row);
-      }
-      this.props.dispatch(updateErrorActionCreator(""));
-    } else {
-      this.props.dispatch(updateErrorActionCreator('No data found.'));
-    }
+    var stickersPage = [];
+    var linesCounter = 0;
+    var stickersRow = [];
+    spreadsheetLines.forEach(lineCells => {
 
-    var newStickers = [];
-    var rowCounter = 0;
-    var wordsCounter = 0;
-    var rowModel = [];
-    words.forEach(element => {
-      rowCounter++;
-      wordsCounter++;
-      rowModel.push({
-        English: element[0],
+      linesCounter++;
+      stickersRow.push({
+        English: lineCells[0],
         Spelling: "---",
-        Russian: element[1]
+        Russian: lineCells[1]
       })
-      if (rowCounter == 4 || words.length - wordsCounter == 0) {
-        var need = 4 - rowModel.length;
+      if (stickersRow.length == countStickersInRow || spreadsheetLines.length - linesCounter == 0) {
+        var need = countStickersInRow - stickersRow.length;
         if (need > 0) {
           for (var i = 0; i < need; i++) {
-            rowModel.push({
+            stickersRow.push({
               English: "---",
               Spelling: "---",
               Russian: "---"
             })
           }
         }
-        newStickers.push(rowModel);
-        rowModel = [];
-        rowCounter = 0;
-
+        stickersPage.push(stickersRow);
+        stickersRow = [];
       }
     });
-    this.props.dispatch(updateStickersActionCreator(newStickers));
+    this.props.dispatch(updateStickersActionCreator(stickersPage));
   }
 
-  getFail(response) {
-    this.props.dispatch(updateErrorActionCreator('Error: ' + response.result.error.message));
-  }
-
-
-  updateLocalStorage() {
-    localStorage.setItem('SPREADSHEET_ID', spreadsheetIdref.current.value);
-  }
 
   getSnapshotBeforeUpdate() {
     if (this.props.spreadseetId) {
@@ -145,8 +76,8 @@ class ReadSpreadsheet extends Component {
     }
   }
 
-  componentDidMount() {
-    spreadsheetIdref.current.value = localStorage.getItem('SPREADSHEET_ID');
+  showError(message) {
+    this.props.dispatch(updateErrorActionCreator(message));
   }
 
   render() {
@@ -156,13 +87,13 @@ class ReadSpreadsheet extends Component {
           <tr>
             <td width="58%">
               <label className="w3-text-blue"><b>Phrasebook ID:</b></label>
-              <input className="w3-input w3-border" ref = {spreadsheetIdref} type="text" size="100" />
+              <input className="w3-input w3-border" ref={spreadsheetIdref} type="text" size="100" />
+            </td>
+            <td width="12%">
+              <button id="read_spreadsheet" className={cs.button} onClick={this.handleGetNewestSpreadsheetIdClick}>Get newest phrasebook ID</button>
             </td>
             <td width="12%">
               <button id="read_spreadsheet" className={cs.button} onClick={this.handleReadSpreadsheetClick}>Read specified phrasebook</button>
-            </td>
-            <td width="12%">
-              <button id="read_spreadsheet" className={cs.button} onClick={this.handleReadNewestSpreadsheetClick}>Get newest phrasebook ID</button>
             </td>
             <td width="12%">
               <Pdf id="id_pdf" targetRef={this.props.pdf} filename="stickers.pdf" options={options} x={2} y={2}>
@@ -174,7 +105,6 @@ class ReadSpreadsheet extends Component {
       </div>
     );
   }
-
 
 }
 

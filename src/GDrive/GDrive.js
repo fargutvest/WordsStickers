@@ -1,30 +1,32 @@
 import React, { Component } from 'react';
-import s from './GDriveAPI.module.css'
+import s from './GDrive.module.css'
 import cs from './../Common.module.css';
-import { listFiles, bubbleSort } from './api'
+import { listFiles, getLastCreatedFile } from '../API/GDriveAPI'
+import { updatePhrasebookFilesActionCreator } from '../redux/gdrive-reducer'
 
 
-class GDriveAPI extends Component {
+class GDrive extends Component {
   constructor(props) {
     super(props);
-    
+
     this.onClickGetPhrasebook = this.onClickGetPhrasebook.bind(this);
   }
 
 
   renderFiles() {
     if (this.props.filesList && this.props.filesList.length > 0) {
-      var sorted = bubbleSort(this.props.filesList);
-      var maxSorted = sorted[sorted.length - 1];
+      var lastCreatedFile = getLastCreatedFile(this.props.filesList);
 
       var filesList = [];
-      filesList.push('File with max createdTime:');
-      filesList.push(maxSorted.name + ' (' + maxSorted.id + ')' + ' Created:' + maxSorted.createdTime + ' Modified:' + maxSorted.modifiedTime);
+      filesList.push('Last created phrasebook file:');
+      filesList.push(lastCreatedFile.name + ' (' + lastCreatedFile.id + ')' + ' Created:' + lastCreatedFile.createdTime + ' Modified:' + lastCreatedFile.modifiedTime);
       filesList.push(".");
-      filesList.push('All gsheet files:');
-      if (sorted && sorted.length > 0) {
-        for (var i = 0; i < sorted.length - 1; i++) {
-          var file = sorted[i];
+      filesList.push('Phrasebook files:');
+
+      var files = this.props.filesList;
+      if (files && files.length > 0) {
+        for (var i = 0; i < files.length; i++) {
+          var file = files[i];
           filesList.push(file.name + ' (' + file.id + ')' + ' Created:' + file.createdTime + ' Modified:' + file.modifiedTime);
         }
       } else {
@@ -36,7 +38,9 @@ class GDriveAPI extends Component {
   }
 
   onClickGetPhrasebook() {
-    listFiles(this.props.dispatch);
+    listFiles((files) => {
+      this.props.dispatch(updatePhrasebookFilesActionCreator(files));
+    });
   }
 
   render() {
@@ -53,4 +57,4 @@ class GDriveAPI extends Component {
 }
 
 
-export default GDriveAPI;
+export default GDrive;

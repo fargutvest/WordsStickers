@@ -4,6 +4,7 @@ import errorReducer from "./error-reducer";
 import spreadsheetReducer from "./spreadsheet-reducer";
 import signinReducer from "./signin-reducer";
 import stickersReducer from "./stickers-reducer";
+import {UPDATE_SPREADSHEET_ID} from './spreadsheet-reducer'
 
 let store = {
   _state:
@@ -33,7 +34,7 @@ let store = {
       ],
     ],
     pdf: React.createRef(),
-    spreadseetId: "",
+    spreadseetId: localStorage.getItem(UPDATE_SPREADSHEET_ID),
     error: "",
     filesList: [],
     isSignedIn: false,
