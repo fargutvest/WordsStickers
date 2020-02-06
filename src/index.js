@@ -10,6 +10,9 @@ let rerender = (state) => {
   );
 }
 
-store.subscribe(rerender);
+store.subscribe(() => {
+  var state = store.getState()
+  rerender(state);
+});
 rerender(store.getState());
 
