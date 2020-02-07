@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import s from './GDrive.module.css'
 import cs from './../Common.module.css';
 import { listFiles, getLastCreatedFile } from '../API/GDriveAPI'
-import { updatePhrasebookFilesActionCreator } from '../redux/gdrive-reducer'
+
 
 
 class GDrive extends Component {
@@ -39,7 +39,7 @@ class GDrive extends Component {
 
   onClickGetPhrasebook() {
     listFiles((files) => {
-      this.props.dispatch(updatePhrasebookFilesActionCreator(files));
+      this.props.onUpdatePhrasebook(files);
     });
   }
 

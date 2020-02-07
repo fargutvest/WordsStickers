@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Stickers from './../Stickers/Stickers.js';
-import List from './../List/List.js';
+import StickersContainer from './../Stickers/StickersContainer.js';
+import ListContainer from './../List/ListContainer.js';
 import GSheet from './../GSheet/GSheet.js';
-import GDrive from './../GDrive/GDrive.js';
+import GDriveContainer from './../GDrive/GDriveContainer.js';
 import s from './Tabs.module.css';
 import {
   BrowserRouter,
@@ -36,10 +36,10 @@ class Tabs extends Component {
           </div>
    
           <div className={s.tabcontent}>
-            <Route exact path={`${url}/`} render={() => <Stickers stickers={this.props.stickers} dispatch={this.props.dispatch} />} />
-            <Route path={`${url}/list`} render={() => <List stickers={this.props.stickers} />} />
+            <Route exact path={`${url}/`} render={() => <StickersContainer store={this.props.store} />} />
+            <Route path={`${url}/list`} render={() => <ListContainer store={this.props.store} />} />
             <Route path={`${url}/gsheet`} component={GSheet} />
-            <Route path={`${url}/gdriveapi`} render={() => <GDrive filesList={this.props.filesList} dispatch={this.props.dispatch} />} />
+            <Route path={`${url}/gdriveapi`} render={() => <GDriveContainer store={this.props.store} />} />
           </div>
         </div>
       </BrowserRouter>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import s from './SignInWithGoogle.module.css';
 import cs from './../Common.module.css';
-import { updateIsSignedInActionCreator, updateProfileActionCreator } from './../redux/signin-reducer'
+
 
 const CLIENT_ID = "722524747087-sgjsjequa1sv10c8m3g9fl6gtqoa39eg.apps.googleusercontent.com";
 const API_KEY = "AIzaSyANRAmPJFTjvI2lxfJpq82rd4SHtpBdKY0";
@@ -19,14 +19,7 @@ class SignInWithGoogle extends Component {
     this.initClientFail = this.initClientFail.bind(this);
   }
 
-  updateLocalStorage() {
-    localStorage.setItem('CLIENT_ID', CLIENT_ID);
-    localStorage.setItem('API_KEY', API_KEY);
-  }
-
   initClient() {
-    this.updateLocalStorage();
-
     window.gapi.client.init({
       apiKey: API_KEY,
       clientId: CLIENT_ID,
@@ -38,11 +31,11 @@ class SignInWithGoogle extends Component {
   initClientSuccess() {
     window.gapi.auth2.getAuthInstance().isSignedIn.listen(this.updateSigninStatus);
     this.updateSigninStatus(window.gapi.auth2.getAuthInstance().isSignedIn.get());
-    this.props.updateError("");
+    this.props.onShowError("");
   }
 
   initClientFail(error) {
-    this.props.updateError(JSON.stringify(error, null, 2));
+    this.props.onShowError(JSON.stringify(error, null, 2));
   }
 
 
@@ -54,9 +47,9 @@ class SignInWithGoogle extends Component {
       console.log(profile);
     }
 
-    this.props.dispath(updateProfileActionCreator(profile));
+    this.props.onUpdateProfile(profile);
 
-    this.props.dispath(updateIsSignedInActionCreator(isSignedIn));
+    this.props.onUpdateIsSignedIn(isSignedIn);
   }
 
   handleSigninClick() {

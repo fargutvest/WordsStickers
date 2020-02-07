@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import SignInWithGoogle from '../SignInWithGoogle/SignInWithGoogle';
-import ErrorBar from '../ErrorBar/ErrorBar';
+import SigninWithGoogleContainer from '../SignInWithGoogle/SigninWitGoogleContainer';
+import ErrorBarContainer from '../ErrorBar/ErrorBarContainer';
 import s from './Navbar.module.css';
 
 
@@ -13,9 +13,9 @@ class Navbar extends Component {
         return (
             <div className={s.navbar}>
                 <p align="center">
-                    <SignInWithGoogle isSignedIn ={this.props.isSignedIn} profile = {this.props.profile} dispath={this.props.dispath} />
+                    <SigninWithGoogleContainer store ={this.props.store} />
                     <p>
-                        <ErrorBar error={this.props.error} />
+                        <ErrorBarContainer store={this.props.store} />
                     </p>
                 </p>
             </div>

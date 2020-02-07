@@ -13,9 +13,9 @@ class App extends Component {
   render() {
     return (
       <div className={s.app_wrapper}>
-        <Header spreadseetId={this.props.state.spreadsheetPage.spreadseetId} pdf={this.props.state.stickersPage.pdf} dispatch={this.props.dispatch}></Header>
-        <Navbar isSignedIn ={this.props.state.signInPage.isSignedIn}  profile = {this.props.state.signInPage.profile} error={this.props.state.errorPage.error} dispath={this.props.dispatch} />
-        <Content stickers={this.props.state.stickersPage.stickers} filesList={this.props.state.filesListPage.filesList} dispatch={this.props.dispatch} />
+        <Header store={this.props.store}></Header>
+        <Navbar store={this.props.store}/>
+        <Content store={this.props.store} />
         <Footer />
       </div>
     );

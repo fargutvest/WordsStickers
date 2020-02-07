@@ -2,15 +2,10 @@ import React, { Component } from 'react';
 import Pdf from "react-to-pdf";
 import s from './ReadSpreadsheet.module.css'
 import cs from './../Common.module.css'
-import { updateErrorActionCreator } from './../redux/error-reducer';
-import { updateStickersActionCreator } from './../redux/stickers-reducer';
-import { updateSpreadsheetIdActionCreator } from '../redux/spreadsheet-reducer'
 import { listFiles, getLastCreatedFile } from '../API/GDriveAPI'
 import { getValues } from '../API/GSheetsAPI'
 
 const spreadsheetIdref = React.createRef();
-const countStickersInRow = 4;
-
 
 const options = {
   orientation: 'landscape'
@@ -29,7 +24,7 @@ class ReadSpreadsheet extends Component {
   handleGetNewestSpreadsheetIdClick() {
     listFiles((files) => {
       var lastCreatedFile = getLastCreatedFile(files);
-      this.props.dispatch(updateSpreadsheetIdActionCreator(lastCreatedFile.id));
+      this.props.onUpdateSpreadsheetId(lastCreatedFile.id);
     });
   }
 
@@ -47,7 +42,7 @@ class ReadSpreadsheet extends Component {
         Russian: lineCells[1]
       }
     });
-    this.props.dispatch(updateStickersActionCreator(stickers));
+    this.props.onUpdateStickers(stickers);
   }
 
 
@@ -58,7 +53,7 @@ class ReadSpreadsheet extends Component {
   }
 
   showError(message) {
-    this.props.dispatch(updateErrorActionCreator(message));
+    this.props.onShowError(message);
   }
 
   render() {

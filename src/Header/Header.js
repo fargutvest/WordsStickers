@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReadSpreadsheet from '../ReadSpreadsheet/ReadSpreadsheet';
+import ReadSpreadsheetContainer from './../ReadSpreadsheet/ReadSpreadContainter'
 import s from './Header.module.css'
 
 class Header extends Component {
@@ -10,7 +10,7 @@ class Header extends Component {
     render() {
         return (
             <div className={s.header}>
-                <ReadSpreadsheet spreadseetId={this.props.spreadseetId} pdf={this.props.pdf} dispatch={this.props.dispatch}></ReadSpreadsheet>
+                <ReadSpreadsheetContainer store={this.props.store} />
             </div>
         );
     }
