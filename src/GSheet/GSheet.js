@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './GSheet.module.css';
 
-const GSheet = props => {
+const GSheet = () => {
 
     return (
         <div className={s.main}>
