@@ -1,40 +1,44 @@
 .Sticker {
-    display: inline-block;
-    text-align: center;
-    border: 1px double black;
-    width: 277px;
-    height: 150px;
-  }
+  display: inline-block;
+  text-align: center;
+  border: 1px double black;
+  width: 277px;
+  height: 150px;
+}
 
-  /* .Sticker:hover{
+/* .Sticker:hover{
     background-color: lightyellow
   }
    */
 
-   .MouseOver{
-    background-color: #FFFACD
-   }
-   
-  .Part {
-    border: 1px double lightgray;
-    height: 50px;
-    /*display: table-cell;
+.MouseOver {
+  background-color: #FFFACD
+}
+
+.Studied {
+  background-color: #CFF9C9;
+}
+
+.Part {
+  border: 1px double lightgray;
+  height: 50px;
+  /*display: table-cell;
       vertical-align: middle;
       */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .English {
-    font-style: normal;
-    font-weight: 600;
-  }
-  
-  .Spelling {
-    color: gray;
-  }
-  
-  .Russian {
-    font-style: normal;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.English {
+  font-style: normal;
+  font-weight: 600;
+}
+
+.Spelling {
+  color: gray;
+}
+
+.Russian {
+  font-style: normal;
+}

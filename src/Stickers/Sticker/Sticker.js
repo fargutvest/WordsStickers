@@ -7,6 +7,7 @@ class Sticker extends Component {
     super(props);
     this.onMouseOver = this.onMouseOver.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
   onMouseOver() {
@@ -17,12 +18,17 @@ class Sticker extends Component {
     this.props.onMouseLeave(this.props.sticker.id);
   }
 
+  onClick() {
+    this.props.onStudied({ stickerId: this.props.sticker.id, isStudied: !this.props.sticker.isStudied })
+  }
+
   render() {
     let sticker = this.props.sticker;
 
     var mo = sticker.isMouseOver ? s.MouseOver : "";
+    var st = sticker.isStudied ? s.Studied : ""
     return (
-      <div className={`${s.Sticker} ${mo}`} onMouseOver={this.onMouseOver} onMouseLeave={this.onMouseLeave}>
+      <div className={`${s.Sticker} ${mo} ${st}`} onMouseOver={this.onMouseOver} onMouseLeave={this.onMouseLeave} onClick={this.onClick}>
         <div className={`${s.English} ${s.Part}`}>{sticker.content.English}</div>
         <div className={`${s.Spelling} ${s.Part}`}>{sticker.content.Spelling}</div>
         <div className={`${s.Russian} ${s.Part}`}>{sticker.content.Russian}</div>
