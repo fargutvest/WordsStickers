@@ -13,6 +13,6 @@ const errorReducer = (state = initialState, action) => {
     }
 }
 
-export const updateErrorActionCreator = (newError) => ({ type: UPDATE_ERROR, newError: newError });
+export const updateErrorAC = (newError) => ({ type: UPDATE_ERROR, newError: newError });
 
 export default errorReducer;

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReadSpreadsheat from './ReadSpreadsheet'
-import { updateErrorActionCreator } from './../redux/error-reducer';
-import { updateStickersActionCreator } from './../redux/stickers-reducer';
-import { updateSpreadsheetIdActionCreator } from '../redux/spreadsheet-reducer'
+import { updateErrorAC } from './../redux/error-reducer';
+import { updateStickersAC } from './../redux/stickers-reducer';
+import { updateSpreadsheetIdAC } from '../redux/spreadsheet-reducer'
 import { connect } from 'react-redux';
 
 let mapStateToProps = (state) => {
@@ -15,13 +15,13 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
     return {
         onUpdateSpreadsheetId: (spreadsheetId) => {
-            dispatch(updateSpreadsheetIdActionCreator(spreadsheetId))
+            dispatch(updateSpreadsheetIdAC(spreadsheetId))
         },
         onShowError: (message) => {
-            dispatch(updateErrorActionCreator(message))
+            dispatch(updateErrorAC(message))
         },
         onUpdateStickers: (stickers) => {
-            dispatch(updateStickersActionCreator(stickers))
+            dispatch(updateStickersAC(stickers))
         }
     }
 }

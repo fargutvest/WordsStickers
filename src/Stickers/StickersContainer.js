@@ -1,6 +1,7 @@
 import React from 'react';
 import Stickers from './Stickers'
-import { updatePdfActionCreator } from './../redux/stickers-reducer'
+import { updatePdfAC } from './../redux/stickers-reducer'
+import { mouseOverStickerAC, mouseLeaveStickerAC,  studiedStickerAC } from './../redux/stickers-reducer';
 import { connect } from 'react-redux'
 
 let mapStateToProps = (state) => {
@@ -11,7 +12,10 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        onPdfUpdate: (newPdf) => dispatch(updatePdfActionCreator(newPdf))
+        onPdfUpdate: (newPdf) => dispatch(updatePdfAC(newPdf)),
+        onMouseOver: (stickerId) => dispatch(mouseOverStickerAC(stickerId)),
+        onMouseLeave: (stickerId) => dispatch(mouseLeaveStickerAC(stickerId)),
+        onStudied: (info) => dispatch(studiedStickerAC(info)),
     }
 }
 

@@ -14,7 +14,7 @@ const spreadsheetReducer = (state = initialState, action) => {
     }
 }
 
-export const updateSpreadsheetIdActionCreator = (newSpreadseetId) => ({ type: UPDATE_SPREADSHEET_ID, newSpreadseetId: newSpreadseetId });
+export const updateSpreadsheetIdAC = (newSpreadseetId) => ({ type: UPDATE_SPREADSHEET_ID, newSpreadseetId: newSpreadseetId });
 
 
 export default spreadsheetReducer;

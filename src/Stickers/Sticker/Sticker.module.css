@@ -5,7 +5,16 @@
     width: 277px;
     height: 150px;
   }
-  
+
+  /* .Sticker:hover{
+    background-color: lightyellow
+  }
+   */
+
+   .MouseOver{
+    background-color: #FFFACD
+   }
+   
   .Part {
     border: 1px double lightgray;
     height: 50px;

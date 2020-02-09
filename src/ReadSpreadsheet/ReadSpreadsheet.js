@@ -36,11 +36,16 @@ class ReadSpreadsheet extends Component {
   readSuccess(spreadsheetLines) {
     this.showError(spreadsheetLines.length > 0 ? "" : "No data found.");
 
-    var stickers = spreadsheetLines.map(lineCells => {
+    var stickers = spreadsheetLines.map((lineCells, index) => {
       return {
-        English: lineCells[0],
-        Spelling: "---",
-        Russian: lineCells[1]
+        content: {
+          English: lineCells[0],
+          Spelling: "---",
+          Russian: lineCells[1]
+        },
+        id: index,
+        isMouseOver: false,
+        isStudied: false
       }
     });
     this.props.onUpdateStickers(stickers);
@@ -57,7 +62,7 @@ class ReadSpreadsheet extends Component {
     this.props.onShowError(message);
   }
 
-  onChangeSpreadsheetId(){
+  onChangeSpreadsheetId() {
     this.props.onUpdateSpreadsheetId(spreadsheetIdref.current.value);
   }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import GDrive from './GDrive'
-import { updatePhrasebookFilesActionCreator } from '../redux/gdrive-reducer'
+import { updatePhrasebookFilesAC } from '../redux/gdrive-reducer'
 import { connect } from 'react-redux'
 
 let mapStateToProps = (state) => {
@@ -11,7 +11,7 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        onUpdatePhrasebook: (files) => dispatch(updatePhrasebookFilesActionCreator(files))
+        onUpdatePhrasebook: (files) => dispatch(updatePhrasebookFilesAC(files))
     }
 }
 

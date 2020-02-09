@@ -1,7 +1,7 @@
 import React from 'react';
 import SigninWithGoogle from './SignInWithGoogle'
-import { updateIsSignedInActionCreator, updateProfileActionCreator } from './../redux/signin-reducer'
-import { updateErrorActionCreator } from './../redux/error-reducer'
+import { updateIsSignedInAC, updateProfileAC } from './../redux/signin-reducer'
+import { updateErrorAC } from './../redux/error-reducer'
 import {connect} from 'react-redux'
 
 let mapStateToProps = (state) => {
@@ -13,9 +13,9 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        onShowError: (message) => dispath(updateErrorActionCreator(message)),
-        onUpdateProfile: (profile) => dispatch(updateProfileActionCreator(profile)),
-        onUpdateIsSignedIn: (isSignedIn) => dispatch(updateIsSignedInActionCreator(isSignedIn))
+        onShowError: (message) => dispath(updateErrorAC(message)),
+        onUpdateProfile: (profile) => dispatch(updateProfileAC(profile)),
+        onUpdateIsSignedIn: (isSignedIn) => dispatch(updateIsSignedInAC(isSignedIn))
     }
 }
 
