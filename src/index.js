@@ -4,7 +4,7 @@ import App from './App';
 import './index.css';
 import store from './redux/store-redux.js';
 import { BrowserRouter } from "react-router-dom";
-import { Provider } from './StoreContext'
+import { Provider } from 'react-redux'
 
 let rerender = () => {
   ReactDOM.render((
@@ -21,5 +21,7 @@ let rerender = () => {
 store.subscribe(() => {
   rerender();
 });
+
+window.store = store;
 rerender();
 

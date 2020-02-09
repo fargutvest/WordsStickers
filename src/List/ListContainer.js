@@ -1,18 +1,16 @@
 import React from 'react';
 import List from './List'
-import StoreContext from '../StoreContext';
+import { connect } from 'react-redux'
 
-const ListContainer = () => {
-    return (
-        <StoreContext.Consumer>
-            {
-                store => {
-                    let state = store.getState().stickersPage;
-                    return <List stickers={state.stickers} />
-                }
-            }
-        </StoreContext.Consumer>
-    )
+let mapStateToProps = (state) => {
+    return {
+        stickers: state.stickersPage.stickers
+    }
 }
+
+let mapDispatchToProps = (dispatch) => {}
+  
+const ListContainer = connect(mapStateToProps, mapDispatchToProps)(List);
+
 
 export default ListContainer;

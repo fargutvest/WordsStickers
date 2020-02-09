@@ -19,6 +19,7 @@ class ReadSpreadsheet extends Component {
     this.showError = this.showError.bind(this);
     this.handleReadSpreadsheetClick = this.handleReadSpreadsheetClick.bind(this);
     this.handleGetNewestSpreadsheetIdClick = this.handleGetNewestSpreadsheetIdClick.bind(this);
+    this.onChangeSpreadsheetId = this.onChangeSpreadsheetId.bind(this);
   }
 
   handleGetNewestSpreadsheetIdClick() {
@@ -56,6 +57,10 @@ class ReadSpreadsheet extends Component {
     this.props.onShowError(message);
   }
 
+  onChangeSpreadsheetId(){
+    this.props.onUpdateSpreadsheetId(spreadsheetIdref.current.value);
+  }
+
   render() {
     return (
       <div>
@@ -63,7 +68,7 @@ class ReadSpreadsheet extends Component {
           <tr>
             <td width="58%">
               <label className="w3-text-blue"><b>Phrasebook ID:</b></label>
-              <input className="w3-input w3-border" ref={spreadsheetIdref} type="text" size="100" />
+              <input className="w3-input w3-border" ref={spreadsheetIdref} onChange={this.onChangeSpreadsheetId} type="text" size="100" />
             </td>
             <td width="12%">
               <button id="read_spreadsheet" className={cs.button} onClick={this.handleGetNewestSpreadsheetIdClick}>Get newest phrasebook ID</button>

@@ -5,10 +5,10 @@ var initialState = {
 }
 
 const gdriveReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case UPDATE_FILES_LIST:
-            state.filesList = action.newFilesList;
-            return state;
+            return { ...state, filesList: action.newFilesList }
         default:
             return state;
     }

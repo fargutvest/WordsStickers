@@ -7,9 +7,8 @@ var initialState = {
 const spreadsheetReducer = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_SPREADSHEET_ID:
-            state.spreadseetId = action.newSpreadseetId;
-            localStorage.setItem(UPDATE_SPREADSHEET_ID, state.spreadseetId);
-            return state;
+            localStorage.setItem(UPDATE_SPREADSHEET_ID, action.newSpreadseetId);
+            return { ...state, spreadseetId: action.newSpreadseetId }
         default:
             return state;
     }

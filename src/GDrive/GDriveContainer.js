@@ -1,21 +1,21 @@
 import React from 'react';
 import GDrive from './GDrive'
 import { updatePhrasebookFilesActionCreator } from '../redux/gdrive-reducer'
-import StoreContext from '../StoreContext';
+import { connect } from 'react-redux'
 
-const GDriveContainer = () => {
-    return (
-        <StoreContext.Consumer>
-            {
-                store => {
-                    let state = store.getState().filesListPage;
-                    let updatePhrasebook = (files) => {
-                        store.dispatch(updatePhrasebookFilesActionCreator(files));
-                    }
-                    return <GDrive filesList={state.filesList} onUpdatePhrasebook={updatePhrasebook} />
-                }
-            }
-        </StoreContext.Consumer>)
+let mapStateToProps = (state) => {
+    return {
+        filesList: state.filesListPage.filesList
+    }
 }
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        onUpdatePhrasebook: (files) => dispatch(updatePhrasebookFilesActionCreator(files))
+    }
+}
+
+const GDriveContainer = connect(mapStateToProps, mapDispatchToProps)(GDrive);
+
 
 export default GDriveContainer;

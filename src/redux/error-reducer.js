@@ -5,12 +5,10 @@ var initialState = {
 }
 
 const errorReducer = (state = initialState, action) => {
-
     switch (action.type) {
         case UPDATE_ERROR:
-            state.error = action.newError;
-            return state;
-            default:
+            return { ...state, error: action.newError }
+        default:
             return state;
     }
 }

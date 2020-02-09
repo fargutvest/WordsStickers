@@ -35,11 +35,9 @@ var initialState = {
 const stickersReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_PDF:
-      state.pdf = action.newPdf;
-      return state;
+      return { ...state, pdf: action.newPdf }
     case UPDATE_STICKERS:
-      state.stickers = action.newStickers;
-      return state;
+      return { ...state, stickers: action.newStickers }
     default:
       return state;
   }

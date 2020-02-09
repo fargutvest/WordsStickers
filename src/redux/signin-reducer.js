@@ -9,11 +9,9 @@ var initialState = {
 const signinReducer = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_IS_SIGNED_IN:
-            state.isSignedIn = action.isSignedIn;
-            return state;
+            return { ...state, isSignedIn: action.isSignedIn }
         case UPDATE_PROFILE:
-            state.profile = action.profile;
-            return state;
+            return { ...state, profile: action.profile }
         default:
             return state;
     }

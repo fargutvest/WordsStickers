@@ -1,23 +1,21 @@
 import React from 'react';
 import Stickers from './Stickers'
 import { updatePdfActionCreator } from './../redux/stickers-reducer'
-import StoreContext from '../StoreContext';
+import { connect } from 'react-redux'
 
-const StickersContainer = () => {
-    return (
-        <StoreContext.Consumer>
-            {
-                store => {
-                    let state = store.getState().stickersPage;
-
-                    let updatePdf = (newPdf) => {
-                        store.dispatch(updatePdfActionCreator(newPdf));
-                    }
-                    return (<Stickers stickers={state.stickers} onPdfUpdate={updatePdf} />)
-                }
-            }
-        </StoreContext.Consumer>
-    );
+let mapStateToProps = (state) => {
+    return {
+        stickers: state.stickersPage.stickers
+    }
 }
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        onPdfUpdate: (newPdf) => dispatch(updatePdfActionCreator(newPdf))
+    }
+}
+
+const StickersContainer = connect(mapStateToProps, mapDispatchToProps)(Stickers);
+
 
 export default StickersContainer;

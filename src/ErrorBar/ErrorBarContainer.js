@@ -1,16 +1,15 @@
 import React from 'react';
 import ErrorBar from './ErrorBar'
-import StoreContext from '../StoreContext';
+import {connect} from 'react-redux'
 
-const ErrorBarContainer = (props) => {
-    return <StoreContext.Consumer>
-        {
-            store => {
-                let state = store.getState().errorPage;
-                return <ErrorBar error={state.error} />
-            }
-        }
-    </StoreContext.Consumer>
+let mapStateToProps = (state) => {
+    return {
+        error: state.errorPage.error
+    }
 }
 
+let mapDispatchToProps = (dispatch) => {}
+  
+const ErrorBarContainer = connect(mapStateToProps, mapDispatchToProps)(ErrorBar);
+ 
 export default ErrorBarContainer;
