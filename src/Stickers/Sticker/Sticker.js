@@ -5,20 +5,17 @@ import s from './Sticker.module.css';
 class Sticker extends Component {
   constructor(props) {
     super(props);
-    this.onMouseOver = this.onMouseOver.bind(this);
-    this.onMouseLeave = this.onMouseLeave.bind(this);
-    this.onClick = this.onClick.bind(this);
   }
 
-  onMouseOver() {
+  onMouseOver = () => {
     this.props.onMouseOver(this.props.sticker.id);
   }
 
-  onMouseLeave() {
+  onMouseLeave = () => {
     this.props.onMouseLeave(this.props.sticker.id);
   }
 
-  onClick() {
+  onClick = () => {
     this.props.onStudied({ stickerId: this.props.sticker.id, isStudied: !this.props.sticker.isStudied })
   }
 

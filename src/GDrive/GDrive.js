@@ -8,8 +8,6 @@ import { listFiles, getLastCreatedFile } from '../API/GDriveAPI'
 class GDrive extends Component {
   constructor(props) {
     super(props);
-
-    this.onClickGetPhrasebook = this.onClickGetPhrasebook.bind(this);
   }
 
 
@@ -37,7 +35,7 @@ class GDrive extends Component {
     }
   }
 
-  onClickGetPhrasebook() {
+  onClickGetPhrasebook = () => {
     listFiles((files) => {
       this.props.onUpdatePhrasebook(files);
     });

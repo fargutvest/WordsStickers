@@ -14,16 +14,9 @@ const SCOPES = "https://www.googleapis.com/auth/drive.metadata";
 class SignInWithGoogle extends Component {
   constructor(props) {
     super(props);
-    this.initClient = this.initClient.bind(this);
-    this.updateSigninStatus = this.updateSigninStatus.bind(this);
-    this.initClientSuccess = this.initClientSuccess.bind(this);
-    this.initClientFail = this.initClientFail.bind(this);
-    this.getStickes = this.getStickes.bind(this);
-    this.readSuccess = this.readSuccess.bind(this);
-    this.showError = this.showError.bind(this);
   }
 
-  initClient() {
+  initClient = () => {
     window.gapi.client.init({
       apiKey: API_KEY,
       clientId: CLIENT_ID,
@@ -32,18 +25,18 @@ class SignInWithGoogle extends Component {
     }).then(this.initClientSuccess, this.initClientFail);
   }
 
-  initClientSuccess() {
+  initClientSuccess = () => {
     window.gapi.auth2.getAuthInstance().isSignedIn.listen(this.updateSigninStatus);
     this.updateSigninStatus(window.gapi.auth2.getAuthInstance().isSignedIn.get());
     this.props.onShowError("");
   }
 
-  initClientFail(error) {
+  initClientFail = (error) => {
     this.props.onShowError(JSON.stringify(error, null, 2));
   }
 
 
-  updateSigninStatus(isSignedIn) {
+  updateSigninStatus = (isSignedIn) => {
     var profile;
     if (isSignedIn) {
       var googleUser = window.gapi.auth2.getAuthInstance().currentUser.get();
@@ -69,17 +62,17 @@ class SignInWithGoogle extends Component {
     window.gapi.load('client:auth2', this.initClient);
   }
 
-  getStickes() {
+  getStickes = () => {
     listFiles((files) => {
       var lastCreatedFile = getLastCreatedFile(files);
       this.props.onUpdateSpreadsheetId(lastCreatedFile.id);
       getValues(lastCreatedFile.id, this.readSuccess, (message) => { this.showError("Error" + message) });
-    });  
+    });
   }
-  
-  readSuccess(spreadsheetLines) {
+
+  readSuccess = (spreadsheetLines) => {
     this.showError(spreadsheetLines.length > 0 ? "" : "No data found.");
-  
+
     var stickers = spreadsheetLines.map((lineCells, index) => {
       return {
         content: {
@@ -95,7 +88,7 @@ class SignInWithGoogle extends Component {
     this.props.onUpdateStickers(stickers);
   }
 
-  showError(message) {
+  showError = (message) => {
     this.props.onShowError(message);
   }
 

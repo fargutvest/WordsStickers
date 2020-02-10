@@ -42,7 +42,3 @@ export let cleanFiles = (filesList) => {
         });
     }
 }
-
-
-listFiles = listFiles.bind(this);
-orderByCreatedTime = orderByCreatedTime.bind(this);

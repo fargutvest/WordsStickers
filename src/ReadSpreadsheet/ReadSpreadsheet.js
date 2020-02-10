@@ -15,25 +15,20 @@ const options = {
 class ReadSpreadsheet extends Component {
   constructor(props) {
     super(props);
-    this.readSuccess = this.readSuccess.bind(this);
-    this.showError = this.showError.bind(this);
-    this.handleReadSpreadsheetClick = this.handleReadSpreadsheetClick.bind(this);
-    this.handleGetNewestSpreadsheetIdClick = this.handleGetNewestSpreadsheetIdClick.bind(this);
-    this.onChangeSpreadsheetId = this.onChangeSpreadsheetId.bind(this);
   }
 
-  handleGetNewestSpreadsheetIdClick() {
+  handleGetNewestSpreadsheetIdClick = () => {
     listFiles((files) => {
       var lastCreatedFile = getLastCreatedFile(files);
       this.props.onUpdateSpreadsheetId(lastCreatedFile.id);
     });
   }
 
-  handleReadSpreadsheetClick() {
+  handleReadSpreadsheetClick = () => {
     getValues(spreadsheetIdref.current.value, this.readSuccess, (message) => { this.showError("Error" + message) });
   }
 
-  readSuccess(spreadsheetLines) {
+  readSuccess = (spreadsheetLines) => {
     this.showError(spreadsheetLines.length > 0 ? "" : "No data found.");
 
     var stickers = spreadsheetLines.map((lineCells, index) => {
@@ -58,11 +53,11 @@ class ReadSpreadsheet extends Component {
     }
   }
 
-  showError(message) {
+  showError = (message) => {
     this.props.onShowError(message);
   }
 
-  onChangeSpreadsheetId() {
+  onChangeSpreadsheetId = () => {
     this.props.onUpdateSpreadsheetId(spreadsheetIdref.current.value);
   }
 
