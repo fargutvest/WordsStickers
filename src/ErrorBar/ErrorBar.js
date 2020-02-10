@@ -3,9 +3,6 @@ import s from './ErrorBar.module.css';
 
 
 class ErrorBar extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

@@ -13,9 +13,6 @@ const options = {
 
 
 class ReadSpreadsheet extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   handleGetNewestSpreadsheetIdClick = () => {
     listFiles((files) => {

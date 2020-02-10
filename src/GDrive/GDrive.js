@@ -3,13 +3,7 @@ import s from './GDrive.module.css'
 import cs from './../Common.module.css';
 import { listFiles, getLastCreatedFile } from '../API/GDriveAPI'
 
-
-
 class GDrive extends Component {
-  constructor(props) {
-    super(props);
-  }
-
 
   renderFiles() {
     if (this.props.filesList && this.props.filesList.length > 0) {

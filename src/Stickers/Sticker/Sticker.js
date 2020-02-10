@@ -3,9 +3,6 @@ import s from './Sticker.module.css';
 
 
 class Sticker extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   onMouseOver = () => {
     this.props.onMouseOver(this.props.sticker.id);

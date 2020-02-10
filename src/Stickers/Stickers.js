@@ -6,9 +6,6 @@ const pdfRef = React.createRef();
 const countStickersInRow = 5;
 
 class Stickers extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   buildStickersPage() {
     var stickers = this.props.stickers;

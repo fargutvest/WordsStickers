@@ -12,9 +12,6 @@ const SCOPES = "https://www.googleapis.com/auth/drive.metadata";
 //todo: need to remove token.pickle
 
 class SignInWithGoogle extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   initClient = () => {
     window.gapi.client.init({
