@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import s from './SignInWithGoogle.module.css';
 import cs from './../Common.module.css';
-import { getValues } from '../API/GSheetsAPI'
-import { listFiles, getLastCreatedFile } from '../API/GDriveAPI'
 
 const CLIENT_ID = "722524747087-sgjsjequa1sv10c8m3g9fl6gtqoa39eg.apps.googleusercontent.com";
 const API_KEY = "AIzaSyANRAmPJFTjvI2lxfJpq82rd4SHtpBdKY0";
@@ -39,7 +37,6 @@ class SignInWithGoogle extends Component {
       var googleUser = window.gapi.auth2.getAuthInstance().currentUser.get();
       profile = googleUser.getBasicProfile();
       console.log(profile);
-      this.getStickes();
     }
 
     this.props.onUpdateProfile(profile);
@@ -57,32 +54,6 @@ class SignInWithGoogle extends Component {
 
   componentDidMount() {
     window.gapi.load('client:auth2', this.initClient);
-  }
-
-  getStickes = () => {
-    listFiles((files) => {
-      var lastCreatedFile = getLastCreatedFile(files);
-      this.props.onUpdateSpreadsheetId(lastCreatedFile.id);
-      getValues(lastCreatedFile.id, this.readSuccess, (message) => { this.showError("Error" + message) });
-    });
-  }
-
-  readSuccess = (spreadsheetLines) => {
-    this.showError(spreadsheetLines.length > 0 ? "" : "No data found.");
-
-    var stickers = spreadsheetLines.map((lineCells, index) => {
-      return {
-        content: {
-          English: lineCells[0],
-          Spelling: "---",
-          Russian: lineCells[1]
-        },
-        id: index,
-        isMouseOver: false,
-        isStudied: false
-      }
-    });
-    this.props.onUpdateStickers(stickers);
   }
 
   showError = (message) => {
