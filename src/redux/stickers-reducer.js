@@ -5,6 +5,7 @@ const UPDATE_STICKERS = 'UPDATE_STICKERS';
 const MOUSE_OVER = 'MOUSE_OVER';
 const MOUSE_LEAVE = 'MOUSE_LEAVE';
 const STUDIED = 'STUDIED';
+const IS_FETCHING_STICKERS = 'IS_FETCHING_STICKERS';
 
 export let initialStickers = [
   {
@@ -21,7 +22,8 @@ export let initialStickers = [
 
 var initialState = {
   pdf: React.createRef(),
-  stickers: initialStickers
+  stickers: initialStickers,
+  isFetchingStickers: false
 }
 
 
@@ -59,6 +61,10 @@ const stickersReducer = (state = initialState, action) => {
           return sticker;
         })
       }
+    case IS_FETCHING_STICKERS:
+      return {
+        ...state, isFetchingStickers: action.isFetchingStickers
+      }
     default:
       return state;
   }
@@ -69,5 +75,6 @@ export const updateStickers = (newStickers) => ({ type: UPDATE_STICKERS, newStic
 export const mouseOverSticker = (stickerId) => ({ type: MOUSE_OVER, stickerId: stickerId });
 export const mouseLeaveSticker = (stickerId) => ({ type: MOUSE_LEAVE, stickerId: stickerId });
 export const studiedSticker = (info) => ({ type: STUDIED, stickerId: info.stickerId, isStudied: info.isStudied });
+export const updateIsFetchingStickers = (isFetchingStickers) => ({ type: IS_FETCHING_STICKERS, isFetchingStickers: isFetchingStickers });
 
 export default stickersReducer;

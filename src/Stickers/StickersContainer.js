@@ -7,15 +7,21 @@ import { getValues } from '../API/GSheetsAPI'
 import { listFiles, getLastCreatedFile } from '../API/GDriveAPI'
 import { updateSpreadsheetId } from '../redux/spreadsheet-reducer'
 import { updateError } from './../redux/error-reducer'
-import { updateStickers, initialStickers } from './../redux/stickers-reducer';
+import { updateStickers, initialStickers, updateIsFetchingStickers } from './../redux/stickers-reducer';
+import Preloader from './../Preloader/Preloader'
+
 
 class StickersContainer extends Component {
 
     getStickes = () => {
+        this.props.updateIsFetchingStickers(true);
         listFiles((files) => {
             var lastCreatedFile = getLastCreatedFile(files);
             this.props.updateSpreadsheetId(lastCreatedFile.id);
-            getValues(lastCreatedFile.id, this.readSuccess, (message) => { this.showError("Error" + message) });
+            getValues(lastCreatedFile.id, this.readSuccess, (message) => {
+                this.showError("Error" + message);
+                this.props.updateIsFetchingStickers(false);
+            });
         });
     }
 
@@ -34,6 +40,7 @@ class StickersContainer extends Component {
                 isStudied: false
             }
         });
+        this.props.updateIsFetchingStickers(false);
         this.props.updateStickers(stickers);
     }
 
@@ -42,18 +49,34 @@ class StickersContainer extends Component {
     }
 
     render() {
-        if (this.props.isSignedIn && this.props.stickers.length === initialStickers.length) {
+        if (this.props.isSignedIn && this.props.stickers.length === initialStickers.length && this.props.isFetchingStickers === false) {
             this.getStickes();
         }
-        return <Stickers {...this.props} />
+
+        return (
+            <div>
+                {this.props.isFetchingStickers ? <Preloader /> : null}
+                <Stickers {...this.props} />
+            </div>
+        )
     }
 }
 
 let mapStateToProps = (state) => {
     return {
         stickers: state.stickersPage.stickers,
-        isSignedIn: state.signInPage.isSignedIn
+        isSignedIn: state.signInPage.isSignedIn,
+        isFetchingStickers: state.stickersPage.isFetchingStickers,
     }
 }
 
-export default connect(mapStateToProps, { updatePdf, mouseOverSticker, mouseLeaveSticker, studiedSticker, updateSpreadsheetId, updateError, updateStickers })(StickersContainer);
+export default connect(mapStateToProps, {
+    updatePdf,
+    mouseOverSticker,
+    mouseLeaveSticker,
+    studiedSticker,
+    updateSpreadsheetId,
+    updateError,
+    updateStickers,
+    updateIsFetchingStickers
+})(StickersContainer);
