@@ -64,10 +64,10 @@ const stickersReducer = (state = initialState, action) => {
   }
 }
 
-export const updatePdfAC = (newPdf) => ({ type: UPDATE_PDF, newPdf: newPdf });
-export const updateStickersAC = (newStickers) => ({ type: UPDATE_STICKERS, newStickers: newStickers });
-export const mouseOverStickerAC = (stickerId) => ({ type: MOUSE_OVER, stickerId: stickerId });
-export const mouseLeaveStickerAC = (stickerId) => ({ type: MOUSE_LEAVE, stickerId: stickerId });
-export const studiedStickerAC = (info) => ({ type: STUDIED, stickerId: info.stickerId, isStudied: info.isStudied });
+export const updatePdf = (newPdf) => ({ type: UPDATE_PDF, newPdf: newPdf });
+export const updateStickers = (newStickers) => ({ type: UPDATE_STICKERS, newStickers: newStickers });
+export const mouseOverSticker = (stickerId) => ({ type: MOUSE_OVER, stickerId: stickerId });
+export const mouseLeaveSticker = (stickerId) => ({ type: MOUSE_LEAVE, stickerId: stickerId });
+export const studiedSticker = (info) => ({ type: STUDIED, stickerId: info.stickerId, isStudied: info.isStudied });
 
 export default stickersReducer;

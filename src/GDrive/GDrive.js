@@ -31,7 +31,7 @@ class GDrive extends Component {
 
   onClickGetPhrasebook = () => {
     listFiles((files) => {
-      this.props.onUpdatePhrasebook(files);
+      this.props.updatePhrasebookFiles(files);
     });
   }
 

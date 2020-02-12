@@ -1,8 +1,8 @@
 import React from 'react';
 import SigninWithGoogle from './SignInWithGoogle'
-import { updateIsSignedInAC, updateProfileAC } from './../redux/signin-reducer'
-import { updateErrorAC } from './../redux/error-reducer'
-import {connect} from 'react-redux'
+import { updateIsSignedIn, updateProfile } from './../redux/signin-reducer'
+import { updateError} from './../redux/error-reducer'
+import { connect } from 'react-redux'
 
 let mapStateToProps = (state) => {
     return {
@@ -11,15 +11,7 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        onShowError: (message) => dispatch(updateErrorAC(message)),
-        onUpdateProfile: (profile) => dispatch(updateProfileAC(profile)),
-        onUpdateIsSignedIn: (isSignedIn) => dispatch(updateIsSignedInAC(isSignedIn))
-    }
-}
+const SigninWithGoogleContainer = connect(mapStateToProps, { updateError, updateProfile, updateIsSignedIn })(SigninWithGoogle);
 
-const SigninWithGoogleContainer = connect(mapStateToProps, mapDispatchToProps)(SigninWithGoogle);
- 
 export default SigninWithGoogleContainer;
 

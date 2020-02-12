@@ -14,6 +14,6 @@ const gdriveReducer = (state = initialState, action) => {
     }
 }
 
-export const updatePhrasebookFilesAC = (newFilesList) => ({ type: UPDATE_FILES_LIST, newFilesList: newFilesList });
+export const updatePhrasebookFiles = (newFilesList) => ({ type: UPDATE_FILES_LIST, newFilesList: newFilesList });
 
 export default gdriveReducer;

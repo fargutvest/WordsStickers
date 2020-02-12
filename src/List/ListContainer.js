@@ -8,9 +8,8 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {}
-  
-const ListContainer = connect(mapStateToProps, mapDispatchToProps)(List);
+
+const ListContainer = connect(mapStateToProps, {})(List);
 
 
 export default ListContainer;

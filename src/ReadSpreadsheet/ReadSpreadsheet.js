@@ -17,7 +17,7 @@ class ReadSpreadsheet extends Component {
   handleGetNewestSpreadsheetIdClick = () => {
     listFiles((files) => {
       var lastCreatedFile = getLastCreatedFile(files);
-      this.props.onUpdateSpreadsheetId(lastCreatedFile.id);
+      this.props.updateSpreadsheetId(lastCreatedFile.id);
     });
   }
 
@@ -40,7 +40,7 @@ class ReadSpreadsheet extends Component {
         isStudied: false
       }
     });
-    this.props.onUpdateStickers(stickers);
+    this.props.updateStickers(stickers);
   }
 
 
@@ -51,11 +51,11 @@ class ReadSpreadsheet extends Component {
   }
 
   showError = (message) => {
-    this.props.onShowError(message);
+    this.props.updateError(message);
   }
 
   onChangeSpreadsheetId = () => {
-    this.props.onUpdateSpreadsheetId(spreadsheetIdref.current.value);
+    this.props.updateSpreadsheetId(spreadsheetIdref.current.value);
   }
 
   render() {

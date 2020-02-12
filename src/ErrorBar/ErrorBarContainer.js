@@ -1,6 +1,6 @@
 import React from 'react';
 import ErrorBar from './ErrorBar'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 let mapStateToProps = (state) => {
     return {
@@ -8,8 +8,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {}
-  
-const ErrorBarContainer = connect(mapStateToProps, mapDispatchToProps)(ErrorBar);
- 
+const ErrorBarContainer = connect(mapStateToProps, {})(ErrorBar);
+
 export default ErrorBarContainer;

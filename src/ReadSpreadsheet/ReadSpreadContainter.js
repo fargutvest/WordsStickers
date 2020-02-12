@@ -1,8 +1,8 @@
 import React from 'react';
 import ReadSpreadsheat from './ReadSpreadsheet'
-import { updateErrorAC } from './../redux/error-reducer';
-import { updateStickersAC } from './../redux/stickers-reducer';
-import { updateSpreadsheetIdAC } from '../redux/spreadsheet-reducer'
+import { updateError } from './../redux/error-reducer';
+import { updateStickers } from './../redux/stickers-reducer';
+import { updateSpreadsheetId } from '../redux/spreadsheet-reducer'
 import { connect } from 'react-redux';
 
 let mapStateToProps = (state) => {
@@ -12,21 +12,7 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        onUpdateSpreadsheetId: (spreadsheetId) => {
-            dispatch(updateSpreadsheetIdAC(spreadsheetId))
-        },
-        onShowError: (message) => {
-            dispatch(updateErrorAC(message))
-        },
-        onUpdateStickers: (stickers) => {
-            dispatch(updateStickersAC(stickers))
-        }
-    }
-}
-
-const ReadSpreadsheatContainer = connect(mapStateToProps, mapDispatchToProps)(ReadSpreadsheat);
+const ReadSpreadsheatContainer = connect(mapStateToProps, { updateSpreadsheetId, updateError, updateStickers })(ReadSpreadsheat);
 
 
 export default ReadSpreadsheatContainer;

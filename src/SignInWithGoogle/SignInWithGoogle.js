@@ -23,11 +23,11 @@ class SignInWithGoogle extends Component {
   initClientSuccess = () => {
     window.gapi.auth2.getAuthInstance().isSignedIn.listen(this.updateSigninStatus);
     this.updateSigninStatus(window.gapi.auth2.getAuthInstance().isSignedIn.get());
-    this.props.onShowError("");
+    this.showError("");
   }
 
   initClientFail = (error) => {
-    this.props.onShowError(JSON.stringify(error, null, 2));
+    this.showError(JSON.stringify(error, null, 2));
   }
 
 
@@ -39,9 +39,9 @@ class SignInWithGoogle extends Component {
       console.log(profile);
     }
 
-    this.props.onUpdateProfile(profile);
+    this.props.updateProfile(profile);
 
-    this.props.onUpdateIsSignedIn(isSignedIn);
+    this.props.updateIsSignedIn(isSignedIn);
   }
 
   handleSigninClick() {
@@ -57,7 +57,7 @@ class SignInWithGoogle extends Component {
   }
 
   showError = (message) => {
-    this.props.onShowError(message);
+    this.props.updateError(message);
   }
 
   getButton() {

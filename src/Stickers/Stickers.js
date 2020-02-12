@@ -16,7 +16,7 @@ class Stickers extends Component {
     stickers.forEach(sticker => {
 
       stickersCounter++;
-      stickersRow.push(<Sticker sticker={sticker} onMouseOver={this.props.onMouseOver} onMouseLeave={this.props.onMouseLeave} 
+      stickersRow.push(<Sticker sticker={sticker} onMouseOver={this.props.mouseOverSticker} onMouseLeave={this.props.mouseLeaveSticker} 
         onStudied = {this.props.onStudied} />);
 
       if (stickersRow.length == countStickersInRow || stickers.length - stickersCounter == 0) {
@@ -29,7 +29,7 @@ class Stickers extends Component {
   }
 
   componentDidMount() {
-    this.props.onPdfUpdate(pdfRef);
+    this.props.updatePdf(pdfRef);
   }
 
   render() {

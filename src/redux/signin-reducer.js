@@ -17,7 +17,7 @@ const signinReducer = (state = initialState, action) => {
     }
 }
 
-export const updateIsSignedInAC = (isSignedIn) => ({ type: UPDATE_IS_SIGNED_IN, isSignedIn: isSignedIn });
-export const updateProfileAC = (profile) => ({ type: UPDATE_PROFILE, profile: profile });
+export const updateIsSignedIn = (isSignedIn) => ({ type: UPDATE_IS_SIGNED_IN, isSignedIn: isSignedIn });
+export const updateProfile = (profile) => ({ type: UPDATE_PROFILE, profile: profile });
 
 export default signinReducer;
