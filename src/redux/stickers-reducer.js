@@ -6,7 +6,7 @@ const MOUSE_OVER = 'MOUSE_OVER';
 const MOUSE_LEAVE = 'MOUSE_LEAVE';
 const STUDIED = 'STUDIED';
 
-var stickers = [
+export let initialStickers = [
   {
     content: {
       English: "Hello1",
@@ -21,7 +21,7 @@ var stickers = [
 
 var initialState = {
   pdf: React.createRef(),
-  stickers: stickers
+  stickers: initialStickers
 }
 
 

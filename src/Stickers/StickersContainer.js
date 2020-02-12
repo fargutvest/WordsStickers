@@ -7,6 +7,7 @@ import { getValues } from '../API/GSheetsAPI'
 import { listFiles, getLastCreatedFile } from '../API/GDriveAPI'
 import { updateSpreadsheetIdAC } from '../redux/spreadsheet-reducer'
 import { updateErrorAC } from './../redux/error-reducer'
+import { updateStickersAC, initialStickers } from './../redux/stickers-reducer';
 
 class StickersContainer extends Component {
 
@@ -41,7 +42,7 @@ class StickersContainer extends Component {
       }
 
     render() {
-        if (this.props.isSignedIn && this.props.stickers.length === 1) {
+        if (this.props.isSignedIn && this.props.stickers.length === initialStickers.length) {
             this.getStickes();
         }
         return <Stickers {...this.props} />
@@ -63,6 +64,9 @@ let mapDispatchToProps = (dispatch) => {
         onStudied: (info) => dispatch(studiedStickerAC(info)),
         onUpdateSpreadsheetId: (spreadsheetId) => {dispatch(updateSpreadsheetIdAC(spreadsheetId))},
         onShowError: (message) => dispatch(updateErrorAC(message)),
+        onUpdateStickers: (stickers) => {
+            dispatch(updateStickersAC(stickers))
+        }
     }
 }
 
