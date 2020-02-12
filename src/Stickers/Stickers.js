@@ -17,7 +17,7 @@ class Stickers extends Component {
 
       stickersCounter++;
       stickersRow.push(<Sticker sticker={sticker} onMouseOver={this.props.mouseOverSticker} onMouseLeave={this.props.mouseLeaveSticker} 
-        onStudied = {this.props.onStudied} />);
+        onStudied = {this.props.studiedSticker} />);
 
       if (stickersRow.length == countStickersInRow || stickers.length - stickersCounter == 0) {
         stickersPage.push(<div className={s.StickersRow}>{stickersRow}</div>);
