@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/EnglishWordsStickersJS/static/css/main.f683ebc2.chunk.css",
-    "main.js": "/EnglishWordsStickersJS/static/js/main.03011fb0.chunk.js",
-    "main.js.map": "/EnglishWordsStickersJS/static/js/main.03011fb0.chunk.js.map",
-    "runtime-main.js": "/EnglishWordsStickersJS/static/js/runtime-main.b0faf887.js",
-    "runtime-main.js.map": "/EnglishWordsStickersJS/static/js/runtime-main.b0faf887.js.map",
-    "static/js/2.932d51c8.chunk.js": "/EnglishWordsStickersJS/static/js/2.932d51c8.chunk.js",
-    "static/js/2.932d51c8.chunk.js.map": "/EnglishWordsStickersJS/static/js/2.932d51c8.chunk.js.map",
-    "index.html": "/EnglishWordsStickersJS/index.html",
-    "precache-manifest.8ad279cedf0ec1564bf66fc0cf575b03.js": "/EnglishWordsStickersJS/precache-manifest.8ad279cedf0ec1564bf66fc0cf575b03.js",
-    "service-worker.js": "/EnglishWordsStickersJS/service-worker.js",
-    "static/css/main.f683ebc2.chunk.css.map": "/EnglishWordsStickersJS/static/css/main.f683ebc2.chunk.css.map",
-    "static/js/2.932d51c8.chunk.js.LICENSE": "/EnglishWordsStickersJS/static/js/2.932d51c8.chunk.js.LICENSE",
-    "static/media/preloader.svg": "/EnglishWordsStickersJS/static/media/preloader.6e7c9db7.svg"
+    "main.css": "/EnglishWordsStickers/static/css/main.4f73fa52.chunk.css",
+    "main.js": "/EnglishWordsStickers/static/js/main.e0ed7d5e.chunk.js",
+    "main.js.map": "/EnglishWordsStickers/static/js/main.e0ed7d5e.chunk.js.map",
+    "runtime-main.js": "/EnglishWordsStickers/static/js/runtime-main.4c5f4d28.js",
+    "runtime-main.js.map": "/EnglishWordsStickers/static/js/runtime-main.4c5f4d28.js.map",
+    "static/js/2.52386306.chunk.js": "/EnglishWordsStickers/static/js/2.52386306.chunk.js",
+    "static/js/2.52386306.chunk.js.map": "/EnglishWordsStickers/static/js/2.52386306.chunk.js.map",
+    "index.html": "/EnglishWordsStickers/index.html",
+    "precache-manifest.00a0c9f628298dfc2710a5c6baa3f6fc.js": "/EnglishWordsStickers/precache-manifest.00a0c9f628298dfc2710a5c6baa3f6fc.js",
+    "service-worker.js": "/EnglishWordsStickers/service-worker.js",
+    "static/css/main.4f73fa52.chunk.css.map": "/EnglishWordsStickers/static/css/main.4f73fa52.chunk.css.map",
+    "static/js/2.52386306.chunk.js.LICENSE": "/EnglishWordsStickers/static/js/2.52386306.chunk.js.LICENSE",
+    "static/media/preloader.svg": "/EnglishWordsStickers/static/media/preloader.6e7c9db7.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.b0faf887.js",
-    "static/js/2.932d51c8.chunk.js",
-    "static/css/main.f683ebc2.chunk.css",
-    "static/js/main.03011fb0.chunk.js"
+    "static/js/runtime-main.4c5f4d28.js",
+    "static/js/2.52386306.chunk.js",
+    "static/css/main.4f73fa52.chunk.css",
+    "static/js/main.e0ed7d5e.chunk.js"
   ]
 }
