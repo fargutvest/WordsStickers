@@ -1,8 +1,8 @@
 {
-  "name": "EnglishWordsStickersJS",
+  "name": "EnglishWordsStickers",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://fargutvest.github.io/EnglishWordsStickersJS/",
+  "homepage": "https://fargutvest.github.io/EnglishWordsStickers/",
   "dependencies": {
     "fibers": "^4.0.2",
     "node-sass": "^4.13.1",

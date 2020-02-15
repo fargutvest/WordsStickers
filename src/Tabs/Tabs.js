@@ -6,7 +6,7 @@ import GDriveContainer from './../GDrive/GDriveContainer.js';
 import s from './Tabs.module.css';
 import { Route, NavLink } from "react-router-dom";
 
-const url = '/EnglishWordsStickersJS';
+const url = '/EnglishWordsStickers';
 
 class Tabs extends Component {
 
