@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import StickersContainer from './../Stickers/StickersContainer.js';
 import ListContainer from './../List/ListContainer.js';
-import GSheet from './../GSheet/GSheet.js';
+import Video from './../Video/Video.js';
 import GDriveContainer from './../GDrive/GDriveContainer.js';
 import s from './Tabs.module.css';
 import { Route, NavLink } from "react-router-dom";
@@ -19,10 +19,10 @@ class Tabs extends Component {
             <NavLink exact to={`${url}/`} activeClassName={s.active}>Stickers</NavLink>
           </div>
           <div className={s.tab}>
-            <NavLink to={`${url}/list`} activeClassName={s.active}>List</NavLink>
+            <NavLink to={`${url}/video`} activeClassName={s.active}>How to use</NavLink>
           </div>
           <div className={s.tab}>
-            <NavLink to={`${url}/gsheet`} activeClassName={s.active}>GSheet</NavLink>
+            <NavLink to={`${url}/list`} activeClassName={s.active}>List</NavLink>
           </div>
           <div className={s.tab}>
             <NavLink to={`${url}/gdriveapi`} activeClassName={s.active}>GDriveAPI</NavLink>
@@ -31,8 +31,8 @@ class Tabs extends Component {
 
         <div className={s.tabcontent}>
           <Route exact path={`${url}/`} render={() => <StickersContainer />} />
+          <Route path={`${url}/video`} component={Video} />
           <Route path={`${url}/list`} render={() => <ListContainer />} />
-          <Route path={`${url}/gsheet`} component={GSheet} />
           <Route path={`${url}/gdriveapi`} render={() => <GDriveContainer />} />
         </div>
       </div>
