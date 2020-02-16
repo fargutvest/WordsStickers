@@ -14,6 +14,11 @@ class Navbar extends Component {
                     <p>
                         <ErrorBarContainer />
                     </p>
+                    <p>
+                        <div>
+                            <a class={"fa fa-youtube " + s.youtubelink} href="https://www.youtube.com/watch?v=C-FKXagcLRQ&list=PLQPXxMwGR_nkJyvzRnj8NGgHwgvpdipy4"></a>
+                        </div>
+                    </p>
                 </p>
             </div>
         );

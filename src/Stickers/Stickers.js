@@ -3,7 +3,7 @@ import s from './Stickers.module.css';
 import Sticker from './Sticker/Sticker';
 
 const pdfRef = React.createRef();
-const countStickersInRow = 5;
+const countStickersInRow = 6;
 
 class Stickers extends Component {
 

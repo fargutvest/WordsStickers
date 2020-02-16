@@ -33,26 +33,21 @@ class ReadSpreadsheet extends Component {
 
   render() {
     return (
-      <div>
-        <table width="100%">
-          <tr>
-            <td width="58%">
-              <label className="w3-text-blue"><b>Phrasebook ID:</b></label>
-              <input className="w3-input w3-border" ref={spreadsheetIdref} onChange={this.onChangeSpreadsheetId} type="text" size="100" />
-            </td>
-            <td width="12%">
-              <button id="read_spreadsheet" className={cs.button} onClick={this.handleGetNewestSpreadsheetIdClick}>Get newest phrasebook ID</button>
-            </td>
-            <td width="12%">
-              <button id="read_spreadsheet" className={cs.button} onClick={this.handleReadSpreadsheetClick}>Read specified phrasebook</button>
-            </td>
-            <td width="12%">
-              <Pdf id="id_pdf" targetRef={this.props.pdf} filename="stickers.pdf" options={options} x={2} y={2}>
-                {({ toPdf }) => <button id="pdf" className={cs.button} onClick={toPdf}>Dowdload stickers in pdf</button>}
-              </Pdf>
-            </td>
-          </tr>
-        </table>
+      <div className={s.bar}>
+
+        <div>
+          <label className="w3-text-white"><b>Phrasebook ID:</b></label>
+          <input id="spreadsheetId" className="w3-input w3-border" ref={spreadsheetIdref} onChange={this.onChangeSpreadsheetId} type="text" />
+        </div>
+
+        <button id="read_spreadsheet" className={cs.button} onClick={this.handleGetNewestSpreadsheetIdClick}>Get newest phrasebook ID</button>
+
+        <button id="read_spreadsheet" className={cs.button} onClick={this.handleReadSpreadsheetClick}>Read specified phrasebook</button>
+
+        <Pdf id="id_pdf" targetRef={this.props.pdf} filename="stickers.pdf" options={options} x={2} y={2}>
+          {({ toPdf }) => <button id="pdf" className={cs.button} onClick={toPdf}>Dowdload stickers in pdf</button>}
+        </Pdf>
+
       </div>
     );
   }

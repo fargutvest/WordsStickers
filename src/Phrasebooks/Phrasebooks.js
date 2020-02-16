@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import s from './GDrive.module.css'
+import s from './Phrasebooks.module.css'
 import cs from './../Common.module.css';
 
-class GDrive extends Component {
+class Phrasebooks extends Component {
 
   renderFiles() {
     var allPhrasebookFiles = this.props.phrasebookFilesTree.allPhrasebookFiles;
@@ -10,10 +10,10 @@ class GDrive extends Component {
     if (allPhrasebookFiles && allPhrasebookFiles.length > 0) {
       var filesList = [];
       var latestPhrasebookFile = this.props.phrasebookFilesTree.latestPhrasebookFile;
-      filesList.push('Latest created phrasebook file:');
+      filesList.push(<b>Latest created phrasebook file:</b>);
       filesList.push(latestPhrasebookFile.name + ' (' + latestPhrasebookFile.id + ')' + ' Created:' + latestPhrasebookFile.createdTime + ' Modified:' + latestPhrasebookFile.modifiedTime);
-      filesList.push(".");
-      filesList.push('Phrasebook files:');
+      filesList.push(<br/>);
+      filesList.push(<b>Phrasebook files:</b>);
 
       if (allPhrasebookFiles && allPhrasebookFiles.length > 0) {
         for (var i = 0; i < allPhrasebookFiles.length; i++) {
@@ -28,26 +28,21 @@ class GDrive extends Component {
     }
   }
 
-  onClickGetPhrasebookFiles = () => {
-    this.props.getPhrasebookFiles();
-  }
-
   onClikCleanPhrasebookFiles = () => {
     this.props.cleanPhrasebookFiles(this.props.phrasebookFilesTree.allPhrasebookFiles);
   }
 
   render() {
     return <div className={s.main}>
-      <button className={cs.button} onClick={this.onClickGetPhrasebookFiles}>Get phrasebook files</button>
-      <button className={`${cs.button} ${cs.remove}`} onClick={this.onClikCleanPhrasebookFiles}>Clean old phrasebook files</button>
       <p>
         <div>
           {this.renderFiles()}
         </div>
       </p>
+      <button className={`${cs.button} ${cs.remove}`} onClick={this.onClikCleanPhrasebookFiles}>Clean old phrasebook files</button>
     </div>;
   }
 }
 
 
-export default GDrive;
+export default Phrasebooks;
