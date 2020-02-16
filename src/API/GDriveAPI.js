@@ -1,7 +1,7 @@
 const rus = "Сохраненные переводы";
 const eng = "Saved translations";
 
-export let orderByCreatedTime = (arr) => {
+let orderByCreatedTime = (arr) => {
     let n = arr.length;
     for (var i = 0; i < n - 1; i++) {
         for (var j = 0; j < n - i - 1; j++) {

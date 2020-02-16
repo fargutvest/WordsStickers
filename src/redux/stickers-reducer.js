@@ -14,9 +14,9 @@ const IS_FETCHING_STICKERS = 'IS_FETCHING_STICKERS';
 export let initialStickers = [
   {
     content: {
-      English: "Hello1",
-      Spelling: "spelling =)",
-      Russian: "Privet"
+      English: "Hello",
+      Spelling: "|həˈloʊ|",
+      Russian: "Привет"
     },
     id: 0,
     isMouseOver: false,
@@ -77,23 +77,20 @@ const stickersReducer = (state = initialState, action) => {
 export const getStickers = (spreadsheetId = null) => {
   return (dispatch) => {
     dispatch(updateIsFetchingStickers(true));
+
     if (spreadsheetId === null) {
       listFiles((files) => {
         var lastCreatedFile = getLastCreatedFile(files);
         dispatch(updateSpreadsheetId(lastCreatedFile.id));
-        getValues(lastCreatedFile.id, (spreadsheetLines) => { getValuesSuccess(spreadsheetLines, dispatch) },
-          (message) => {
-            dispatch(updateError("Error" + message));
-            dispatch(updateIsFetchingStickers(false));
-          });
+        getValues(lastCreatedFile.id,
+          (spreadsheetLines) => { getValuesSuccess(spreadsheetLines, dispatch) },
+          (message) => { getValuesError(message, dispatch); });
       });
     }
     else {
-      getValues(spreadsheetId, (spreadsheetLines) => { getValuesSuccess(spreadsheetLines, dispatch) },
-        (message) => {
-          dispatch(updateError("Error" + message));
-          dispatch(updateIsFetchingStickers(false));
-        });
+      getValues(spreadsheetId,
+        (spreadsheetLines) => { getValuesSuccess(spreadsheetLines, dispatch) },
+        (message) => { getValuesError(message, dispatch); });
     }
   }
 }
@@ -116,6 +113,11 @@ const getValuesSuccess = (spreadsheetLines, dispatch) => {
   });
   dispatch(updateIsFetchingStickers(false));
   dispatch(updateStickers(stickers));
+}
+
+const getValuesError = (message, dispatch) => {
+  dispatch(updateError("Error" + message));
+  dispatch(updateIsFetchingStickers(false));
 }
 
 
