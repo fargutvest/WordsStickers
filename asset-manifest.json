@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/EnglishWordsStickers/static/css/main.4f73fa52.chunk.css",
-    "main.js": "/EnglishWordsStickers/static/js/main.e0ed7d5e.chunk.js",
-    "main.js.map": "/EnglishWordsStickers/static/js/main.e0ed7d5e.chunk.js.map",
+    "main.css": "/EnglishWordsStickers/static/css/main.a26150dd.chunk.css",
+    "main.js": "/EnglishWordsStickers/static/js/main.323d24b2.chunk.js",
+    "main.js.map": "/EnglishWordsStickers/static/js/main.323d24b2.chunk.js.map",
     "runtime-main.js": "/EnglishWordsStickers/static/js/runtime-main.4c5f4d28.js",
     "runtime-main.js.map": "/EnglishWordsStickers/static/js/runtime-main.4c5f4d28.js.map",
-    "static/js/2.52386306.chunk.js": "/EnglishWordsStickers/static/js/2.52386306.chunk.js",
-    "static/js/2.52386306.chunk.js.map": "/EnglishWordsStickers/static/js/2.52386306.chunk.js.map",
+    "static/js/2.3661cc62.chunk.js": "/EnglishWordsStickers/static/js/2.3661cc62.chunk.js",
+    "static/js/2.3661cc62.chunk.js.map": "/EnglishWordsStickers/static/js/2.3661cc62.chunk.js.map",
     "index.html": "/EnglishWordsStickers/index.html",
-    "precache-manifest.00a0c9f628298dfc2710a5c6baa3f6fc.js": "/EnglishWordsStickers/precache-manifest.00a0c9f628298dfc2710a5c6baa3f6fc.js",
+    "precache-manifest.5e601df590650451a968cd4e346fea02.js": "/EnglishWordsStickers/precache-manifest.5e601df590650451a968cd4e346fea02.js",
     "service-worker.js": "/EnglishWordsStickers/service-worker.js",
-    "static/css/main.4f73fa52.chunk.css.map": "/EnglishWordsStickers/static/css/main.4f73fa52.chunk.css.map",
-    "static/js/2.52386306.chunk.js.LICENSE": "/EnglishWordsStickers/static/js/2.52386306.chunk.js.LICENSE",
+    "static/css/main.a26150dd.chunk.css.map": "/EnglishWordsStickers/static/css/main.a26150dd.chunk.css.map",
+    "static/js/2.3661cc62.chunk.js.LICENSE": "/EnglishWordsStickers/static/js/2.3661cc62.chunk.js.LICENSE",
     "static/media/preloader.svg": "/EnglishWordsStickers/static/media/preloader.6e7c9db7.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.4c5f4d28.js",
-    "static/js/2.52386306.chunk.js",
-    "static/css/main.4f73fa52.chunk.css",
-    "static/js/main.e0ed7d5e.chunk.js"
+    "static/js/2.3661cc62.chunk.js",
+    "static/css/main.a26150dd.chunk.css",
+    "static/js/main.323d24b2.chunk.js"
   ]
 }

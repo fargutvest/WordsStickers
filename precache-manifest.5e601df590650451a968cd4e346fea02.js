@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7a00875320f02b5009399abb668b41b6",
+    "revision": "421e26fa727b2cfaa485f86b0838880d",
     "url": "/EnglishWordsStickers/index.html"
   },
   {
-    "revision": "c228db4acf243de92d87",
-    "url": "/EnglishWordsStickers/static/css/main.4f73fa52.chunk.css"
+    "revision": "b16abf47fe568bb76816",
+    "url": "/EnglishWordsStickers/static/css/main.a26150dd.chunk.css"
   },
   {
-    "revision": "9e3ef4c6a497c8a6d182",
-    "url": "/EnglishWordsStickers/static/js/2.52386306.chunk.js"
+    "revision": "b9c77896703001071064",
+    "url": "/EnglishWordsStickers/static/js/2.3661cc62.chunk.js"
   },
   {
     "revision": "5acf371897847562f3095486309efdd4",
-    "url": "/EnglishWordsStickers/static/js/2.52386306.chunk.js.LICENSE"
+    "url": "/EnglishWordsStickers/static/js/2.3661cc62.chunk.js.LICENSE"
   },
   {
-    "revision": "c228db4acf243de92d87",
-    "url": "/EnglishWordsStickers/static/js/main.e0ed7d5e.chunk.js"
+    "revision": "b16abf47fe568bb76816",
+    "url": "/EnglishWordsStickers/static/js/main.323d24b2.chunk.js"
   },
   {
     "revision": "903e06d4e000f1b059ce",
