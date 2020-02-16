@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import ReadSpreadsheetContainer from './../ReadSpreadsheet/ReadSpreadContainter'
+import ReadSpreadsheetContainter from './../ReadSpreadsheet/ReadSpreadsheetContainter'
 import s from './Header.module.css'
 
 class Header extends Component {
     render() {
         return (
             <div className={s.header}>
-                <ReadSpreadsheetContainer/>
+                <ReadSpreadsheetContainter/>
             </div>
         );
     }

@@ -1,4 +1,8 @@
 import React from 'react';
+import { getValues } from '../API/GSheetsAPI'
+import { listFiles, getLastCreatedFile } from '../API/GDriveAPI'
+import { updateError } from './../redux/error-reducer';
+import { updateSpreadsheetId } from './../redux/spreadsheet-reducer'
 
 const UPDATE_PDF = 'UPDATE_PDF';
 const UPDATE_STICKERS = 'UPDATE_STICKERS';
@@ -69,6 +73,51 @@ const stickersReducer = (state = initialState, action) => {
       return state;
   }
 }
+
+export const getStickers = (spreadsheetId = null) => {
+  return (dispatch) => {
+    dispatch(updateIsFetchingStickers(true));
+    if (spreadsheetId === null) {
+      listFiles((files) => {
+        var lastCreatedFile = getLastCreatedFile(files);
+        dispatch(updateSpreadsheetId(lastCreatedFile.id));
+        getValues(lastCreatedFile.id, (spreadsheetLines) => { getValuesSuccess(spreadsheetLines, dispatch) },
+          (message) => {
+            dispatch(updateError("Error" + message));
+            dispatch(updateIsFetchingStickers(false));
+          });
+      });
+    }
+    else {
+      getValues(spreadsheetId, (spreadsheetLines) => { getValuesSuccess(spreadsheetLines, dispatch) },
+        (message) => {
+          dispatch(updateError("Error" + message));
+          dispatch(updateIsFetchingStickers(false));
+        });
+    }
+  }
+}
+
+
+const getValuesSuccess = (spreadsheetLines, dispatch) => {
+  dispatch(updateError(spreadsheetLines.length > 0 ? "" : "No data found."));
+
+  var stickers = spreadsheetLines.map((lineCells, index) => {
+    return {
+      content: {
+        English: lineCells[0],
+        Spelling: "---",
+        Russian: lineCells[1]
+      },
+      id: index,
+      isMouseOver: false,
+      isStudied: false
+    }
+  });
+  dispatch(updateIsFetchingStickers(false));
+  dispatch(updateStickers(stickers));
+}
+
 
 export const updatePdf = (newPdf) => ({ type: UPDATE_PDF, newPdf: newPdf });
 export const updateStickers = (newStickers) => ({ type: UPDATE_STICKERS, newStickers: newStickers });

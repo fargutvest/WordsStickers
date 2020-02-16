@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Pdf from "react-to-pdf";
 import s from './ReadSpreadsheet.module.css'
 import cs from './../Common.module.css'
-import { listFiles, getLastCreatedFile } from '../API/GDriveAPI'
-import { getValues } from '../API/GSheetsAPI'
+
 
 const spreadsheetIdref = React.createRef();
 
@@ -15,43 +14,17 @@ const options = {
 class ReadSpreadsheet extends Component {
 
   handleGetNewestSpreadsheetIdClick = () => {
-    listFiles((files) => {
-      var lastCreatedFile = getLastCreatedFile(files);
-      this.props.updateSpreadsheetId(lastCreatedFile.id);
-    });
+    this.props.getLatestSpreadsheetId();
   }
 
   handleReadSpreadsheetClick = () => {
-    getValues(spreadsheetIdref.current.value, this.readSuccess, (message) => { this.showError("Error" + message) });
+    this.props.getStickers(spreadsheetIdref.current.value);
   }
-
-  readSuccess = (spreadsheetLines) => {
-    this.showError(spreadsheetLines.length > 0 ? "" : "No data found.");
-
-    var stickers = spreadsheetLines.map((lineCells, index) => {
-      return {
-        content: {
-          English: lineCells[0],
-          Spelling: "---",
-          Russian: lineCells[1]
-        },
-        id: index,
-        isMouseOver: false,
-        isStudied: false
-      }
-    });
-    this.props.updateStickers(stickers);
-  }
-
 
   getSnapshotBeforeUpdate() {
     if (this.props.spreadseetId) {
       spreadsheetIdref.current.value = this.props.spreadseetId;
     }
-  }
-
-  showError = (message) => {
-    this.props.updateError(message);
   }
 
   onChangeSpreadsheetId = () => {
