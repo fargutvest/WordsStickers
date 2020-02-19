@@ -5,6 +5,7 @@ import spreadsheetReducer from "./spreadsheet-reducer";
 import stickersReducer from "./stickers-reducer";
 import signinReducer from "./signin-reducer";
 import thunkMiddleware from "redux-thunk";
+import { reducer as formReducer } from 'redux-form'
 
 
 var reducers = combineReducers({
@@ -12,7 +13,8 @@ var reducers = combineReducers({
     spreadsheetPage: spreadsheetReducer,
     stickersPage: stickersReducer,
     filesListPage: gdriveReducer,
-    signInPage: signinReducer
+    signInPage: signinReducer,
+    form: formReducer
 });
 
 var store = createStore(reducers, applyMiddleware(thunkMiddleware));

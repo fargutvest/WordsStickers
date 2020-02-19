@@ -1,5 +1,15 @@
 .bar{
     display: grid;
     width: 100%;
-    grid-template-columns: 51% 17% 17% 17%;
+    grid-template-columns: 70% 15% 15%;
+}
+
+.floatRight{
+    float: right;
+}
+
+.form{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 70% 30%;
 }

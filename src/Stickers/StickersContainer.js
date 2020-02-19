@@ -4,7 +4,7 @@ import { updatePdf } from './../redux/stickers-reducer'
 import { mouseOverSticker, mouseLeaveSticker, studiedSticker } from './../redux/stickers-reducer';
 import { connect } from 'react-redux'
 import { initialStickers } from './../redux/stickers-reducer';
-import Preloader from './../Preloader/Preloader'
+import Preloader from './../Components/Preloader/Preloader.js'
 import { getStickers } from './../redux/stickers-reducer';
 
 
