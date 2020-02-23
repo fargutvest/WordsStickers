@@ -1,10 +1,11 @@
 import React from 'react';
 import List from './List'
 import { connect } from 'react-redux'
+import { getStickersSelector } from '../redux/stickers-selectors';
 
 let mapStateToProps = (state) => {
     return {
-        stickers: state.stickersPage.stickers
+        stickers: getStickersSelector(state)
     }
 }
 

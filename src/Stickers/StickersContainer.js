@@ -6,6 +6,8 @@ import { connect } from 'react-redux'
 import { initialStickers } from './../redux/stickers-reducer';
 import Preloader from './../Components/Preloader/Preloader.js'
 import { getStickers } from './../redux/stickers-reducer';
+import { getStickersSelector, getIsFetchingStickers } from './../redux/stickers-selectors'
+import { getIsSignedIn } from './../redux/signin-selectors'
 
 
 class StickersContainer extends Component {
@@ -25,9 +27,9 @@ class StickersContainer extends Component {
 
 let mapStateToProps = (state) => {
     return {
-        stickers: state.stickersPage.stickers,
-        isSignedIn: state.signInPage.isSignedIn,
-        isFetchingStickers: state.stickersPage.isFetchingStickers,
+        stickers: getStickersSelector(state),
+        isSignedIn: getIsSignedIn(state),
+        isFetchingStickers: getIsFetchingStickers(state),
     }
 }
 

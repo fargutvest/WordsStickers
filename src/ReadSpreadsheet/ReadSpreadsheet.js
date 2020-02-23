@@ -2,27 +2,35 @@ import React, { Component } from 'react';
 import s from './ReadSpreadsheet.module.css'
 import cs from './../Common.module.css'
 import { Field, reduxForm } from 'redux-form'
-import { required, maxLenghtCreator } from './../utils/validators.js'
+import { required, lenghtCreator } from './../utils/validators.js'
 import { Input, inputRef } from './../Components/FormsControls/FormsControls.js'
 import { htmlToPdf } from './../utils/htmlToPdf'
 
-const maxLenght45 = maxLenghtCreator(45);
+const lenght44 = lenghtCreator(44);
 
-let ReadPhrasebookByIdForm = (props) => {
-  return <form onSubmit={props.handleSubmit}>
-    <div className={s.form}>
-      <Field name="spreadsheetId" label="Phrasebook ID: " validate={[required, maxLenght45]} component={Input} />
-      <div className={s.floatRight}>
-        <button className={cs.button} >Read specified phrasebook</button>
-      </div>
-    </div>
-  </form>
-}
-
-
-let ReadPhrasebookByIdFormRedux = reduxForm({ form: "ReadPhrasebookById" })(ReadPhrasebookByIdForm);
+var ReadPhrasebookByIdFormRedux = null;
 
 class ReadSpreadsheet extends Component {
+ 
+  constructor(props){
+    super(props);
+    ReadPhrasebookByIdFormRedux = reduxForm({ form: "ReadPhrasebookById" })(this.ReadPhrasebookByIdForm);
+  }
+
+  onChangeSpreadsheetId = (e) =>{
+    this.props.updateSpreadsheetId(e.target.value);
+  }
+  
+  ReadPhrasebookByIdForm = (props) => {
+    return <form onSubmit={props.handleSubmit}>
+      <div className={s.form}>
+        <Field name="spreadsheetId" label="Phrasebook ID: " validate={[required, lenght44]} component={Input} onChange={this.onChangeSpreadsheetId} />
+        <div className={s.floatRight}>
+          <button className={cs.button} >Read specified phrasebook</button>
+        </div>
+      </div>
+    </form>
+  }
 
   handleGetNewestSpreadsheetIdClick = () => {
     this.props.getLatestSpreadsheetId();
@@ -38,16 +46,13 @@ class ReadSpreadsheet extends Component {
     }
   }
 
-  onChangeSpreadsheetId = () => {
-    this.props.updateSpreadsheetId(inputRef.current.value);
-  }
-
   onClickPdf = () => {
     htmlToPdf(750, 'landscape', this.props.pdf, 'Stickers to print.pdf');
   }
 
 
   render() {
+
     return (
       <div className={s.bar}>
         <ReadPhrasebookByIdFormRedux onSubmit={this.handleReadSpreadsheetClick} />

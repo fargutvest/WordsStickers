@@ -1,17 +1,19 @@
 import React from 'react';
 import ReadSpreadsheat from './ReadSpreadsheet'
-import { updateSpreadsheetId, getLatestSpreadsheetId } from '../redux/spreadsheet-reducer'
+import { getLatestSpreadsheetId, updateSpreadsheetId } from '../redux/spreadsheet-reducer'
 import { getStickers } from '../redux/stickers-reducer'
 import { connect } from 'react-redux';
+import { getPdfRef } from '../redux/stickers-selectors';
+import { getSpreadseetId } from '../redux/spreadsheet-selectors';
 
 let mapStateToProps = (state) => {
     return {
-        pdf: state.stickersPage.pdf,
-        spreadseetId: state.spreadsheetPage.spreadseetId
+        pdf: getPdfRef(state),
+        spreadseetId: getSpreadseetId(state)
     }
 }
 
-const ReadSpreadsheetContainter = connect(mapStateToProps, { updateSpreadsheetId, getStickers, getLatestSpreadsheetId })(ReadSpreadsheat);
+const ReadSpreadsheetContainter = connect(mapStateToProps, { getStickers, getLatestSpreadsheetId, updateSpreadsheetId })(ReadSpreadsheat);
 
 
 export default ReadSpreadsheetContainter;

@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import Phrasebooks from './Phrasebooks'
 import { getPhrasebookFiles, cleanPhrasebookFiles } from '../redux/gdrive-reducer'
 import { connect } from 'react-redux'
+import {getIsSignedIn} from './../redux/signin-selectors'
+import { getPhrasebookFilesTree } from '../redux/phrasebooks';
 
 let mapStateToProps = (state) => {
     return {
-        phrasebookFilesTree: state.filesListPage.phrasebookFilesTree,
-        isSignedIn: state.signInPage.isSignedIn,
+        phrasebookFilesTree: getPhrasebookFilesTree(state),
+        isSignedIn: getIsSignedIn(state),
     }
 }
 

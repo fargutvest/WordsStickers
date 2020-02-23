@@ -1,10 +1,11 @@
 import React from 'react';
 import ErrorBar from './ErrorBar'
 import { connect } from 'react-redux'
+import { getErrorSelector } from '../redux/error-selectors';
 
 let mapStateToProps = (state) => {
     return {
-        error: state.errorPage.error
+        error: getErrorSelector(state)
     }
 }
 
