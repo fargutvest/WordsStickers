@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Pdf from "react-to-pdf";
 import s from './ReadSpreadsheet.module.css'
 import cs from './../Common.module.css'
 import { Field, reduxForm } from 'redux-form'
 import { required, maxLenghtCreator } from './../utils/validators.js'
 import { Input, inputRef } from './../Components/FormsControls/FormsControls.js'
+import { htmlToPdf } from './../utils/htmlToPdf'
 
 const maxLenght45 = maxLenghtCreator(45);
 
@@ -21,13 +21,6 @@ let ReadPhrasebookByIdForm = (props) => {
 
 
 let ReadPhrasebookByIdFormRedux = reduxForm({ form: "ReadPhrasebookById" })(ReadPhrasebookByIdForm);
-
-const spreadsheetIdref = React.createRef();
-
-const options = {
-  orientation: 'landscape'
-};
-
 
 class ReadSpreadsheet extends Component {
 
@@ -49,6 +42,9 @@ class ReadSpreadsheet extends Component {
     this.props.updateSpreadsheetId(inputRef.current.value);
   }
 
+  onClickPdf = () => {
+    htmlToPdf(750, 'landscape', this.props.pdf, 'Stickers to print.pdf');
+  }
 
 
   render() {
@@ -56,9 +52,7 @@ class ReadSpreadsheet extends Component {
       <div className={s.bar}>
         <ReadPhrasebookByIdFormRedux onSubmit={this.handleReadSpreadsheetClick} />
         <button id="read_spreadsheet" className={cs.button} onClick={this.handleGetNewestSpreadsheetIdClick}>Get newest phrasebook ID</button>
-        <Pdf id="id_pdf" targetRef={this.props.pdf} filename="stickers.pdf" options={options} x={2} y={2}>
-          {({ toPdf }) => <button id="pdf" className={cs.button} onClick={toPdf}>Dowdload stickers in pdf</button>}
-        </Pdf>
+        <button id="pdf" className={cs.button} onClick={this.onClickPdf}>Dowdload stickers in pdf</button>
       </div>
     );
   }

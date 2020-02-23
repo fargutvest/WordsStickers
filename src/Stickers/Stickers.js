@@ -3,7 +3,7 @@ import s from './Stickers.module.css';
 import Sticker from './Sticker/Sticker';
 
 const pdfRef = React.createRef();
-const countStickersInRow = 6;
+const countStickersInRow = 4;
 
 class Stickers extends Component {
 
@@ -16,8 +16,8 @@ class Stickers extends Component {
     stickers.forEach(sticker => {
 
       stickersCounter++;
-      stickersRow.push(<Sticker sticker={sticker} onMouseOver={this.props.mouseOverSticker} onMouseLeave={this.props.mouseLeaveSticker} 
-        onStudied = {this.props.studiedSticker} />);
+      stickersRow.push(<Sticker sticker={sticker} onMouseOver={this.props.mouseOverSticker} onMouseLeave={this.props.mouseLeaveSticker}
+        onStudied={this.props.studiedSticker} />);
 
       if (stickersRow.length == countStickersInRow || stickers.length - stickersCounter == 0) {
         stickersPage.push(<div className={s.StickersRow}>{stickersRow}</div>);
@@ -34,8 +34,10 @@ class Stickers extends Component {
 
   render() {
     return (
-      <div className={s.main} ref={pdfRef}>
-        {this.buildStickersPage()}
+      <div className={s.main} >
+        <div className={s.pdfContent} ref = {pdfRef}>
+          {this.buildStickersPage()}
+        </div>
       </div>
     )
   }
