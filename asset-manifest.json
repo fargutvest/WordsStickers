@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/EnglishWordsStickers/static/css/main.d484af10.chunk.css",
-    "main.js": "/EnglishWordsStickers/static/js/main.ffb2c8f0.chunk.js",
-    "main.js.map": "/EnglishWordsStickers/static/js/main.ffb2c8f0.chunk.js.map",
+    "main.js": "/EnglishWordsStickers/static/js/main.235faedf.chunk.js",
+    "main.js.map": "/EnglishWordsStickers/static/js/main.235faedf.chunk.js.map",
     "runtime-main.js": "/EnglishWordsStickers/static/js/runtime-main.4c5f4d28.js",
     "runtime-main.js.map": "/EnglishWordsStickers/static/js/runtime-main.4c5f4d28.js.map",
-    "static/js/2.10306fb2.chunk.js": "/EnglishWordsStickers/static/js/2.10306fb2.chunk.js",
-    "static/js/2.10306fb2.chunk.js.map": "/EnglishWordsStickers/static/js/2.10306fb2.chunk.js.map",
+    "static/js/2.8b75db12.chunk.js": "/EnglishWordsStickers/static/js/2.8b75db12.chunk.js",
+    "static/js/2.8b75db12.chunk.js.map": "/EnglishWordsStickers/static/js/2.8b75db12.chunk.js.map",
     "index.html": "/EnglishWordsStickers/index.html",
-    "precache-manifest.714bf1e4ee958a914a0d579b8060a27a.js": "/EnglishWordsStickers/precache-manifest.714bf1e4ee958a914a0d579b8060a27a.js",
+    "precache-manifest.42bc8b885b1f20fa3d7dfa168b10ecc7.js": "/EnglishWordsStickers/precache-manifest.42bc8b885b1f20fa3d7dfa168b10ecc7.js",
     "service-worker.js": "/EnglishWordsStickers/service-worker.js",
     "static/css/main.d484af10.chunk.css.map": "/EnglishWordsStickers/static/css/main.d484af10.chunk.css.map",
-    "static/js/2.10306fb2.chunk.js.LICENSE": "/EnglishWordsStickers/static/js/2.10306fb2.chunk.js.LICENSE",
+    "static/js/2.8b75db12.chunk.js.LICENSE": "/EnglishWordsStickers/static/js/2.8b75db12.chunk.js.LICENSE",
     "static/media/preloader.svg": "/EnglishWordsStickers/static/media/preloader.6e7c9db7.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.4c5f4d28.js",
-    "static/js/2.10306fb2.chunk.js",
+    "static/js/2.8b75db12.chunk.js",
     "static/css/main.d484af10.chunk.css",
-    "static/js/main.ffb2c8f0.chunk.js"
+    "static/js/main.235faedf.chunk.js"
   ]
 }
