@@ -1,4 +1,6 @@
-export let getStickersSelector = (state) =>{
+import {createSelector} from "reselect";
+
+let getStickers = (state) =>{
     return state.stickersPage.stickers;
 }
 
@@ -9,3 +11,8 @@ export let getIsFetchingStickers = (state) =>{
 export let getPdfRef = (state) =>{
     return state.stickersPage.pdf;
 }
+
+export const getStickersSelector = createSelector(getStickers,
+    (stickers) => {
+    return stickers.filter(s => true);
+})
