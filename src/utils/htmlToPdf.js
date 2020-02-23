@@ -16,7 +16,8 @@ export let htmlToPdf = (pageHeightPixels, pageOrientation, pdfRef, fileName) => 
         }
 
         let pdf = new jsPDF({
-            orientation: pageOrientation
+            orientation: pageOrientation,
+            compress: true
         });
 
 
@@ -47,4 +48,4 @@ function cropPage(canvas, pageHeight, offset) {
     pageContext.putImageData(pageData, 0, 0);
 
     return pageCanvas;
-}
+}
