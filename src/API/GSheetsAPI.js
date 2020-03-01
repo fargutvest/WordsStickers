@@ -1,8 +1,15 @@
 const RANGE = "C:D";
 
-export let getValues = (spreadsheetId, success, fail) => {
-    window.gapi.client.sheets.spreadsheets.values.get({
+export let getValues = async (spreadsheetId, success, fail) => {
+    const response = await window.gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: spreadsheetId,
         range: RANGE,
-    }).then((response) => { success(response.result.values) }, (response) => { fail(response.result.error.message) });
+    });
+
+    if (response.result.error) {
+        fail(response.result.error.message);
+    }
+    else {
+        success(response.result.values);
+    }
 }

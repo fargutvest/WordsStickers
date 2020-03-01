@@ -11,23 +11,23 @@ const SCOPES = "https://www.googleapis.com/auth/drive.metadata";
 
 class SignInWithGoogle extends Component {
 
-  initClient = () => {
-    window.gapi.client.init({
-      apiKey: API_KEY,
-      clientId: CLIENT_ID,
-      discoveryDocs: DISCOVERY_DOCS,
-      scope: SCOPES
-    }).then(this.initClientSuccess, this.initClientFail);
-  }
+  initClient = async () => {
+    try {
+      await window.gapi.client.init({
+        apiKey: API_KEY,
+        clientId: CLIENT_ID,
+        discoveryDocs: DISCOVERY_DOCS,
+        scope: SCOPES
+      });
 
-  initClientSuccess = () => {
-    window.gapi.auth2.getAuthInstance().isSignedIn.listen(this.updateSigninStatus);
-    this.updateSigninStatus(window.gapi.auth2.getAuthInstance().isSignedIn.get());
-    this.showError("");
-  }
+      window.gapi.auth2.getAuthInstance().isSignedIn.listen(this.updateSigninStatus);
+      this.updateSigninStatus(window.gapi.auth2.getAuthInstance().isSignedIn.get());
+      this.showError("");
 
-  initClientFail = (error) => {
-    this.showError(JSON.stringify(error, null, 2));
+    }
+    catch (error) {
+      this.showError(JSON.stringify(error, null, 2));
+    }
   }
 
 
@@ -52,8 +52,8 @@ class SignInWithGoogle extends Component {
     window.gapi.auth2.getAuthInstance().signOut();
   }
 
-  componentDidMount() {
-    window.gapi.load('client:auth2', this.initClient);
+  async componentDidMount() {
+    window.gapi.load('client:auth2', await this.initClient);
   }
 
   showError = (message) => {

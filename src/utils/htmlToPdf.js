@@ -2,38 +2,35 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
 
-export let htmlToPdf = (pageHeightPixels, pageOrientation, pdfRef, fileName) => {
+export let htmlToPdf = async (pageHeightPixels, pageOrientation, pdfRef, fileName) => {
     var input = pdfRef.current;
     const numPages = input.scrollHeight <= pageHeightPixels ? 1 : Math.floor(input.scrollHeight / pageHeightPixels) + 1;
 
-    html2canvas(input, { windowHeight: input.scrollHeight }).then((canvas) => {
+    const canvas = await html2canvas(input, { windowHeight: input.scrollHeight });
 
-        var pagesCanvases = [];
+    var pagesCanvases = [];
 
-        for (var i = 0; i < numPages; i++) {
-            var pageCanvas = cropPage(canvas, pageHeightPixels, pageHeightPixels * i);
-            pagesCanvases.push(pageCanvas)
-        }
+    for (var i = 0; i < numPages; i++) {
+        var pageCanvas = cropPage(canvas, pageHeightPixels, pageHeightPixels * i);
+        pagesCanvases.push(pageCanvas)
+    }
 
-        let pdf = new jsPDF({
-            orientation: pageOrientation,
-            compress: true
-        });
-
-
-        for (var i = 0; i < pagesCanvases.length; i++) {
-            var pageCanvas = pagesCanvases[i];
-            if (i > 0) {
-                pdf.addPage();
-            }
-
-            const imgData = pageCanvas.toDataURL('image/png');
-            pdf.addImage(imgData, 'PNG', 0, 0);
-        }
-
-        pdf.save(fileName);
-
+    let pdf = new jsPDF({
+        orientation: pageOrientation,
+        compress: true
     });
+
+    for (var i = 0; i < pagesCanvases.length; i++) {
+        var pageCanvas = pagesCanvases[i];
+        if (i > 0) {
+            pdf.addPage();
+        }
+
+        const imgData = pageCanvas.toDataURL('image/png');
+        pdf.addImage(imgData, 'PNG', 0, 0);
+    }
+
+    pdf.save(fileName);
 }
 
 function cropPage(canvas, pageHeight, offset) {
