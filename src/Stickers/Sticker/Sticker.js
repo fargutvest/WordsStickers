@@ -2,33 +2,32 @@ import React, { Component } from 'react';
 import s from './Sticker.module.css';
 
 
-class Sticker extends Component {
+const Sticker = ({ onMouseOver, onMouseLeave, onStudied, sticker }) => {
 
-  onMouseOver = () => {
-    this.props.onMouseOver(this.props.sticker.id);
+  let onMouseOverHandler = () => {
+    onMouseOver(sticker.id);
   }
 
-  onMouseLeave = () => {
-    this.props.onMouseLeave(this.props.sticker.id);
+  let onMouseLeaveHandler = () => {
+    onMouseLeave(sticker.id);
   }
 
-  onClick = () => {
-    this.props.onStudied({ stickerId: this.props.sticker.id, isStudied: !this.props.sticker.isStudied })
+  let onClickHandler = () => {
+    onStudied({ stickerId: sticker.id, isStudied: !sticker.isStudied })
   }
 
-  render() {
-    let sticker = this.props.sticker;
+  var mouseOver = sticker.isMouseOver ? s.MouseOver : "";
+  var studied = sticker.isStudied ? s.Studied : ""
 
-    var mo = sticker.isMouseOver ? s.MouseOver : "";
-    var st = sticker.isStudied ? s.Studied : ""
-    return (
-      <div className={`${s.Sticker} ${mo} ${st}`} onMouseOver={this.onMouseOver} onMouseLeave={this.onMouseLeave} onClick={this.onClick}>
-        <div className={`${s.English} ${s.Part}`}>{sticker.content.English}</div>
-        <div className={`${s.Spelling} ${s.Part}`}>{sticker.content.Spelling}</div>
-        <div className={`${s.Russian} ${s.Part}`}>{sticker.content.Russian}</div>
-      </div>
-    );
-  }
+  
+  return (
+    <div className={`${s.Sticker} ${mouseOver} ${studied}`} onMouseOver={onMouseOverHandler} onMouseLeave={onMouseLeaveHandler} onClick={onClickHandler}>
+      <div className={`${s.English} ${s.Part}`}>{sticker.content.English}</div>
+      <div className={`${s.Spelling} ${s.Part}`}>{sticker.content.Spelling}</div>
+      <div className={`${s.Russian} ${s.Part}`}>{sticker.content.Russian}</div>
+    </div>
+  );
+
 }
 
 export default Sticker;

@@ -13,8 +13,9 @@ class Stickers extends Component {
     var stickersPage = [];
     var stickersCounter = 0;
     var stickersRow = [];
-    stickers.forEach(sticker => {
 
+    stickers.forEach(sticker => {
+      
       stickersCounter++;
       stickersRow.push(<Sticker sticker={sticker} onMouseOver={this.props.mouseOverSticker} onMouseLeave={this.props.mouseLeaveSticker}
         onStudied={this.props.studiedSticker} />);
