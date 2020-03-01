@@ -6,8 +6,6 @@ import PhrasebooksContainer from './../Phrasebooks/PhrasebooksContainer.js';
 import s from './Tabs.module.css';
 import { Route, NavLink } from "react-router-dom";
 
-const url = '/EnglishWordsStickers';
-
 class Tabs extends Component {
 
   render() {
@@ -16,24 +14,24 @@ class Tabs extends Component {
       <div>
         <div className={s.tabpanel}>
           <div className={s.tab}>
-            <NavLink exact to={`${url}/`} activeClassName={s.active}>Stickers</NavLink>
+            <NavLink exact to={`/`} activeClassName={s.active}>Stickers</NavLink>
           </div>
           {/* <div className={s.tab}>
-            <NavLink to={`${url}/video`} activeClassName={s.active}>How to use</NavLink>
+            <NavLink to={`/video`} activeClassName={s.active}>How to use</NavLink>
           </div> */}
           <div className={s.tab}>
-            <NavLink to={`${url}/list`} activeClassName={s.active}>Words list</NavLink>
+            <NavLink to={`/list`} activeClassName={s.active}>Words list</NavLink>
           </div>
           <div className={s.tab}>
-            <NavLink to={`${url}/phrasebooks`} activeClassName={s.active}>Phrasebooks list</NavLink>
+            <NavLink to={`/phrasebooks`} activeClassName={s.active}>Phrasebooks list</NavLink>
           </div>
         </div>
 
         <div className={s.tabcontent}>
-          <Route exact path={`${url}/`} render={() => <StickersContainer />} />
-          {/* <Route path={`${url}/video`} component={Video} /> */}
-          <Route path={`${url}/list`} render={() => <ListContainer />} />
-          <Route path={`${url}/phrasebooks`} render={() => <PhrasebooksContainer />} />
+          <Route exact path={`/`} render={() => <StickersContainer />} />
+          {/* <Route path={`/video`} component={Video} /> */}
+          <Route path={`/list`} render={() => <ListContainer />} />
+          <Route path={`/phrasebooks`} render={() => <PhrasebooksContainer />} />
         </div>
       </div>
     );
