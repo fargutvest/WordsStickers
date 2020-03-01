@@ -1,66 +1,40 @@
 import React, { Component } from 'react';
 import s from './ReadSpreadsheet.module.css'
 import cs from './../Common.module.css'
-import { Field, reduxForm } from 'redux-form'
-import { required, lenghtCreator } from './../utils/validators.js'
-import { Input, inputRef } from './../Components/FormsControls/FormsControls.js'
 import { htmlToPdf } from './../utils/htmlToPdf'
+import ReadPhrasebookByIdFormRedux from './ReadPhrasebookByIdForm'
 
-const lenght44 = lenghtCreator(44);
+const pageHeightPixels = 750;
+const pdfFileName = "Stickers to print.pdf";
+const pageOrientation = "landscape";
 
-var ReadPhrasebookByIdFormRedux = null;
 
-class ReadSpreadsheet extends Component {
- 
-  constructor(props){
-    super(props);
-    ReadPhrasebookByIdFormRedux = reduxForm({ form: "ReadPhrasebookById" })(this.ReadPhrasebookByIdForm);
+const ReadSpreadsheet = ({ updateSpreadsheetId, getLatestSpreadsheetId, getStickers, spreadseetId, pdf }) => {
+
+  let onChangeSpreadsheetId = (e) => {
+    updateSpreadsheetId(e.target.value);
   }
 
-  onChangeSpreadsheetId = (e) =>{
-    this.props.updateSpreadsheetId(e.target.value);
-  }
-  
-  ReadPhrasebookByIdForm = (props) => {
-    return <form onSubmit={props.handleSubmit}>
-      <div className={s.form}>
-        <Field name="spreadsheetId" label="Phrasebook ID: " validate={[required, lenght44]} component={Input} onChange={this.onChangeSpreadsheetId} />
-        <div className={s.floatRight}>
-          <button className={cs.button} >Read specified phrasebook</button>
-        </div>
-      </div>
-    </form>
+  let handleGetNewestSpreadsheetIdClick = () => {
+    getLatestSpreadsheetId();
   }
 
-  handleGetNewestSpreadsheetIdClick = () => {
-    this.props.getLatestSpreadsheetId();
-  }
-
-  handleReadSpreadsheetClick = (values) => {
-    this.props.getStickers(values.spreadsheetId);
-  }
-
-  getSnapshotBeforeUpdate() {
-    if (this.props.spreadseetId) {
-      inputRef.current.value = this.props.spreadseetId;
-    }
-  }
-
-  onClickPdf = () => {
-    htmlToPdf(750, 'landscape', this.props.pdf, 'Stickers to print.pdf');
+  let handleOnSubmit = (values) => {
+    getStickers(values.spreadsheetId);
   }
 
 
-  render() {
-
-    return (
-      <div className={s.bar}>
-        <ReadPhrasebookByIdFormRedux onSubmit={this.handleReadSpreadsheetClick} />
-        <button id="read_spreadsheet" className={cs.button} onClick={this.handleGetNewestSpreadsheetIdClick}>Get newest phrasebook ID</button>
-        <button id="pdf" className={cs.button} onClick={this.onClickPdf}>Dowdload stickers in pdf</button>
-      </div>
-    );
+  let onClickPdf = () => {
+    htmlToPdf(pageHeightPixels, pageOrientation, pdf, pdfFileName);
   }
+
+  return (
+    <div className={s.bar}>
+      <ReadPhrasebookByIdFormRedux onSubmit={handleOnSubmit} initialValue={spreadseetId} onChangeSpreadsheetId = {onChangeSpreadsheetId} />
+      <button id="read_spreadsheet" className={cs.button} onClick={handleGetNewestSpreadsheetIdClick}>Get newest phrasebook ID</button>
+      <button id="pdf" className={cs.button} onClick={onClickPdf}>Dowdload stickers in pdf</button>
+    </div>
+  );
 
 }
 
