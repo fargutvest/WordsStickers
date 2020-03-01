@@ -2,25 +2,12 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { required, lenghtCreator } from './../utils/validators.js'
 import { inputRef, Input } from './../Components/FormsControls/FormsControls.js'
+import {withInitialValue} from './../hoc/withInitialValue'
+import { compose } from "redux";
 import s from './ReadSpreadsheet.module.css'
 import cs from './../Common.module.css'
 
 const lenght44 = lenghtCreator(44);
-
-class ReadPhrasebookByIdFormWithInitialValue extends Component {
-
-    componentDidMount() {
-        if (this.props.initialValue) {
-            inputRef.current.value = this.props.initialValue;
-        }
-    }
-    
-    render() {
-        return (
-            <ReadPhrasebookByIdForm {...this.props} />
-        )
-    }
-}
 
 const ReadPhrasebookByIdForm = ({ handleSubmit, onChangeSpreadsheetId }) => {
 
@@ -34,4 +21,5 @@ const ReadPhrasebookByIdForm = ({ handleSubmit, onChangeSpreadsheetId }) => {
     </form>
 }
 
-export default reduxForm({ form: "ReadPhrasebookById" })(ReadPhrasebookByIdFormWithInitialValue);
+
+export default reduxForm({ form: "ReadPhrasebookById" })(withInitialValue(ReadPhrasebookByIdForm));

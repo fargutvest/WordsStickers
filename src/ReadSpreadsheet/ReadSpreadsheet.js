@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import s from './ReadSpreadsheet.module.css'
 import cs from './../Common.module.css'
 import { htmlToPdf } from './../utils/htmlToPdf'
+import { inputRef, Input } from './../Components/FormsControls/FormsControls.js'
 import ReadPhrasebookByIdFormRedux from './ReadPhrasebookByIdForm'
 
 const pageHeightPixels = 750;
@@ -28,9 +29,15 @@ const ReadSpreadsheet = ({ updateSpreadsheetId, getLatestSpreadsheetId, getStick
     htmlToPdf(pageHeightPixels, pageOrientation, pdf, pdfFileName);
   }
 
+  let setInitialValue = () => {
+    if (spreadseetId) {
+      inputRef.current.value = spreadseetId;
+    }
+  }
+
   return (
     <div className={s.bar}>
-      <ReadPhrasebookByIdFormRedux onSubmit={handleOnSubmit} initialValue={spreadseetId} onChangeSpreadsheetId = {onChangeSpreadsheetId} />
+      <ReadPhrasebookByIdFormRedux onSubmit={handleOnSubmit} setInitialValue={setInitialValue} onChangeSpreadsheetId={onChangeSpreadsheetId} />
       <button id="read_spreadsheet" className={cs.button} onClick={handleGetNewestSpreadsheetIdClick}>Get newest phrasebook ID</button>
       <button id="pdf" className={cs.button} onClick={onClickPdf}>Dowdload stickers in pdf</button>
     </div>

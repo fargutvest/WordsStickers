@@ -16,12 +16,12 @@ const spreadsheetReducer = (state = initialState, action) => {
     }
 }
 
-export const getLatestSpreadsheetId = () =>{
-    return (dispatch) =>{
+export const getLatestSpreadsheetId = () => {
+    return (dispatch) => {
         listFiles((files) => {
             var lastCreatedFile = getLastCreatedFile(files);
             dispatch(updateSpreadsheetId(lastCreatedFile.id));
-          });
+        });
     }
 }
 
