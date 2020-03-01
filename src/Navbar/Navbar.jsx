@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import SigninWithGoogleContainer from '../SignInWithGoogle/SigninWitGoogleContainer';
 import ErrorBarContainer from '../ErrorBar/ErrorBarContainer';
+import SocialUrl from './../Social/SocialUrl'
+import github from './../Assets/github.svg'
+import youtube from './../Assets/youtube.svg'
 import s from './Navbar.module.css';
 
 
@@ -15,9 +18,10 @@ class Navbar extends Component {
                         <ErrorBarContainer />
                     </p>
                     <p>
-                        <div>
-                            <a class={"fa fa-youtube " + s.youtubelink} href="https://www.youtube.com/watch?v=C-FKXagcLRQ&list=PLQPXxMwGR_nkJyvzRnj8NGgHwgvpdipy4"></a>
-                        </div>
+                        <SocialUrl url="https://www.youtube.com/watch?v=C-FKXagcLRQ&list=PLQPXxMwGR_nkJyvzRnj8NGgHwgvpdipy4" icon={youtube} />
+                    </p>
+                    <p>
+                        <SocialUrl url="https://github.com/fargutvest/EnglishWordsStickers" icon={github} />
                     </p>
                 </p>
             </div>
