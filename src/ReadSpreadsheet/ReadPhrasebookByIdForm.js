@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { required, lenghtCreator } from './../utils/validators.js'
-import { inputRef, Input } from './../Components/FormsControls/FormsControls.js'
-import {withInitialValue} from './../hoc/withInitialValue'
-import { compose } from "redux";
+import { Input } from './../Components/FormsControls/FormsControls.js'
+import { withInitialValue } from './../hoc/withInitialValue'
 import s from './ReadSpreadsheet.module.css'
 import cs from './../Common.module.css'
 

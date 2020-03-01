@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import s from './ReadSpreadsheet.module.css'
 import cs from './../Common.module.css'
 import { htmlToPdf } from './../utils/htmlToPdf'
-import { inputRef, Input } from './../Components/FormsControls/FormsControls.js'
+import { inputRef } from './../Components/FormsControls/FormsControls.js'
 import ReadPhrasebookByIdFormRedux from './ReadPhrasebookByIdForm'
 
 const pageHeightPixels = 750;
