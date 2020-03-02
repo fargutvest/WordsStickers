@@ -1,23 +1,26 @@
 {
   "files": {
-    "main.css": "/EnglishWordsStickers/static/css/main.d44c8e32.chunk.css",
-    "main.js": "/EnglishWordsStickers/static/js/main.4bfcdebd.chunk.js",
-    "main.js.map": "/EnglishWordsStickers/static/js/main.4bfcdebd.chunk.js.map",
+    "main.css": "/EnglishWordsStickers/static/css/main.724745d1.chunk.css",
+    "main.js": "/EnglishWordsStickers/static/js/main.74ab4f7a.chunk.js",
+    "main.js.map": "/EnglishWordsStickers/static/js/main.74ab4f7a.chunk.js.map",
     "runtime-main.js": "/EnglishWordsStickers/static/js/runtime-main.4c5f4d28.js",
     "runtime-main.js.map": "/EnglishWordsStickers/static/js/runtime-main.4c5f4d28.js.map",
-    "static/js/2.802a149e.chunk.js": "/EnglishWordsStickers/static/js/2.802a149e.chunk.js",
-    "static/js/2.802a149e.chunk.js.map": "/EnglishWordsStickers/static/js/2.802a149e.chunk.js.map",
+    "static/js/2.015429dc.chunk.js": "/EnglishWordsStickers/static/js/2.015429dc.chunk.js",
+    "static/js/2.015429dc.chunk.js.map": "/EnglishWordsStickers/static/js/2.015429dc.chunk.js.map",
     "index.html": "/EnglishWordsStickers/index.html",
-    "precache-manifest.9a15ae09d9d09d0b47fc03841f63a68a.js": "/EnglishWordsStickers/precache-manifest.9a15ae09d9d09d0b47fc03841f63a68a.js",
+    "precache-manifest.c2bbd468f322b0992b5d3530304f0780.js": "/EnglishWordsStickers/precache-manifest.c2bbd468f322b0992b5d3530304f0780.js",
     "service-worker.js": "/EnglishWordsStickers/service-worker.js",
-    "static/css/main.d44c8e32.chunk.css.map": "/EnglishWordsStickers/static/css/main.d44c8e32.chunk.css.map",
-    "static/js/2.802a149e.chunk.js.LICENSE": "/EnglishWordsStickers/static/js/2.802a149e.chunk.js.LICENSE",
-    "static/media/preloader.svg": "/EnglishWordsStickers/static/media/preloader.6e7c9db7.svg"
+    "static/css/main.724745d1.chunk.css.map": "/EnglishWordsStickers/static/css/main.724745d1.chunk.css.map",
+    "static/js/2.015429dc.chunk.js.LICENSE": "/EnglishWordsStickers/static/js/2.015429dc.chunk.js.LICENSE",
+    "static/media/github.svg": "/EnglishWordsStickers/static/media/github.486fae37.svg",
+    "static/media/google.svg": "/EnglishWordsStickers/static/media/google.4775cb59.svg",
+    "static/media/preloader.svg": "/EnglishWordsStickers/static/media/preloader.6e7c9db7.svg",
+    "static/media/youtube.svg": "/EnglishWordsStickers/static/media/youtube.87146816.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.4c5f4d28.js",
-    "static/js/2.802a149e.chunk.js",
-    "static/css/main.d44c8e32.chunk.css",
-    "static/js/main.4bfcdebd.chunk.js"
+    "static/js/2.015429dc.chunk.js",
+    "static/css/main.724745d1.chunk.css",
+    "static/js/main.74ab4f7a.chunk.js"
   ]
 }
