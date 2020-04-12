@@ -20,7 +20,7 @@ class Tabs extends Component {
             <NavLink to={`/video`} activeClassName={s.active}>How to use</NavLink>
           </div> */}
           <div className={s.tab}>
-            <NavLink to={`/list`} activeClassName={s.active}>Words list</NavLink>
+            <NavLink to={`/list`} activeClassName={s.active}>List</NavLink>
           </div>
           <div className={s.tab}>
             <NavLink to={`/phrasebooks`} activeClassName={s.active}>Phrasebooks list</NavLink>
