@@ -111,8 +111,9 @@ const getValuesSuccess = (spreadsheetLines, dispatch) => {
       isStudied: false
     }
   });
+
   dispatch(updateIsFetchingStickers(false));
-  dispatch(updateStickers(stickers));
+  dispatch(updateStickers(stickers.reverse()));
 }
 
 const getValuesError = (message, dispatch) => {
