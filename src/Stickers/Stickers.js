@@ -36,7 +36,7 @@ class Stickers extends Component {
   render() {
     return (
       <div className={s.main} >
-        <div className={s.pdfContent} ref = {pdfRef}>
+        <div ref = {pdfRef}>
           {this.buildStickersPage()}
         </div>
       </div>

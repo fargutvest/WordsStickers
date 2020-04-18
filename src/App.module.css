@@ -2,9 +2,9 @@
   margin: 0 auto;
   display: grid;
   width: 100%;
-  grid-template-areas: "n h" "n c" "n f";
-  grid-template-rows: 70px 1fr 20px;
-  grid-template-columns: 1fr 10fr;
+  grid-template-areas: "n c";
+  grid-template-rows: 1fr;
+  grid-template-columns: 150px 10fr;
   /* grid-gap: 10px; */
-  height: 98%;
+  height: 100%;
 }

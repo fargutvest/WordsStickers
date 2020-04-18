@@ -1,9 +1,21 @@
 .navbar {
     grid-area: n;
     background-color: gray;
+    display: grid;
+    grid-template-areas: "s" "a";
+    grid-template-rows: 1fr 200px;
 }
 
 .youtubelink{
     font-size:96px;
     color:white;
+}
+
+
+.social{
+grid-area: s;
+}
+
+.account{
+grid-area: a;
 }

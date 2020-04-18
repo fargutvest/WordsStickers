@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Tabs from '../Tabs/Tabs';
+import StickersContainer from '../Stickers/StickersContainer';
 import s from './Content.module.css'
 
 
@@ -8,7 +8,7 @@ class Content extends Component {
     render() {
         return (
             <div className={s.content}>
-                <Tabs/>
+                <StickersContainer/>
             </div>
         );
     }
