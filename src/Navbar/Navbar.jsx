@@ -12,21 +12,24 @@ const pageHeightPixels = 750;
 const pdfFileName = "Stickers to print.pdf";
 const pageOrientation = "landscape";
 
-const Navbar = ({ pdf }) => {
+const Navbar = ({ pdf, updateIsGeneratingPdf }) => {
 
-    let onClickPdf = () => {
-        htmlToPdf(pageHeightPixels, pageOrientation, pdf, pdfFileName);
+    let onClickPdf = async () => {
+        updateIsGeneratingPdf(true);
+        await htmlToPdf(pageHeightPixels, pageOrientation, pdf, pdfFileName);
+        updateIsGeneratingPdf(false);
     }
-
 
     return (
         <div className={s.navbar}>
 
-            <div className={s.social}>
+            <div className={s.main}>
                 <p align="center">
-                    <p>
-                        <input type="image" onClick={onClickPdf} src={book_pdf} />
-                    </p>
+                    <input type="image" onClick={onClickPdf} src={book_pdf} />
+                </p>
+            </div>
+            <div>
+             <p align="center">
                     <p>
                         <SocialUrl url="https://www.youtube.com/watch?v=C-FKXagcLRQ&list=PLQPXxMwGR_nkJyvzRnj8NGgHwgvpdipy4" icon={youtube} />
                     </p>
@@ -34,8 +37,6 @@ const Navbar = ({ pdf }) => {
                         <SocialUrl url="https://github.com/fargutvest/EnglishWordsStickers" icon={github} />
                     </p>
                 </p>
-            </div>
-            <div className={s.account}>
                 <p>
                     <ErrorBarContainer />
                 </p>

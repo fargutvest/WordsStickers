@@ -16,3 +16,7 @@ export const getStickersSelector = createSelector(getStickers,
     (stickers) => {
     return stickers.filter(s => true);
 })
+
+export let getIsGeneratingPdf = (state) =>{
+    return state.stickersPage.isGeneratingPdf;
+}

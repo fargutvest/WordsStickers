@@ -10,115 +10,121 @@ const MOUSE_OVER = 'MOUSE_OVER';
 const MOUSE_LEAVE = 'MOUSE_LEAVE';
 const STUDIED = 'STUDIED';
 const IS_FETCHING_STICKERS = 'IS_FETCHING_STICKERS';
+const IS_GENERATING_PDF = 'IS_GENERATING_PDF';
 
 export let initialStickers = [
-  {
-    content: {
-      English: "Hello",
-      Spelling: "|həˈloʊ|",
-      Russian: "Привет"
-    },
-    id: 0,
-    isMouseOver: false,
-    isStudied: false
-  }
+    {
+        content: {
+            English: "Hello",
+            Spelling: "|həˈloʊ|",
+            Russian: "Привет"
+        },
+        id: 0,
+        isMouseOver: false,
+        isStudied: false
+    }
 ];
 
 var initialState = {
-  pdf: React.createRef(),
-  stickers: initialStickers,
-  isFetchingStickers: false
+    pdf: React.createRef(),
+    stickers: initialStickers,
+    isFetchingStickers: false,
+    isGeneratingPdf: false,
 }
 
 
 const stickersReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case UPDATE_PDF:
-      return { ...state, pdf: action.newPdf }
-    case UPDATE_STICKERS:
-      return { ...state, stickers: action.newStickers }
-    case MOUSE_OVER:
-      let copy = {
-        ...state, stickers: state.stickers.map(sticker => {
-          if (action.stickerId === sticker.id) {
-            return { ...sticker, isMouseOver: true }
-          }
-          return sticker;
-        })
-      }
-      return copy;
-    case MOUSE_LEAVE:
-      return {
-        ...state, stickers: state.stickers.map(sticker => {
-          if (action.stickerId === sticker.id) {
-            return { ...sticker, isMouseOver: false }
-          }
-          return sticker;
-        })
-      }
-    case STUDIED:
-      return {
-        ...state, stickers: state.stickers.map(sticker => {
-          if (action.stickerId === sticker.id) {
-            return { ...sticker, isStudied: action.isStudied }
-          }
-          return sticker;
-        })
-      }
-    case IS_FETCHING_STICKERS:
-      return {
-        ...state, isFetchingStickers: action.isFetchingStickers
-      }
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case UPDATE_PDF:
+            return { ...state, pdf: action.newPdf }
+        case UPDATE_STICKERS:
+            return { ...state, stickers: action.newStickers }
+        case MOUSE_OVER:
+            let copy = {
+                ...state, stickers: state.stickers.map(sticker => {
+                    if (action.stickerId === sticker.id) {
+                        return { ...sticker, isMouseOver: true }
+                    }
+                    return sticker;
+                })
+            }
+            return copy;
+        case MOUSE_LEAVE:
+            return {
+                ...state, stickers: state.stickers.map(sticker => {
+                    if (action.stickerId === sticker.id) {
+                        return { ...sticker, isMouseOver: false }
+                    }
+                    return sticker;
+                })
+            }
+        case STUDIED:
+            return {
+                ...state, stickers: state.stickers.map(sticker => {
+                    if (action.stickerId === sticker.id) {
+                        return { ...sticker, isStudied: action.isStudied }
+                    }
+                    return sticker;
+                })
+            }
+        case IS_FETCHING_STICKERS:
+            return {
+                ...state, isFetchingStickers: action.isFetchingStickers
+            }
+        case IS_GENERATING_PDF:
+            return {
+                ...state, isGeneratingPdf: action.isGeneratingPdf
+            }
+        default:
+            return state;
+    }
 }
 
 export const getStickers = (spreadsheetId = null) => {
-  return (dispatch) => {
-    dispatch(updateIsFetchingStickers(true));
+    return (dispatch) => {
+        dispatch(updateIsFetchingStickers(true));
 
-    if (spreadsheetId === null) {
-      listFiles((files) => {
-        var lastCreatedFile = getLastCreatedFile(files);
-        dispatch(updateSpreadsheetId(lastCreatedFile.id));
-        getValues(lastCreatedFile.id,
-          (spreadsheetLines) => { getValuesSuccess(spreadsheetLines, dispatch) },
-          (message) => { getValuesError(message, dispatch); });
-      });
+        if (spreadsheetId === null) {
+            listFiles((files) => {
+                var lastCreatedFile = getLastCreatedFile(files);
+                dispatch(updateSpreadsheetId(lastCreatedFile.id));
+                getValues(lastCreatedFile.id,
+                    (spreadsheetLines) => { getValuesSuccess(spreadsheetLines, dispatch) },
+                    (message) => { getValuesError(message, dispatch); });
+            });
+        }
+        else {
+            getValues(spreadsheetId,
+                (spreadsheetLines) => { getValuesSuccess(spreadsheetLines, dispatch) },
+                (message) => { getValuesError(message, dispatch); });
+        }
     }
-    else {
-      getValues(spreadsheetId,
-        (spreadsheetLines) => { getValuesSuccess(spreadsheetLines, dispatch) },
-        (message) => { getValuesError(message, dispatch); });
-    }
-  }
 }
 
 
 const getValuesSuccess = (spreadsheetLines, dispatch) => {
-  dispatch(updateError(spreadsheetLines.length > 0 ? "" : "No data found."));
+    dispatch(updateError(spreadsheetLines.length > 0 ? "" : "No data found."));
 
-  var stickers = spreadsheetLines.map((lineCells, index) => {
-    return {
-      content: {
-        English: lineCells[0],
-        Spelling: "---",
-        Russian: lineCells[1]
-      },
-      id: index,
-      isMouseOver: false,
-      isStudied: false
-    }
-  });
+    var stickers = spreadsheetLines.map((lineCells, index) => {
+        return {
+            content: {
+                English: lineCells[0],
+                Spelling: "---",
+                Russian: lineCells[1]
+            },
+            id: index,
+            isMouseOver: false,
+            isStudied: false
+        }
+    });
 
-  dispatch(updateIsFetchingStickers(false));
-  dispatch(updateStickers(stickers.reverse()));
+    dispatch(updateIsFetchingStickers(false));
+    dispatch(updateStickers(stickers.reverse()));
 }
 
 const getValuesError = (message, dispatch) => {
-  dispatch(updateError("Error" + message));
-  dispatch(updateIsFetchingStickers(false));
+    dispatch(updateError("Error" + message));
+    dispatch(updateIsFetchingStickers(false));
 }
 
 
@@ -128,5 +134,6 @@ export const mouseOverSticker = (stickerId) => ({ type: MOUSE_OVER, stickerId: s
 export const mouseLeaveSticker = (stickerId) => ({ type: MOUSE_LEAVE, stickerId: stickerId });
 export const studiedSticker = (info) => ({ type: STUDIED, stickerId: info.stickerId, isStudied: info.isStudied });
 export const updateIsFetchingStickers = (isFetchingStickers) => ({ type: IS_FETCHING_STICKERS, isFetchingStickers: isFetchingStickers });
+export const updateIsGeneratingPdf = (isGeneratingPdf) => ({ type: IS_GENERATING_PDF, isGeneratingPdf: isGeneratingPdf });
 
 export default stickersReducer;

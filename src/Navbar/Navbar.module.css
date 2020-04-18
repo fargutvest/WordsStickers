@@ -2,8 +2,8 @@
     grid-area: n;
     background-color: gray;
     display: grid;
-    grid-template-areas: "s" "a";
-    grid-template-rows: 1fr 200px;
+    grid-template-areas: "m";
+    grid-template-rows: 1fr;
 }
 
 .youtubelink{
@@ -11,11 +11,6 @@
     color:white;
 }
 
-
-.social{
-grid-area: s;
-}
-
-.account{
-grid-area: a;
+.main{
+grid-area: m;
 }

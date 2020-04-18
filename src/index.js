@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import AppContainer from './AppContainer';
 import './index.css';
 import store from './redux/store-redux.js';
 import { HashRouter } from "react-router-dom";
@@ -10,7 +10,7 @@ let rerender = () => {
   ReactDOM.render((
     <HashRouter>
       <Provider store={store}>
-        <App />
+        <AppContainer />
       </Provider>
     </HashRouter>
   ),

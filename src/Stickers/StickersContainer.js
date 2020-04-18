@@ -17,11 +17,7 @@ class StickersContainer extends Component {
             this.props.getStickers();
         }
 
-        return (
-            <div>
-                {this.props.isFetchingStickers ? <Preloader /> : <Stickers {...this.props} />}
-            </div>
-        )
+        return <Stickers {...this.props} />
     }
 }
 
