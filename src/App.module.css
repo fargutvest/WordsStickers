@@ -4,7 +4,7 @@
   width: 100%;
   grid-template-areas: "n c";
   grid-template-rows: 1fr;
-  grid-template-columns: 150px 10fr;
+  grid-template-columns: 85px 10fr;
   /* grid-gap: 10px; */
   height: 100%;
 }

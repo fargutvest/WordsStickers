@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import s from './SocialUrl.module.css'
 
 const SocialUrl = ({ url, icon }) => {
   return (

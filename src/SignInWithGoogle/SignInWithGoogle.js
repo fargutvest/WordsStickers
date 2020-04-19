@@ -3,6 +3,10 @@ import s from './SignInWithGoogle.module.css';
 import cs from './../Common.module.css';
 import { initGAPI, getProfile, signInAuth2, signOutAuth2, loadAuth2, listenAuth2, getIsSignedIn } from './../API/GAPI';
 import google from './../Assets/google.svg'
+import signOut from './../Assets/sign-out.svg'
+import SocialUrl from './../Social/SocialUrl'
+import googlePlus from './../Assets/google-plus.svg'
+
 
 //todo: need to remove token.pickle
 
@@ -45,26 +49,24 @@ class SignInWithGoogle extends Component {
 
   getButton() {
     var signIn = (
-      <button type="button" className={s.google_button} onClick={signInAuth2}>
-        <span class={s.google_button_icon}>
-          <img src={google} alt="google" />
-        </span>
-        <span class={s.google_button_text}>Sign in with Google</span>
-      </button>
+      <input type="image" className={s.avatar} onClick={signInAuth2} src={googlePlus} />
     );
 
     var signOut = <button className={cs.button} onClick={signOutAuth2}>Sign Out</button>;
 
-    return this.props.isSignedIn ? signOut : signIn;
+    return this.props.isSignedIn ? "" : signIn;
   }
 
   getUserInfo() {
     if (this.props.profile) {
       return (
         <div>
-          <label className="w3-text-white">{this.props.profile.getName()}</label>
+          {/* <label className="w3-text-white">{this.props.profile.getName()}</label> */}
           <p align="center">
-            <img width="50px" height="50px" alt="Avatar" src={this.props.profile.getImageUrl()} />
+          <SocialUrl url="https://drive.google.com/drive/u/0/my-drive" icon={this.props.profile.getImageUrl()} />
+          </p>
+          <p align="center">
+            <input type="image" className={s.avatar} onClick={signOutAuth2} src={signOut} />
           </p>
         </div>
       );
