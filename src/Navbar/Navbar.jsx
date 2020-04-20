@@ -13,14 +13,19 @@ const pageHeightPixels = 750;
 const pdfFileName = "Stickers to print.pdf";
 const pageOrientation = "landscape";
 
-const Navbar = ({ pdf, updateIsGeneratingPdf, updateIsShowIframe, updatePdfOutput }) => {
+const Navbar = ({ pdf, updateIsGeneratingPdf, updateIsShowIframe, updatePdfOutput, pdfOutput }) => {
 
     let onClickPdf = async () => {
-        updateIsGeneratingPdf(true);
-        var pdfOutput = await htmlToPdf(pageHeightPixels, pageOrientation, pdf, pdfFileName);
-        updatePdfOutput(pdfOutput);
+        
+        if (pdfOutput == "") {
+            updateIsGeneratingPdf(true);
+            var newPdfOutput = await htmlToPdf(pageHeightPixels, pageOrientation, pdf, pdfFileName);
+            updatePdfOutput(newPdfOutput);
+            updateIsGeneratingPdf(false);
+        }
+
         updateIsShowIframe(true);
-        updateIsGeneratingPdf(false);
+        
     }
 
     return (
