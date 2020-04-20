@@ -5,6 +5,7 @@ import SocialUrl from './../Social/SocialUrl'
 import github from './../Assets/github.svg'
 import youtube from './../Assets/youtube.svg'
 import print from './../Assets/print.svg'
+import translate from './../Assets/translate.svg'
 import s from './Navbar.module.css';
 import { htmlToPdf } from './../utils/htmlToPdf'
 
@@ -31,7 +32,10 @@ const Navbar = ({ pdf, updateIsGeneratingPdf, updateIsShowIframe, updatePdfOutpu
                 </p>
             </div>
             <div>
-             <p align="center">
+                <p align="center">
+                    <p>
+                        <SocialUrl url="https://translate.google.com/#en/ru/" icon={translate} />
+                    </p>
                     <p>
                         <SocialUrl url="https://www.youtube.com/watch?v=C-FKXagcLRQ&list=PLQPXxMwGR_nkJyvzRnj8NGgHwgvpdipy4" icon={youtube} />
                     </p>

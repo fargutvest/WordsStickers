@@ -4,8 +4,8 @@
     top:0; 
     bottom:0; 
     height:100%; 
-    width:650px; 
-    padding:20px;
+    width:100%; 
+    padding:0px;
 }
 
 iframe{
@@ -13,14 +13,14 @@ iframe{
     top:0; 
     bottom:0; 
     height:100%; 
-    width:650px; 
-    padding:20px; 
+    width:100%; 
+    padding:0px; 
 }
 
 .exitButton{
     position:absolute;
-    right:20px; 
-    top:22px; 
+    right:25px; 
+    top:16px; 
     bottom:0; 
     width: 20px;
     height: 20px;

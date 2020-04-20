@@ -12,78 +12,79 @@ import googlePlus from './../Assets/google-plus.svg'
 
 class SignInWithGoogle extends Component {
 
-  initClient = async () => {
-    try {
-      await initGAPI();
-      listenAuth2(this.updateSigninStatus);
-      this.updateSigninStatus(getIsSignedIn());
-      this.showError("");
+    initClient = async () => {
+        try {
+            await initGAPI();
+            listenAuth2(this.updateSigninStatus);
+            this.updateSigninStatus(getIsSignedIn());
+            this.showError("");
 
-    }
-    catch (error) {
-      this.showError(JSON.stringify(error, null, 2));
-    }
-  }
-
-
-  updateSigninStatus = (isSignedIn) => {
-    var profile;
-    if (isSignedIn) {
-      profile = getProfile();
+        }
+        catch (error) {
+            this.showError(JSON.stringify(error, null, 2));
+        }
     }
 
-    this.props.updateProfile(profile);
 
-    this.props.updateIsSignedIn(isSignedIn);
-  }
+    updateSigninStatus = (isSignedIn) => {
+        var profile;
+        if (isSignedIn) {
+            profile = getProfile();
+        }
 
+        this.props.updateProfile(profile);
 
-
-  async componentDidMount() {
-    loadAuth2(await this.initClient)
-  }
-
-  showError = (message) => {
-    this.props.updateError(message);
-  }
-
-  getButton() {
-    var signIn = (
-      <input type="image" className={s.avatar} onClick={signInAuth2} src={googlePlus} />
-    );
-
-    var signOut = <button className={cs.button} onClick={signOutAuth2}>Sign Out</button>;
-
-    return this.props.isSignedIn ? "" : signIn;
-  }
-
-  getUserInfo() {
-    if (this.props.profile) {
-      return (
-        <div>
-          {/* <label className="w3-text-white">{this.props.profile.getName()}</label> */}
-          <p align="center">
-          <SocialUrl url="https://drive.google.com/drive/u/0/my-drive" icon={this.props.profile.getImageUrl()} />
-          </p>
-          <p align="center">
-            <input type="image" className={s.avatar} onClick={signOutAuth2} src={signOut} />
-          </p>
-        </div>
-      );
+        this.props.updateIsSignedIn(isSignedIn);
     }
-    return '';
-  }
 
-  render() {
-    return (
-      <div className={s.main} align="center">
-        {this.getUserInfo()}
-        <p>
-          {this.getButton()}
-        </p>
-      </div>
-    );
-  }
+
+
+    async componentDidMount() {
+        loadAuth2(await this.initClient)
+    }
+
+    showError = (message) => {
+        this.props.updateError(message);
+    }
+
+    getButton() {
+        var signIn = (
+            <input type="image" className={s.avatar} onClick={signInAuth2} src={googlePlus} />
+        );
+
+        var signOut = <button className={cs.button} onClick={signOutAuth2}>Sign Out</button>;
+
+        return this.props.isSignedIn ? "" : signIn;
+    }
+
+    getUserInfo() {
+        var spredsheetLink = "https://docs.google.com/spreadsheets/d/" + this.props.spreadsheetId;
+        if (this.props.profile) {
+            return (
+                <div>
+                    {/* <label className="w3-text-white">{this.props.profile.getName()}</label> */}
+                    <p align="center">
+                        <SocialUrl url={spredsheetLink} icon={this.props.profile.getImageUrl()} />
+                    </p>
+                    <p align="center">
+                        <input type="image" className={s.avatar} onClick={signOutAuth2} src={signOut} />
+                    </p>
+                </div>
+            );
+        }
+        return '';
+    }
+
+    render() {
+        return (
+            <div className={s.main} align="center">
+                {this.getUserInfo()}
+                <p>
+                    {this.getButton()}
+                </p>
+            </div>
+        );
+    }
 }
 
 
