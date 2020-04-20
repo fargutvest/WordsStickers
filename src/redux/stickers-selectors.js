@@ -20,3 +20,11 @@ export const getStickersSelector = createSelector(getStickers,
 export let getIsGeneratingPdf = (state) =>{
     return state.stickersPage.isGeneratingPdf;
 }
+
+export let getIsShowIframe = (state) =>{
+    return state.stickersPage.isShowIframe;
+}
+
+export let getPdfOutput = (state) =>{
+    return state.stickersPage.pdfOutput;
+}

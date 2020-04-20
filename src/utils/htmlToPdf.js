@@ -30,7 +30,7 @@ export let htmlToPdf = async (pageHeightPixels, pageOrientation, pdfRef, fileNam
         pdf.addImage(imgData, 'PNG', 0, 0);
     }
 
-    pdf.save(fileName);
+    return pdf.output('datauristring');
 }
 
 function cropPage(canvas, pageHeight, offset) {

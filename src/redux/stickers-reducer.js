@@ -11,6 +11,8 @@ const MOUSE_LEAVE = 'MOUSE_LEAVE';
 const STUDIED = 'STUDIED';
 const IS_FETCHING_STICKERS = 'IS_FETCHING_STICKERS';
 const IS_GENERATING_PDF = 'IS_GENERATING_PDF';
+const IS_SHOW_IFRAME = 'IS_SHOW_IFRAME';
+const PDF_OUTPUT = 'PDF_OUTPUT';
 
 export let initialStickers = [
     {
@@ -30,6 +32,8 @@ var initialState = {
     stickers: initialStickers,
     isFetchingStickers: false,
     isGeneratingPdf: false,
+    isShowIframe: false,
+    pdfOutput : ""
 }
 
 
@@ -74,6 +78,14 @@ const stickersReducer = (state = initialState, action) => {
         case IS_GENERATING_PDF:
             return {
                 ...state, isGeneratingPdf: action.isGeneratingPdf
+            }
+        case IS_SHOW_IFRAME:
+            return {
+                ...state, isShowIframe: action.isShowIframe
+            }
+        case PDF_OUTPUT:
+            return {
+                ...state, pdfOutput: action.pdfOutput
             }
         default:
             return state;
@@ -135,5 +147,7 @@ export const mouseLeaveSticker = (stickerId) => ({ type: MOUSE_LEAVE, stickerId:
 export const studiedSticker = (info) => ({ type: STUDIED, stickerId: info.stickerId, isStudied: info.isStudied });
 export const updateIsFetchingStickers = (isFetchingStickers) => ({ type: IS_FETCHING_STICKERS, isFetchingStickers: isFetchingStickers });
 export const updateIsGeneratingPdf = (isGeneratingPdf) => ({ type: IS_GENERATING_PDF, isGeneratingPdf: isGeneratingPdf });
+export const updateIsShowIframe = (isShowIframe) => ({ type: IS_SHOW_IFRAME, isShowIframe: isShowIframe });
+export const updatePdfOutput = (pdfOutput) => ({ type: PDF_OUTPUT, pdfOutput: pdfOutput });
 
 export default stickersReducer;

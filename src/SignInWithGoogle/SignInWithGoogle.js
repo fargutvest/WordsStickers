@@ -76,7 +76,7 @@ class SignInWithGoogle extends Component {
 
   render() {
     return (
-      <div align="center">
+      <div className={s.main} align="center">
         {this.getUserInfo()}
         <p>
           {this.getButton()}

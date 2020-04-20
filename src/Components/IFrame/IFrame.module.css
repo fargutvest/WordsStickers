@@ -1,0 +1,27 @@
+.iframe{
+    position:absolute;
+    right:0; 
+    top:0; 
+    bottom:0; 
+    height:100%; 
+    width:650px; 
+    padding:20px;
+}
+
+iframe{
+    right:0; 
+    top:0; 
+    bottom:0; 
+    height:100%; 
+    width:650px; 
+    padding:20px; 
+}
+
+.exitButton{
+    position:absolute;
+    right:20px; 
+    top:22px; 
+    bottom:0; 
+    width: 20px;
+    height: 20px;
+}

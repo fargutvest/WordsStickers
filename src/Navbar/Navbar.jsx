@@ -4,7 +4,7 @@ import ErrorBarContainer from '../ErrorBar/ErrorBarContainer';
 import SocialUrl from './../Social/SocialUrl'
 import github from './../Assets/github.svg'
 import youtube from './../Assets/youtube.svg'
-import book_pdf from './../Assets/pdf-book.svg'
+import print from './../Assets/print.svg'
 import s from './Navbar.module.css';
 import { htmlToPdf } from './../utils/htmlToPdf'
 
@@ -12,11 +12,13 @@ const pageHeightPixels = 750;
 const pdfFileName = "Stickers to print.pdf";
 const pageOrientation = "landscape";
 
-const Navbar = ({ pdf, updateIsGeneratingPdf }) => {
+const Navbar = ({ pdf, updateIsGeneratingPdf, updateIsShowIframe, updatePdfOutput }) => {
 
     let onClickPdf = async () => {
         updateIsGeneratingPdf(true);
-        await htmlToPdf(pageHeightPixels, pageOrientation, pdf, pdfFileName);
+        var pdfOutput = await htmlToPdf(pageHeightPixels, pageOrientation, pdf, pdfFileName);
+        updatePdfOutput(pdfOutput);
+        updateIsShowIframe(true);
         updateIsGeneratingPdf(false);
     }
 
@@ -25,7 +27,7 @@ const Navbar = ({ pdf, updateIsGeneratingPdf }) => {
 
             <div className={s.main}>
                 <p align="center">
-                    <input type="image" onClick={onClickPdf} src={book_pdf} />
+                    <input type="image" onClick={onClickPdf} src={print} />
                 </p>
             </div>
             <div>
