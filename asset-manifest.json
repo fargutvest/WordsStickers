@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/EnglishWordsStickers/static/css/main.3ee88ea7.chunk.css",
-    "main.js": "/EnglishWordsStickers/static/js/main.1a38f570.chunk.js",
-    "main.js.map": "/EnglishWordsStickers/static/js/main.1a38f570.chunk.js.map",
+    "main.js": "/EnglishWordsStickers/static/js/main.f4a718f6.chunk.js",
+    "main.js.map": "/EnglishWordsStickers/static/js/main.f4a718f6.chunk.js.map",
     "runtime-main.js": "/EnglishWordsStickers/static/js/runtime-main.ed733734.js",
     "runtime-main.js.map": "/EnglishWordsStickers/static/js/runtime-main.ed733734.js.map",
     "static/js/2.18f3215e.chunk.js": "/EnglishWordsStickers/static/js/2.18f3215e.chunk.js",
     "static/js/2.18f3215e.chunk.js.map": "/EnglishWordsStickers/static/js/2.18f3215e.chunk.js.map",
     "index.html": "/EnglishWordsStickers/index.html",
-    "precache-manifest.f8e69f38f25e4dc4644722deaabdca7f.js": "/EnglishWordsStickers/precache-manifest.f8e69f38f25e4dc4644722deaabdca7f.js",
+    "precache-manifest.819544840f8a77d5bd11da969e54a0d1.js": "/EnglishWordsStickers/precache-manifest.819544840f8a77d5bd11da969e54a0d1.js",
     "service-worker.js": "/EnglishWordsStickers/service-worker.js",
     "static/css/main.3ee88ea7.chunk.css.map": "/EnglishWordsStickers/static/css/main.3ee88ea7.chunk.css.map",
     "static/js/2.18f3215e.chunk.js.LICENSE.txt": "/EnglishWordsStickers/static/js/2.18f3215e.chunk.js.LICENSE.txt",
@@ -26,6 +26,6 @@
     "static/js/runtime-main.ed733734.js",
     "static/js/2.18f3215e.chunk.js",
     "static/css/main.3ee88ea7.chunk.css",
-    "static/js/main.1a38f570.chunk.js"
+    "static/js/main.f4a718f6.chunk.js"
   ]
 }
