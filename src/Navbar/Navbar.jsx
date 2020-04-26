@@ -9,7 +9,7 @@ import translate from './../Assets/translate.svg'
 import s from './Navbar.module.css';
 import { htmlToPdf } from './../utils/htmlToPdf'
 
-const pageHeightPixels = 750;
+const pageHeightPixels = 98 * 8;
 const pdfFileName = "Stickers to print.pdf";
 const pageOrientation = "landscape";
 

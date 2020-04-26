@@ -2,8 +2,8 @@
   display: inline-block;
   text-align: center;
   border: 1px double black;
-  width: 277px;
-  height: 150px;
+  width: 280px;
+  height: 98px;
 }
 
 /* .Sticker:hover{
@@ -21,7 +21,7 @@
 
 .Part {
   border: 1px double lightgray;
-  height: 50px;
+  height: 49px;
   /*display: table-cell;
       vertical-align: middle;
       */
