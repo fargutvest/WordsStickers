@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/EnglishWordsStickers/static/css/main.0bac1d74.chunk.css",
-    "main.js": "/EnglishWordsStickers/static/js/main.d4d281ab.chunk.js",
-    "main.js.map": "/EnglishWordsStickers/static/js/main.d4d281ab.chunk.js.map",
+    "main.css": "/EnglishWordsStickers/static/css/main.0c83cefc.chunk.css",
+    "main.js": "/EnglishWordsStickers/static/js/main.a1a60c59.chunk.js",
+    "main.js.map": "/EnglishWordsStickers/static/js/main.a1a60c59.chunk.js.map",
     "runtime-main.js": "/EnglishWordsStickers/static/js/runtime-main.1e703f9a.js",
     "runtime-main.js.map": "/EnglishWordsStickers/static/js/runtime-main.1e703f9a.js.map",
-    "static/js/2.d4613aa8.chunk.js": "/EnglishWordsStickers/static/js/2.d4613aa8.chunk.js",
-    "static/js/2.d4613aa8.chunk.js.map": "/EnglishWordsStickers/static/js/2.d4613aa8.chunk.js.map",
+    "static/js/2.70aa7fda.chunk.js": "/EnglishWordsStickers/static/js/2.70aa7fda.chunk.js",
+    "static/js/2.70aa7fda.chunk.js.map": "/EnglishWordsStickers/static/js/2.70aa7fda.chunk.js.map",
     "index.html": "/EnglishWordsStickers/index.html",
-    "precache-manifest.b1905506878013ef6c2f64bc73f54e9e.js": "/EnglishWordsStickers/precache-manifest.b1905506878013ef6c2f64bc73f54e9e.js",
+    "precache-manifest.2561262feebf9587367c3df1d1e3de65.js": "/EnglishWordsStickers/precache-manifest.2561262feebf9587367c3df1d1e3de65.js",
     "service-worker.js": "/EnglishWordsStickers/service-worker.js",
-    "static/css/main.0bac1d74.chunk.css.map": "/EnglishWordsStickers/static/css/main.0bac1d74.chunk.css.map",
-    "static/js/2.d4613aa8.chunk.js.LICENSE.txt": "/EnglishWordsStickers/static/js/2.d4613aa8.chunk.js.LICENSE.txt",
+    "static/css/main.0c83cefc.chunk.css.map": "/EnglishWordsStickers/static/css/main.0c83cefc.chunk.css.map",
+    "static/js/2.70aa7fda.chunk.js.LICENSE.txt": "/EnglishWordsStickers/static/js/2.70aa7fda.chunk.js.LICENSE.txt",
     "static/media/exit.svg": "/EnglishWordsStickers/static/media/exit.b8196adb.svg",
     "static/media/github.svg": "/EnglishWordsStickers/static/media/github.486fae37.svg",
     "static/media/google-plus.svg": "/EnglishWordsStickers/static/media/google-plus.2159790d.svg",
@@ -24,8 +24,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.1e703f9a.js",
-    "static/js/2.d4613aa8.chunk.js",
-    "static/css/main.0bac1d74.chunk.css",
-    "static/js/main.d4d281ab.chunk.js"
+    "static/js/2.70aa7fda.chunk.js",
+    "static/css/main.0c83cefc.chunk.css",
+    "static/js/main.a1a60c59.chunk.js"
   ]
 }
