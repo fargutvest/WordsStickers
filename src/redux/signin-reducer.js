@@ -1,3 +1,6 @@
+import { signOutAuth2 } from "../API/GAPI"
+import { resetStickers } from "./stickers-reducer";
+
 const UPDATE_IS_SIGNED_IN = 'UPDATE_IS_SIGNED_IN';
 const UPDATE_PROFILE = 'UPDATE_PROFILE';
 
@@ -14,6 +17,14 @@ const signinReducer = (state = initialState, action) => {
             return { ...state, profile: action.profile }
         default:
             return state;
+    }
+}
+
+export const signOut = () => {
+    return (dispatch) => {
+        signOutAuth2();
+        dispatch(updateIsSignedIn(false));
+        dispatch(resetStickers());
     }
 }
 

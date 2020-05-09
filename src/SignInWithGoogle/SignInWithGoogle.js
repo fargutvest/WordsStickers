@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import s from './SignInWithGoogle.module.css';
 import cs from './../Common.module.css';
-import { initGAPI, getProfile, signInAuth2, signOutAuth2, loadAuth2, listenAuth2, getIsSignedIn } from './../API/GAPI';
+import { initGAPI, getProfile, signInAuth2, loadAuth2, listenAuth2, getIsSignedIn } from './../API/GAPI';
 import google from './../Assets/google.svg'
-import signOut from './../Assets/sign-out.svg'
+import signOutImg from './../Assets/sign-out.svg'
 import SocialUrl from './../Social/SocialUrl'
 import googlePlus from './../Assets/google-plus.svg'
 
@@ -52,7 +52,7 @@ class SignInWithGoogle extends Component {
             <input type="image" className={s.avatar} onClick={signInAuth2} src={googlePlus} />
         );
 
-        var signOut = <button className={cs.button} onClick={signOutAuth2}>Sign Out</button>;
+        var signOutBtn = <button className={cs.button} onClick={this.props.signOut}>Sign Out</button>;
 
         return this.props.isSignedIn ? "" : signIn;
     }
@@ -67,7 +67,7 @@ class SignInWithGoogle extends Component {
                         <SocialUrl url={spredsheetLink} icon={this.props.profile.getImageUrl()} />
                     </p>
                     <p align="center">
-                        <input type="image" className={s.avatar} onClick={signOutAuth2} src={signOut} />
+                        <input type="image" className={s.avatar} onClick={this.props.signOut} src={signOutImg} />
                     </p>
                 </div>
             );

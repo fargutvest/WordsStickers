@@ -7,6 +7,7 @@ import { red } from 'color-name';
 
 const UPDATE_PDF = 'UPDATE_PDF';
 const UPDATE_STICKERS = 'UPDATE_STICKERS';
+const RESET_STICKERS = 'RESET_STICKERS';
 const MOUSE_OVER = 'MOUSE_OVER';
 const MOUSE_LEAVE = 'MOUSE_LEAVE';
 const STUDIED = 'STUDIED';
@@ -30,15 +31,15 @@ let initialStickers = [
     }
 ];
 
-const previewStickersEn = "Hello friend this stickers with words to study foreign languages " + 
-"You can accumulate unknown words in google translate phrasebook after that import them to spreedshed " + 
-"in your google drive Now just signin under your google account and you will see all accumulated " + 
-"words as stickers This stickers you can print on paper and put on wall in room near with work desk for memorising"
+const previewStickersEn = "Hello friend this stickers with words to study foreign languages " +
+    "You can accumulate unknown words in google translate phrasebook after that import them to spreedshed " +
+    "in your google drive Now just signin under your google account and you will see all accumulated " +
+    "words as stickers This stickers you can print on paper and put on wall in room near with work desk for memorising"
 
-const previewStickersRus = "Привет друг это карточки со словами для изучения иностранных языков " + 
-"Ты можешь накопить незнакомые слова в гугл переводчике словаре после этого импортировать их в таблицу " +
-"в своем гугл драйве Теперь просто залогинься под своим гугл аккаунтом и ты будешь видеть все накопленные "+
-"слова как карточки Эти карточки ты можешь распечатать на бумагу и наклеить на стену в комнате рядом с рабочим столом для запоминания"
+const previewStickersRus = "Привет друг это карточки со словами для изучения иностранных языков " +
+    "Ты можешь накопить незнакомые слова в гугл переводчике словаре после этого импортировать их в таблицу " +
+    "в своем гугл драйве Теперь просто залогинься под своим гугл аккаунтом и ты будешь видеть все накопленные " +
+    "слова как карточки Эти карточки ты можешь распечатать на бумагу и наклеить на стену в комнате рядом с рабочим столом для запоминания"
 
 let getInitialiseStickers = () => {
     var eng = previewStickersEn.split(" ");
@@ -80,6 +81,9 @@ const stickersReducer = (state = initialState, action) => {
             return { ...state, pdf: action.newPdf }
         case UPDATE_STICKERS:
             return { ...state, stickers: action.newStickers }
+        case RESET_STICKERS:
+            return { ...state, stickersAreFetched: false, stickers: getInitialiseStickers() }
+            break;
         case MOUSE_OVER:
             let copy = {
                 ...state, stickers: state.stickers.map(sticker => {
@@ -186,6 +190,7 @@ const getValuesError = (message, dispatch) => {
 
 export const updatePdf = (newPdf) => ({ type: UPDATE_PDF, newPdf: newPdf });
 export const updateStickers = (newStickers) => ({ type: UPDATE_STICKERS, newStickers: newStickers });
+export const resetStickers = () => ({ type: RESET_STICKERS });
 export const mouseOverSticker = (stickerId) => ({ type: MOUSE_OVER, stickerId: stickerId });
 export const mouseLeaveSticker = (stickerId) => ({ type: MOUSE_LEAVE, stickerId: stickerId });
 export const studiedSticker = (info) => ({ type: STUDIED, stickerId: info.stickerId, isStudied: info.isStudied });
