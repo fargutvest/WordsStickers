@@ -1,5 +1,5 @@
 import { signOutAuth2 } from "../API/GAPI"
-import { resetStickers } from "./stickers-reducer";
+import { resetStickers, updatePdfOutput } from "./stickers-reducer";
 
 const UPDATE_IS_SIGNED_IN = 'UPDATE_IS_SIGNED_IN';
 const UPDATE_PROFILE = 'UPDATE_PROFILE';
@@ -25,6 +25,7 @@ export const signOut = () => {
         signOutAuth2();
         dispatch(updateIsSignedIn(false));
         dispatch(resetStickers());
+        dispatch(updatePdfOutput(""));
     }
 }
 
