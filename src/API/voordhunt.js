@@ -1,14 +1,14 @@
- // private static void VisitWooordhunt(string en, out string spell, out string rus)
+ // private static void VisitWooordhunt(string foreign, out string spell, out string native)
   // {
   //     spell = "";
-  //     rus = "";
+  //     native = "";
   //     try
   //     {
-  //         var url = $"http://wooordhunt.ru/word/{en}";
+  //         var url = $"http://wooordhunt.ru/word/{foreign}";
   //         var web = new XmlDocument();
   //         web.Load(url);
   //         spell = web.DocumentElement.SelectSingleNode("//*[@id=\"uk_tr_sound\"]/span[1]")?.InnerText ?? "";
-  //         rus = web.DocumentElement.SelectSingleNode("//*[@id=\"wd_content\"]/span/text()")?.InnerText ?? "";
+  //         native = web.DocumentElement.SelectSingleNode("//*[@id=\"wd_content\"]/span/text()")?.InnerText ?? "";
   //     }
   //     catch (Exception)
   //     {
@@ -16,8 +16,8 @@
   //     }
   // }
 
-  // visitWoordhunt(eng) {
-  //   var url = `https://wooordhunt.ru/word/${eng}`;
+  // visitWoordhunt(foreign) {
+  //   var url = `https://wooordhunt.ru/word/${foreign}`;
   //   var xmlHttp = new XMLHttpRequest();
   //   xmlHttp.onreadystatechange = this.getInfo;
   //   xmlHttp.open( "GET", url, false );

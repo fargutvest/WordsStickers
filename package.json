@@ -1,8 +1,8 @@
 {
-  "name": "EnglishWordsStickers",
+  "name": "WordsStickers",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://fargutvest.github.io/EnglishWordsStickers/",
+  "homepage": "https://fargutvest.github.io/WordsStickers/",
   "dependencies": {
     "fibers": "^4.0.2",
     "html2canvas": "^1.0.0-rc.5",

@@ -22,9 +22,9 @@ const Sticker = ({ onMouseOver, onMouseLeave, onStudied, sticker }) => {
   
   return (
     <div className={`${s.Sticker} ${mouseOver} ${studied}`} onMouseOver={onMouseOverHandler} onMouseLeave={onMouseLeaveHandler} onClick={onClickHandler}>
-      <div className={`${s.English} ${s.Part}`}>{sticker.content.English}</div>
+      <div className={`${s.Foreign} ${s.Part}`}>{sticker.content.Foreign}</div>
       {/* <div className={`${s.Spelling} ${s.Part}`}>{sticker.content.Spelling}</div> */}
-      <div className={`${s.Russian} ${s.Part}`}>{sticker.content.Russian}</div>
+      <div className={`${s.Native} ${s.Part}`}>{sticker.content.Native}</div>
     </div>
   );
 

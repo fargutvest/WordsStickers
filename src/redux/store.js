@@ -12,24 +12,24 @@ let store = {
     stickers: [
       [
         {
-          English: "Hello1",
+          Foreign: "Hello1",
           Spelling: "spelling =)",
-          Russian: "Privet"
+          Native: "Privet"
         },
         {
-          English: "Hello2",
+          Foreign: "Hello2",
           Spelling: "spelling =)",
-          Russian: "Privet"
+          Native: "Privet"
         },
         {
-          English: "Hello3",
+          Foreign: "Hello3",
           Spelling: "spelling =)",
-          Russian: "Privet"
+          Native: "Privet"
         },
         {
-          English: "Hello4",
+          Foreign: "Hello4",
           Spelling: "spelling =)",
-          Russian: "Privet"
+          Native: "Privet"
         }
       ],
     ],

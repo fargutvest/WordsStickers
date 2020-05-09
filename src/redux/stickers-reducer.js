@@ -21,9 +21,9 @@ const PDF_OUTPUT = 'PDF_OUTPUT';
 let initialStickers = [
     {
         content: {
-            English: "Hello",
+            Foreign: "Hello",
             Spelling: "|həˈloʊ|",
-            Russian: "Привет"
+            Native: "Привет"
         },
         id: 0,
         isMouseOver: false,
@@ -51,9 +51,9 @@ let getInitialiseStickers = () => {
 
         var sticker = {
             content: {
-                English: eng[i],
+                Foreign: eng[i],
                 Spelling: "",
-                Russian: rus[i]
+                Native: rus[i]
             },
             id: i,
             isMouseOver: false,
@@ -166,9 +166,9 @@ const getValuesSuccess = (spreadsheetLines, dispatch) => {
     var stickers = spreadsheetLines.map((lineCells, index) => {
         return {
             content: {
-                English: lineCells[0],
+                Foreign: lineCells[0],
                 Spelling: "---",
-                Russian: lineCells[1]
+                Native: lineCells[1]
             },
             id: index,
             isMouseOver: false,

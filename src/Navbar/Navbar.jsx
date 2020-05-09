@@ -45,7 +45,7 @@ const Navbar = ({ pdf, updateIsGeneratingPdf, updateIsShowIframe, updatePdfOutpu
                         <SocialUrl url="https://www.youtube.com/watch?v=C-FKXagcLRQ&list=PLQPXxMwGR_nkJyvzRnj8NGgHwgvpdipy4" icon={youtube} />
                     </p>
                     <p>
-                        <SocialUrl url="https://github.com/fargutvest/EnglishWordsStickers" icon={github} />
+                        <SocialUrl url="https://github.com/fargutvest/WordsStickers" icon={github} />
                     </p>
                 </p>
                 <p>

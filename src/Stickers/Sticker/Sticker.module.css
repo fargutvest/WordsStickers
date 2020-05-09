@@ -30,7 +30,7 @@
   justify-content: center;
 }
 
-.English {
+.Foreign {
   font-style: normal;
   font-weight: 600;
 }
@@ -39,6 +39,6 @@
   color: gray;
 }
 
-.Russian {
+.Native {
   font-style: normal;
 }
