@@ -3,17 +3,16 @@ import Stickers from './Stickers'
 import { updatePdf } from './../redux/stickers-reducer'
 import { mouseOverSticker, mouseLeaveSticker, studiedSticker } from './../redux/stickers-reducer';
 import { connect } from 'react-redux'
-import { initialStickers } from './../redux/stickers-reducer';
 import Preloader from './../Components/Preloader/Preloader.js'
 import { getStickers } from './../redux/stickers-reducer';
-import { getStickersSelector, getIsFetchingStickers } from './../redux/stickers-selectors'
+import { getStickersSelector, getIsFetchingStickers, getStickersAreFetched } from './../redux/stickers-selectors'
 import { getIsSignedIn } from './../redux/signin-selectors'
 
 
 class StickersContainer extends Component {
 
     render() {
-        if (this.props.isSignedIn && this.props.stickers.length === initialStickers.length && this.props.isFetchingStickers === false) {
+        if (this.props.isSignedIn && this.props.stickersAreFetched == false && this.props.isFetchingStickers === false) {
             this.props.getStickers();
         }
 
@@ -26,6 +25,7 @@ let mapStateToProps = (state) => {
         stickers: getStickersSelector(state),
         isSignedIn: getIsSignedIn(state),
         isFetchingStickers: getIsFetchingStickers(state),
+        stickersAreFetched : getStickersAreFetched(state)
     }
 }
 

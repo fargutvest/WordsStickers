@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import PlaySticker from './PlaySticker'
 import { updatePdf } from './../../redux/stickers-reducer'
-import { mouseOverSticker, mouseLeaveSticker, studiedSticker, getStickers, initialStickers } from './../../redux/stickers-reducer';
+import { mouseOverSticker, mouseLeaveSticker, studiedSticker, getStickers } from './../../redux/stickers-reducer';
 import { connect } from 'react-redux'
 import Preloader from './../../Components/Preloader/Preloader.js'
-import { getStickersSelector, getIsFetchingStickers } from './../../redux/stickers-selectors'
+import { getStickersSelector, getIsFetchingStickers, getStickersAreFetched } from './../../redux/stickers-selectors'
 import { getIsSignedIn } from './../../redux/signin-selectors'
 
 
 class PlayStickerContainer extends Component {
 
     render() {
-        if (this.props.isSignedIn && this.props.stickers.length === initialStickers.length && this.props.isFetchingStickers === false) {
+          if (this.props.isSignedIn && this.props.stickersAreFetched == false && this.props.isFetchingStickers === false) {
             this.props.getStickers();
         }
 
@@ -26,6 +26,7 @@ let mapStateToProps = (state) => {
         stickers: getStickersSelector(state),
         isSignedIn: getIsSignedIn(state),
         isFetchingStickers: getIsFetchingStickers(state),
+        stickersAreFetched : getStickersAreFetched(state)
     }
 }
 

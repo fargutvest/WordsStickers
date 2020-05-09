@@ -8,6 +8,10 @@ export let getIsFetchingStickers = (state) =>{
     return state.stickersPage.isFetchingStickers;
 }
 
+export let getStickersAreFetched = (state) =>{
+    return state.stickersPage.stickersAreFetched;
+}
+
 export let getPdfRef = (state) =>{
     return state.stickersPage.pdf;
 }

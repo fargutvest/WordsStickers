@@ -3,6 +3,7 @@ import { getValues } from '../API/GSheetsAPI'
 import { listFiles, getLastCreatedFile } from '../API/GDriveAPI'
 import { updateError } from './../redux/error-reducer';
 import { updateSpreadsheetId } from './../redux/spreadsheet-reducer'
+import { red } from 'color-name';
 
 const UPDATE_PDF = 'UPDATE_PDF';
 const UPDATE_STICKERS = 'UPDATE_STICKERS';
@@ -10,11 +11,13 @@ const MOUSE_OVER = 'MOUSE_OVER';
 const MOUSE_LEAVE = 'MOUSE_LEAVE';
 const STUDIED = 'STUDIED';
 const IS_FETCHING_STICKERS = 'IS_FETCHING_STICKERS';
+const STICKERS_ARE_FETCHED = 'STICKERS_ARE_FETCHED';
 const IS_GENERATING_PDF = 'IS_GENERATING_PDF';
 const IS_SHOW_IFRAME = 'IS_SHOW_IFRAME';
 const PDF_OUTPUT = 'PDF_OUTPUT';
 
-export let initialStickers = [
+
+let initialStickers = [
     {
         content: {
             English: "Hello",
@@ -27,13 +30,47 @@ export let initialStickers = [
     }
 ];
 
+const previewStickersEn = "Hello friend this stickers with words to study foreign languages " + 
+"You can accumulate unknown words in google translate phrasebook after that import them to spreedshed " + 
+"in your google drive Now just signin under your google account and you will see all accumulated " + 
+"words as stickers This stickers you can print on paper and put on wall in room near with work desk for memorising"
+
+const previewStickersRus = "Привет друг это карточки со словами для изучения иностранных языков " + 
+"Ты можешь накопить незнакомые слова в гугл переводчике словаре после этого импортировать их в таблицу " +
+"в своем гугл драйве Теперь просто залогинься под своим гугл аккаунтом и ты будешь видеть все накопленные "+
+"слова как карточки Эти карточки ты можешь распечатать на бумагу и наклеить на стену в комнате рядом с рабочим столом для запоминания"
+
+let getInitialiseStickers = () => {
+    var eng = previewStickersEn.split(" ");
+    var rus = previewStickersRus.split(" ");
+
+    var dynamicInitialStickers = [];
+
+    for (let i = 0; i < eng.length; i++) {
+
+        var sticker = {
+            content: {
+                English: eng[i],
+                Spelling: "",
+                Russian: rus[i]
+            },
+            id: i,
+            isMouseOver: false,
+            isStudied: false
+        };
+        dynamicInitialStickers.push(sticker);
+    }
+    return dynamicInitialStickers;
+}
+
 var initialState = {
     pdf: React.createRef(),
-    stickers: initialStickers,
+    stickers: getInitialiseStickers(),
     isFetchingStickers: false,
+    stickersAreFetched: false,
     isGeneratingPdf: false,
     isShowIframe: false,
-    pdfOutput : ""
+    pdfOutput: ""
 }
 
 
@@ -75,6 +112,10 @@ const stickersReducer = (state = initialState, action) => {
             return {
                 ...state, isFetchingStickers: action.isFetchingStickers
             }
+        case STICKERS_ARE_FETCHED:
+            return {
+                ...state, stickersAreFetched: action.stickersAreFetched
+            }
         case IS_GENERATING_PDF:
             return {
                 ...state, isGeneratingPdf: action.isGeneratingPdf
@@ -95,6 +136,7 @@ const stickersReducer = (state = initialState, action) => {
 export const getStickers = (spreadsheetId = null) => {
     return (dispatch) => {
         dispatch(updateIsFetchingStickers(true));
+        dispatch(updateStickersAreFetched(false));
 
         if (spreadsheetId === null) {
             listFiles((files) => {
@@ -131,12 +173,14 @@ const getValuesSuccess = (spreadsheetLines, dispatch) => {
     });
 
     dispatch(updateIsFetchingStickers(false));
+    dispatch(updateStickersAreFetched(true));
     dispatch(updateStickers(stickers.reverse()));
 }
 
 const getValuesError = (message, dispatch) => {
     dispatch(updateError("Error" + message));
     dispatch(updateIsFetchingStickers(false));
+    dispatch(updateStickersAreFetched(false));
 }
 
 
@@ -146,6 +190,7 @@ export const mouseOverSticker = (stickerId) => ({ type: MOUSE_OVER, stickerId: s
 export const mouseLeaveSticker = (stickerId) => ({ type: MOUSE_LEAVE, stickerId: stickerId });
 export const studiedSticker = (info) => ({ type: STUDIED, stickerId: info.stickerId, isStudied: info.isStudied });
 export const updateIsFetchingStickers = (isFetchingStickers) => ({ type: IS_FETCHING_STICKERS, isFetchingStickers: isFetchingStickers });
+const updateStickersAreFetched = (stickersAreFetched) => ({ type: STICKERS_ARE_FETCHED, stickersAreFetched: stickersAreFetched });
 export const updateIsGeneratingPdf = (isGeneratingPdf) => ({ type: IS_GENERATING_PDF, isGeneratingPdf: isGeneratingPdf });
 export const updateIsShowIframe = (isShowIframe) => ({ type: IS_SHOW_IFRAME, isShowIframe: isShowIframe });
 export const updatePdfOutput = (pdfOutput) => ({ type: PDF_OUTPUT, pdfOutput: pdfOutput });
