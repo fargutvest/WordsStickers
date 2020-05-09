@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "db9a6a9ec6ce9051f0c2de45b0e6167e",
+    "revision": "307411a28a3e204302b17b31ee4bbc69",
     "url": "/WordsStickers/index.html"
   },
   {
-    "revision": "d90f4593fa082573dbe1",
+    "revision": "d773d5e5502ba9e2c665",
     "url": "/WordsStickers/static/css/main.88d4be63.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/WordsStickers/static/js/2.8ff67628.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d90f4593fa082573dbe1",
-    "url": "/WordsStickers/static/js/main.11a236ba.chunk.js"
+    "revision": "d773d5e5502ba9e2c665",
+    "url": "/WordsStickers/static/js/main.422325e7.chunk.js"
   },
   {
     "revision": "9b0ef2ab442155f1c977",
