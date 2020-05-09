@@ -5,12 +5,13 @@ import s from './ErrorBar.module.css';
 class ErrorBar extends Component {
 
     render() {
-        return (
-            <div className={s.errorBar}>
-                <p align="center">
-                    {this.props.error}
-                </p>
-            </div>
+        console.log(this.props.error)
+        return (<div></div>
+            // <div className={s.errorBar}>
+            //     <p align="center">
+            //         {this.props.error}
+            //     </p>
+            // </div>
         );
     }
 }

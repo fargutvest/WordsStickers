@@ -8,15 +8,16 @@ import print from './../Assets/print.svg'
 import translate from './../Assets/translate.svg'
 import s from './Navbar.module.css';
 import { htmlToPdf } from './../utils/htmlToPdf'
+import spinner  from './../Assets/spinner.svg'
 
 const pageHeightPixels = 98 * 8;
 const pdfFileName = "Stickers to print.pdf";
 const pageOrientation = "landscape";
 
-const Navbar = ({ pdf, updateIsGeneratingPdf, updateIsShowIframe, updatePdfOutput, pdfOutput }) => {
+const Navbar = ({ pdf, updateIsGeneratingPdf, updateIsShowIframe, updatePdfOutput, pdfOutput, isGeneratingPdf }) => {
 
     let onClickPdf = async () => {
-        
+
         if (pdfOutput == "") {
             updateIsGeneratingPdf(true);
             var newPdfOutput = await htmlToPdf(pageHeightPixels, pageOrientation, pdf, pdfFileName);
@@ -25,7 +26,11 @@ const Navbar = ({ pdf, updateIsGeneratingPdf, updateIsShowIframe, updatePdfOutpu
         }
 
         updateIsShowIframe(true);
-        
+
+    }
+
+    let getPrintButton = () => {
+        return isGeneratingPdf == false ? <input type="image" onClick={onClickPdf} src={print} /> : <img src={spinner} />;
     }
 
     return (
@@ -33,7 +38,7 @@ const Navbar = ({ pdf, updateIsGeneratingPdf, updateIsShowIframe, updatePdfOutpu
 
             <div className={s.main}>
                 <p align="center">
-                    <input type="image" onClick={onClickPdf} src={print} />
+                    {getPrintButton()}
                 </p>
             </div>
             <div>
