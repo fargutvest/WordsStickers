@@ -1,8 +1,8 @@
 import React from 'react';
 import { getValues } from '../API/GSheetsAPI'
 import { listFiles, getLastCreatedFile } from '../API/GDriveAPI'
-import { updateError } from './../redux/error-reducer';
-import { updateSpreadsheetId } from './../redux/spreadsheet-reducer'
+import { updateError } from './error-reducer';
+import { updateSpreadsheetId } from './spreadsheet-reducer'
 import { red } from 'color-name';
 
 const UPDATE_PDF = 'UPDATE_PDF';
@@ -18,7 +18,7 @@ const IS_SHOW_IFRAME = 'IS_SHOW_IFRAME';
 const PDF_OUTPUT = 'PDF_OUTPUT';
 
 
-let initialStickers = [
+let initialStickers: Array<stickerType> = [
     {
         content: {
             Foreign: "Hello",
@@ -45,11 +45,11 @@ let getInitialiseStickers = () => {
     var eng = previewStickersEn.split(" ");
     var rus = previewStickersRus.split(" ");
 
-    var dynamicInitialStickers = [];
+    var dynamicInitialStickers: Array<stickerType> = [];
 
     for (let i = 0; i < eng.length; i++) {
 
-        var sticker = {
+        var sticker: stickerType = {
             content: {
                 Foreign: eng[i],
                 Spelling: "",
@@ -64,7 +64,30 @@ let getInitialiseStickers = () => {
     return dynamicInitialStickers;
 }
 
-var initialState = {
+export type stickerType = {
+    content: {
+        Foreign: String,
+        Spelling: String,
+        Native: String
+    },
+    id: number,
+    isMouseOver: boolean,
+    isStudied: boolean
+}
+
+export type initialStateType = {
+    pdf: React.RefObject<unknown>,
+    stickers: Array<stickerType>,
+    isFetchingStickers : boolean,
+    stickersAreFetched: boolean,
+    isGeneratingPdf: boolean,
+    isShowIframe: boolean,
+    pdfOutput: any
+}
+
+
+
+var initialState: initialStateType = {
     pdf: React.createRef(),
     stickers: getInitialiseStickers(),
     isFetchingStickers: false,
@@ -75,7 +98,8 @@ var initialState = {
 }
 
 
-const stickersReducer = (state = initialState, action) => {
+
+const stickersReducer = (state: initialStateType = initialState, action: any) => {
     switch (action.type) {
         case UPDATE_PDF:
             return { ...state, pdf: action.newPdf }
@@ -137,30 +161,30 @@ const stickersReducer = (state = initialState, action) => {
     }
 }
 
-export const getStickers = (spreadsheetId = null) => {
-    return (dispatch) => {
+export const getStickers = (spreadsheetId: number | null = null) => {
+    return (dispatch: any) => {
         dispatch(updateIsFetchingStickers(true));
         dispatch(updateStickersAreFetched(false));
 
         if (spreadsheetId === null) {
-            listFiles((files) => {
+            listFiles((files: Array<any>) => {
                 var lastCreatedFile = getLastCreatedFile(files);
                 dispatch(updateSpreadsheetId(lastCreatedFile.id));
                 getValues(lastCreatedFile.id,
-                    (spreadsheetLines) => { getValuesSuccess(spreadsheetLines, dispatch) },
-                    (message) => { getValuesError(message, dispatch); });
+                    (spreadsheetLines: Array<any>) => { getValuesSuccess(spreadsheetLines, dispatch) },
+                    (message: string) => { getValuesError(message, dispatch); });
             });
         }
         else {
             getValues(spreadsheetId,
-                (spreadsheetLines) => { getValuesSuccess(spreadsheetLines, dispatch) },
-                (message) => { getValuesError(message, dispatch); });
+                (spreadsheetLines: Array<any>) => { getValuesSuccess(spreadsheetLines, dispatch) },
+                (message: string) => { getValuesError(message, dispatch); });
         }
     }
 }
 
 
-const getValuesSuccess = (spreadsheetLines, dispatch) => {
+const getValuesSuccess = (spreadsheetLines: Array<any>, dispatch: any) => {
     dispatch(updateError(spreadsheetLines.length > 0 ? "" : "No data found."));
 
     var stickers = spreadsheetLines.map((lineCells, index) => {
@@ -181,23 +205,23 @@ const getValuesSuccess = (spreadsheetLines, dispatch) => {
     dispatch(updateStickers(stickers.reverse()));
 }
 
-const getValuesError = (message, dispatch) => {
+const getValuesError = (message: string, dispatch: any) => {
     dispatch(updateError("Error" + message));
     dispatch(updateIsFetchingStickers(false));
     dispatch(updateStickersAreFetched(false));
 }
 
 
-export const updatePdf = (newPdf) => ({ type: UPDATE_PDF, newPdf: newPdf });
-export const updateStickers = (newStickers) => ({ type: UPDATE_STICKERS, newStickers: newStickers });
+export const updatePdf = (newPdf: any) => ({ type: UPDATE_PDF, newPdf: newPdf });
+export const updateStickers = (newStickers: Array<stickerType>) => ({ type: UPDATE_STICKERS, newStickers: newStickers });
 export const resetStickers = () => ({ type: RESET_STICKERS });
-export const mouseOverSticker = (stickerId) => ({ type: MOUSE_OVER, stickerId: stickerId });
-export const mouseLeaveSticker = (stickerId) => ({ type: MOUSE_LEAVE, stickerId: stickerId });
-export const studiedSticker = (info) => ({ type: STUDIED, stickerId: info.stickerId, isStudied: info.isStudied });
-export const updateIsFetchingStickers = (isFetchingStickers) => ({ type: IS_FETCHING_STICKERS, isFetchingStickers: isFetchingStickers });
-const updateStickersAreFetched = (stickersAreFetched) => ({ type: STICKERS_ARE_FETCHED, stickersAreFetched: stickersAreFetched });
-export const updateIsGeneratingPdf = (isGeneratingPdf) => ({ type: IS_GENERATING_PDF, isGeneratingPdf: isGeneratingPdf });
-export const updateIsShowIframe = (isShowIframe) => ({ type: IS_SHOW_IFRAME, isShowIframe: isShowIframe });
-export const updatePdfOutput = (pdfOutput) => ({ type: PDF_OUTPUT, pdfOutput: pdfOutput });
+export const mouseOverSticker = (stickerId: number) => ({ type: MOUSE_OVER, stickerId: stickerId });
+export const mouseLeaveSticker = (stickerId: number) => ({ type: MOUSE_LEAVE, stickerId: stickerId });
+export const studiedSticker = (info: any) => ({ type: STUDIED, stickerId: info.stickerId, isStudied: info.isStudied });
+export const updateIsFetchingStickers = (isFetchingStickers: boolean) => ({ type: IS_FETCHING_STICKERS, isFetchingStickers: isFetchingStickers });
+const updateStickersAreFetched = (stickersAreFetched : boolean) => ({ type: STICKERS_ARE_FETCHED, stickersAreFetched: stickersAreFetched });
+export const updateIsGeneratingPdf = (isGeneratingPdf : boolean) => ({ type: IS_GENERATING_PDF, isGeneratingPdf: isGeneratingPdf });
+export const updateIsShowIframe = (isShowIframe : boolean) => ({ type: IS_SHOW_IFRAME, isShowIframe: isShowIframe });
+export const updatePdfOutput = (pdfOutput: any) => ({ type: PDF_OUTPUT, pdfOutput: pdfOutput });
 
 export default stickersReducer;
