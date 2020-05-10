@@ -87,6 +87,7 @@ export type initialStateType = {
 
 
 
+
 var initialState: initialStateType = {
     pdf: React.createRef(),
     stickers: getInitialiseStickers(),
@@ -99,7 +100,7 @@ var initialState: initialStateType = {
 
 
 
-const stickersReducer = (state: initialStateType = initialState, action: any) => {
+const stickersReducer = (state: initialStateType = initialState, action: anyActionType) => {
     switch (action.type) {
         case UPDATE_PDF:
             return { ...state, pdf: action.newPdf }
@@ -211,17 +212,32 @@ const getValuesError = (message: string, dispatch: any) => {
     dispatch(updateStickersAreFetched(false));
 }
 
+export type updatePdfActionType = { type: typeof UPDATE_PDF, newPdf: any }
+export type updateStickersActionType = { type: typeof UPDATE_STICKERS, newStickers: Array<stickerType> }
+export type resetStickersActionType = { type: typeof RESET_STICKERS }
+export type mouseOverStickerActionType = { type: typeof MOUSE_OVER, stickerId: number }
+export type mouseLeaveStickerActionType = { type: typeof MOUSE_LEAVE, stickerId: number }
+export type studiedStickerActionType = { type: typeof STUDIED, stickerId: number, isStudied: boolean }
+export type updateIsFetchingStickersActionType = { type: typeof IS_FETCHING_STICKERS, isFetchingStickers: boolean }
+export type updateStickersAreFetchedActionType = { type: typeof STICKERS_ARE_FETCHED, stickersAreFetched: boolean }
+export type updateIsGeneratingPdfActionType = { type: typeof IS_GENERATING_PDF, isGeneratingPdf: boolean }
+export type updateIsShowIframeActionType = { type: typeof IS_SHOW_IFRAME, isShowIframe: boolean }
+export type updatePdfOutputActionType = { type: typeof PDF_OUTPUT, pdfOutput: any }
 
-export const updatePdf = (newPdf: any) => ({ type: UPDATE_PDF, newPdf: newPdf });
-export const updateStickers = (newStickers: Array<stickerType>) => ({ type: UPDATE_STICKERS, newStickers: newStickers });
-export const resetStickers = () => ({ type: RESET_STICKERS });
-export const mouseOverSticker = (stickerId: number) => ({ type: MOUSE_OVER, stickerId: stickerId });
-export const mouseLeaveSticker = (stickerId: number) => ({ type: MOUSE_LEAVE, stickerId: stickerId });
-export const studiedSticker = (info: any) => ({ type: STUDIED, stickerId: info.stickerId, isStudied: info.isStudied });
-export const updateIsFetchingStickers = (isFetchingStickers: boolean) => ({ type: IS_FETCHING_STICKERS, isFetchingStickers: isFetchingStickers });
-const updateStickersAreFetched = (stickersAreFetched : boolean) => ({ type: STICKERS_ARE_FETCHED, stickersAreFetched: stickersAreFetched });
-export const updateIsGeneratingPdf = (isGeneratingPdf : boolean) => ({ type: IS_GENERATING_PDF, isGeneratingPdf: isGeneratingPdf });
-export const updateIsShowIframe = (isShowIframe : boolean) => ({ type: IS_SHOW_IFRAME, isShowIframe: isShowIframe });
-export const updatePdfOutput = (pdfOutput: any) => ({ type: PDF_OUTPUT, pdfOutput: pdfOutput });
+export type anyActionType = updatePdfActionType | updateStickersActionType | resetStickersActionType | mouseOverStickerActionType | mouseLeaveStickerActionType | 
+studiedStickerActionType | updateIsFetchingStickersActionType | updateStickersAreFetchedActionType | updateIsGeneratingPdfActionType | updateIsShowIframeActionType |
+updatePdfOutputActionType;
+
+export const updatePdf = (newPdf: any) : updatePdfActionType => ({ type: UPDATE_PDF, newPdf: newPdf });
+export const updateStickers = (newStickers: Array<stickerType>): updateStickersActionType => ({ type: UPDATE_STICKERS, newStickers: newStickers });
+export const resetStickers = () : resetStickersActionType => ({ type: RESET_STICKERS });
+export const mouseOverSticker = (stickerId: number) : mouseOverStickerActionType => ({ type: MOUSE_OVER, stickerId: stickerId });
+export const mouseLeaveSticker = (stickerId: number) : mouseLeaveStickerActionType => ({ type:  MOUSE_LEAVE, stickerId: stickerId });
+export const studiedSticker = (info: any) : studiedStickerActionType => ({ type: STUDIED, stickerId: info.stickerId, isStudied: info.isStudied });
+export const updateIsFetchingStickers = (isFetchingStickers: boolean) : updateIsFetchingStickersActionType => ({ type: IS_FETCHING_STICKERS, isFetchingStickers: isFetchingStickers });
+const updateStickersAreFetched = (stickersAreFetched : boolean) : updateStickersAreFetchedActionType => ({ type: STICKERS_ARE_FETCHED, stickersAreFetched: stickersAreFetched });
+export const updateIsGeneratingPdf = (isGeneratingPdf : boolean) : updateIsGeneratingPdfActionType => ({ type: IS_GENERATING_PDF, isGeneratingPdf: isGeneratingPdf });
+export const updateIsShowIframe = (isShowIframe : boolean) : updateIsShowIframeActionType => ({ type: IS_SHOW_IFRAME, isShowIframe: isShowIframe });
+export const updatePdfOutput = (pdfOutput: any) : updatePdfOutputActionType=> ({ type: PDF_OUTPUT, pdfOutput: pdfOutput });
 
 export default stickersReducer;
