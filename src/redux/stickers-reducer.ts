@@ -107,7 +107,7 @@ const stickersReducer = (state: initialStateType = initialState, action: anyActi
         case UPDATE_STICKERS:
             return { ...state, stickers: action.newStickers }
         case RESET_STICKERS:
-            return { ...state, stickersAreFetched: false, stickers: getInitialiseStickers() }
+            return { ...state, stickersAreFetched: false, stickers: getInitialiseStickers().reverse() }
             break;
         case MOUSE_OVER:
             let copy = {
