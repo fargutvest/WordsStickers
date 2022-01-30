@@ -8,7 +8,7 @@ const countStickersInRow = 4;
 class Stickers extends Component {
 
   buildStickersPage() {
-    var stickers = this.props.stickers;
+    var stickers = this.props.stickers.reverse();
 
     var stickersPage = [];
     var stickersCounter = 0;
