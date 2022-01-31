@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/WordsStickers/static/css/main.0e876c9d.chunk.css",
+    "main.css": "/WordsStickers/static/css/main.88d4be63.chunk.css",
     "main.js": "/WordsStickers/static/js/main.5fd459a1.chunk.js",
     "main.js.map": "/WordsStickers/static/js/main.5fd459a1.chunk.js.map",
     "runtime-main.js": "/WordsStickers/static/js/runtime-main.83f592f8.js",
@@ -8,9 +8,9 @@
     "static/js/2.1b6fa21f.chunk.js": "/WordsStickers/static/js/2.1b6fa21f.chunk.js",
     "static/js/2.1b6fa21f.chunk.js.map": "/WordsStickers/static/js/2.1b6fa21f.chunk.js.map",
     "index.html": "/WordsStickers/index.html",
-    "precache-manifest.7f6c11d1eaa9b1ba6111c659c8101b4b.js": "/WordsStickers/precache-manifest.7f6c11d1eaa9b1ba6111c659c8101b4b.js",
+    "precache-manifest.6e73b3fc71da7e550314db5bccab380d.js": "/WordsStickers/precache-manifest.6e73b3fc71da7e550314db5bccab380d.js",
     "service-worker.js": "/WordsStickers/service-worker.js",
-    "static/css/main.0e876c9d.chunk.css.map": "/WordsStickers/static/css/main.0e876c9d.chunk.css.map",
+    "static/css/main.88d4be63.chunk.css.map": "/WordsStickers/static/css/main.88d4be63.chunk.css.map",
     "static/js/2.1b6fa21f.chunk.js.LICENSE.txt": "/WordsStickers/static/js/2.1b6fa21f.chunk.js.LICENSE.txt",
     "static/media/exit.svg": "/WordsStickers/static/media/exit.b8196adb.svg",
     "static/media/github.svg": "/WordsStickers/static/media/github.486fae37.svg",
@@ -26,7 +26,7 @@
   "entrypoints": [
     "static/js/runtime-main.83f592f8.js",
     "static/js/2.1b6fa21f.chunk.js",
-    "static/css/main.0e876c9d.chunk.css",
+    "static/css/main.88d4be63.chunk.css",
     "static/js/main.5fd459a1.chunk.js"
   ]
 }
