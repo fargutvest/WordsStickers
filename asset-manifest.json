@@ -1,32 +1,32 @@
 {
   "files": {
-    "main.css": "/WordsStickers/static/css/main.7872ef67.chunk.css",
-    "main.js": "/WordsStickers/static/js/main.4c1a8183.chunk.js",
-    "main.js.map": "/WordsStickers/static/js/main.4c1a8183.chunk.js.map",
+    "main.css": "/WordsStickers/static/css/main.88d4be63.chunk.css",
+    "main.js": "/WordsStickers/static/js/main.5fd459a1.chunk.js",
+    "main.js.map": "/WordsStickers/static/js/main.5fd459a1.chunk.js.map",
     "runtime-main.js": "/WordsStickers/static/js/runtime-main.83f592f8.js",
     "runtime-main.js.map": "/WordsStickers/static/js/runtime-main.83f592f8.js.map",
     "static/js/2.1b6fa21f.chunk.js": "/WordsStickers/static/js/2.1b6fa21f.chunk.js",
     "static/js/2.1b6fa21f.chunk.js.map": "/WordsStickers/static/js/2.1b6fa21f.chunk.js.map",
     "index.html": "/WordsStickers/index.html",
-    "precache-manifest.c001fcdcca4372dd3c61b15dff5cf4f1.js": "/WordsStickers/precache-manifest.c001fcdcca4372dd3c61b15dff5cf4f1.js",
+    "precache-manifest.6e73b3fc71da7e550314db5bccab380d.js": "/WordsStickers/precache-manifest.6e73b3fc71da7e550314db5bccab380d.js",
     "service-worker.js": "/WordsStickers/service-worker.js",
-    "static/css/main.7872ef67.chunk.css.map": "/WordsStickers/static/css/main.7872ef67.chunk.css.map",
+    "static/css/main.88d4be63.chunk.css.map": "/WordsStickers/static/css/main.88d4be63.chunk.css.map",
     "static/js/2.1b6fa21f.chunk.js.LICENSE.txt": "/WordsStickers/static/js/2.1b6fa21f.chunk.js.LICENSE.txt",
     "static/media/exit.svg": "/WordsStickers/static/media/exit.b8196adb.svg",
-    "static/media/github.svg": "/WordsStickers/static/media/github.aa3642d4.svg",
+    "static/media/github.svg": "/WordsStickers/static/media/github.486fae37.svg",
     "static/media/google-plus.svg": "/WordsStickers/static/media/google-plus.2159790d.svg",
-    "static/media/google.svg": "/WordsStickers/static/media/google.4775cb59.svg",
-    "static/media/preloader.svg": "/WordsStickers/static/media/preloader.b1b0a1b6.svg",
+    "static/media/google.svg": "/WordsStickers/static/media/google.7c9224eb.svg",
+    "static/media/preloader.svg": "/WordsStickers/static/media/preloader.cc338b03.svg",
     "static/media/print.svg": "/WordsStickers/static/media/print.c84ce011.svg",
-    "static/media/sign-out.svg": "/WordsStickers/static/media/sign-out.cc0d8a76.svg",
-    "static/media/spinner.svg": "/WordsStickers/static/media/spinner.85854f5e.svg",
+    "static/media/sign-out.svg": "/WordsStickers/static/media/sign-out.6065ce4a.svg",
+    "static/media/spinner.svg": "/WordsStickers/static/media/spinner.513103c8.svg",
     "static/media/translate.svg": "/WordsStickers/static/media/translate.e9b8835b.svg",
-    "static/media/youtube.svg": "/WordsStickers/static/media/youtube.87146816.svg"
+    "static/media/youtube.svg": "/WordsStickers/static/media/youtube.496292e1.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.83f592f8.js",
     "static/js/2.1b6fa21f.chunk.js",
-    "static/css/main.7872ef67.chunk.css",
-    "static/js/main.4c1a8183.chunk.js"
+    "static/css/main.88d4be63.chunk.css",
+    "static/js/main.5fd459a1.chunk.js"
   ]
 }
